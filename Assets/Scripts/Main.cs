@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Main : MonoBehaviour
 {
     // Player stats
     public int playerLevel = 1;
@@ -13,7 +13,9 @@ public class Player : MonoBehaviour
     public int defense = 10;
     public int damage = 20;
     public int speed = 10;
-    public float stunChance = 0f; // Percentage chance (0-100) for stun
+    public float comboChance = 0f;
+    public float counterChacne = 0f;
+    public float stunChance = 0f; 
     public float bleedChance = 0f; // Percentage chance (0-100) for bleed
 
     // UI

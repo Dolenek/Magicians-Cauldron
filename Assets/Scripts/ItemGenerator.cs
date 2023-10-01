@@ -1,10 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ItemGenerator : MonoBehaviour
 {
+    // Singleton pattern for ItemGenerator
+    public static ItemGenerator Instance { get; private set; }
+
+    // Awake is called when the script instance is being loaded
+    private void Awake()
+    {
+        // Ensure there is only one instance of ItemGenerator
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public Item GenerateRandomItem(int playerLevel)
     {
