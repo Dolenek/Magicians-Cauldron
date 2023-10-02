@@ -49,8 +49,8 @@ public class ItemGenerator : MonoBehaviour
         // For rare and epic items, generate additional attributes
         if (newItem.itemRarity >= ItemRarity.Rare)
         {
-            newItem.stunChanceBonus = Random.Range(1.0f, 10.0f);
-            newItem.bleedChanceBonus = Random.Range(1.0f, 10.0f);
+            newItem.freezeChanceBonus = Random.Range(1.0f, 10.0f);
+            newItem.fireChanceBonus = Random.Range(1.0f, 10.0f);
         }
 
         return newItem;

@@ -11,8 +11,10 @@ public class Item
     public int speedBonus;
     public ItemType itemType;
     public ItemRarity itemRarity;
-    public float stunChanceBonus;
-    public float bleedChanceBonus;
+    public float freezeChanceBonus;
+    public float fireChanceBonus;
+    public float comboChanceBonus;
+    public float counterChanceBonus;
 }
 
 public enum ItemRarity

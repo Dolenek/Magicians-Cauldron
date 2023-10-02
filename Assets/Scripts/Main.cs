@@ -14,7 +14,7 @@ public class Main : MonoBehaviour
     public int damage = 20;
     public int speed = 10;
     public float comboChance = 0f;
-    public float counterChacne = 0f;
+    public float counterChance = 0f;
     public float stunChance = 0f; 
     public float bleedChance = 0f; // Percentage chance (0-100) for bleed
 
@@ -99,15 +99,12 @@ public class Main : MonoBehaviour
     // Show a UI prompt to let the player choose whether to replace or sell the new item
     private void ShowEquipOrSellPrompt(Item newItem, int existingItemSlotIndex)
     {
-        // Display a UI panel or dialog with the new item's stats and the existing item's stats
-        // Add buttons for "Replace" and "Sell" options
-        // Implement logic to handle player choice
-        // Here's a simplified example:
 
         // Show the UI panel with the stats and options
         equipOrSellPanel.SetActive(true);
         newHealthText.text = newItem.healthBonus.ToString();
         // Set other stat texts...
+
         existingHealthText.text = equipmentSlots[existingItemSlotIndex].healthBonus.ToString();
         // Set other existing item stat texts...
 
@@ -148,6 +145,8 @@ public class Main : MonoBehaviour
         int baseSpeed = 10;
         float baseStunChance = 0f;
         float baseBleedChance = 0f;
+        float baseComboChance = 0f;
+        float baseCounterChacne = 0f;
 
         // Apply bonuses from equipped items
         foreach (Item item in equipmentSlots)
@@ -158,8 +157,10 @@ public class Main : MonoBehaviour
                 baseDefense += item.defenseBonus;
                 baseDamage += item.damageBonus;
                 baseSpeed += item.speedBonus;
-                baseStunChance += item.stunChanceBonus;
-                baseBleedChance += item.bleedChanceBonus;
+                baseStunChance += item.freezeChanceBonus;
+                baseBleedChance += item.fireChanceBonus;
+                baseComboChance += item.comboChanceBonus;
+                baseCounterChacne += item.counterChanceBonus;
             }
         }
 
@@ -170,6 +171,8 @@ public class Main : MonoBehaviour
         speed = baseSpeed;
         stunChance = baseStunChance;
         bleedChance = baseBleedChance;
+        comboChance = baseComboChance;
+        counterChance = baseCounterChacne;
 
         // Update stat Text
         textPlayerHealth.text = health.ToString();

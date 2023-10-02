@@ -5,14 +5,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text textPlayerHealth;
-    [SerializeField] private TMP_Text textPlayerDamage;
-    [SerializeField] private TMP_Text textPlayerResistance;
-    [SerializeField] private TMP_Text textPlayerSpeed;
-    [SerializeField] private TMP_Text textPlayerCounter;
-    [SerializeField] private TMP_Text textPlayerCombo;
-    [SerializeField] private TMP_Text textPlayerFreeze;
-    [SerializeField] private TMP_Text textPlayerFire;
+    [SerializeField] private TMP_Text textPlayerHealth, textPlayerDamage, textPlayerResistance, textPlayerSpeed, textPlayerCounter, textPlayerCombo, textPlayerFreeze, textPlayerFire;
 
 
     private Main main;
