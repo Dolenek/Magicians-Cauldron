@@ -10,21 +10,13 @@ public class Main : MonoBehaviour
     // Player stats
     public int playerLevel = 1;
     public int health = 100;
-    public int defense = 10;
+    public int resistance = 10;
     public int damage = 20;
     public int speed = 10;
     public float comboChance = 0f;
     public float counterChance = 0f;
-    public float stunChance = 0f; 
-    public float bleedChance = 0f; // Percentage chance (0-100) for bleed
-
-    // UI
-    [SerializeField] private GameObject equipOrSellPanel;
-    [SerializeField] private Button equipButton;
-    [SerializeField] private Button sellButton;
-
-    // Player stats UI
-    [SerializeField] private TMP_Text textPlayerHealth;
+    public float freezeChance = 0f; 
+    public float fireChance = 0f; // Percentage chance (0-100) for bleed
 
 
     // Equipment UI
@@ -46,20 +38,24 @@ public class Main : MonoBehaviour
     private int equippedItemIndex = -1;
 
     private ItemGenerator itemGenerator;
-
+    private UIManager uiManager;
     // Initialize itemGenerator in Start or Awake
     private void Awake()
     {
         // Try to find the ItemGenerator component on the Player GameObject
         itemGenerator = GetComponent<ItemGenerator>();
-
+        uiManager = GetComponent<UIManager>();
         // If it's still null, create and attach the component
         if (itemGenerator == null)
         {
             itemGenerator = gameObject.AddComponent<ItemGenerator>();
         }
+        
     }
-
+    private void Start()
+    {
+        uiManager.UpdatePlayerTextStats();
+    }
 
     // In your Player script, call this when you want to generate and equip an item
     public void GenerateAndEquipRandomItem()
@@ -101,7 +97,7 @@ public class Main : MonoBehaviour
     {
 
         // Show the UI panel with the stats and options
-        equipOrSellPanel.SetActive(true);
+        uiManager.equipOrSellPanel.SetActive(true);
         newHealthText.text = newItem.healthBonus.ToString();
         // Set other stat texts...
 
@@ -109,8 +105,8 @@ public class Main : MonoBehaviour
         // Set other existing item stat texts...
 
         // Add button click events to handle player choice
-        equipButton.onClick.AddListener(() => ReplaceItemWithNew(newItem, existingItemSlotIndex));
-        sellButton.onClick.AddListener(() => SellNewItemAtExisting(newItem));
+        uiManager.equipButton.onClick.AddListener(() => ReplaceItemWithNew(newItem, existingItemSlotIndex));
+        uiManager.sellButton.onClick.AddListener(() => SellNewItemAtExisting(newItem));
     }
 
     // Handler for the "Replace" button
@@ -123,7 +119,7 @@ public class Main : MonoBehaviour
         UpdateStats();
 
         // Close the UI panel
-        equipOrSellPanel.SetActive(false);
+        uiManager.equipOrSellPanel.SetActive(false);
     }
 
     // Handler for the "Sell" button
@@ -132,7 +128,7 @@ public class Main : MonoBehaviour
         // Implement logic to sell the new item (e.g., add currency)
 
         // Close the UI panel
-        equipOrSellPanel.SetActive(false);
+        uiManager.equipOrSellPanel.SetActive(false);
     }
 
     // Update player stats based on equipped items
@@ -166,16 +162,16 @@ public class Main : MonoBehaviour
 
         // Update the player's stats
         health = baseHealth;
-        defense = baseDefense;
+        resistance = baseDefense;
         damage = baseDamage;
         speed = baseSpeed;
-        stunChance = baseStunChance;
-        bleedChance = baseBleedChance;
+        freezeChance = baseStunChance;
+        fireChance = baseBleedChance;
         comboChance = baseComboChance;
         counterChance = baseCounterChacne;
 
         // Update stat Text
-        textPlayerHealth.text = health.ToString();
+        uiManager.UpdatePlayerTextStats();
     }
 
     // Equip an item to a specific slot based on the
