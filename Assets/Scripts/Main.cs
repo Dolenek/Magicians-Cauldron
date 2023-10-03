@@ -21,12 +21,6 @@ public class Main : MonoBehaviour
 
     // Equipment UI
 
-    // Generated Item
-    [SerializeField] private TMP_Text newHealthText;
-
-    // Equipped item
-    [SerializeField] private TMP_Text existingHealthText;
-
 
     // Equipment types
     private Dictionary<ItemType, Item> equipmentBonuses = new Dictionary<ItemType, Item>();
@@ -98,11 +92,10 @@ public class Main : MonoBehaviour
 
         // Show the UI panel with the stats and options
         uiManager.equipOrSellPanel.SetActive(true);
-        newHealthText.text = newItem.healthBonus.ToString();
-        // Set other stat texts...
-
-        existingHealthText.text = equipmentSlots[existingItemSlotIndex].healthBonus.ToString();
-        // Set other existing item stat texts...
+        // Show the stats of newly generated item
+        uiManager.ShowNewItemStatsText(newItem);
+        // Show the stats of the already equipped item
+        uiManager.ShowExistingItemStatsText(existingItemSlotIndex);
 
         // Add button click events to handle player choice
         uiManager.equipButton.onClick.AddListener(() => ReplaceItemWithNew(newItem, existingItemSlotIndex));
@@ -150,7 +143,7 @@ public class Main : MonoBehaviour
             if (item != null)
             {
                 baseHealth += item.healthBonus;
-                baseDefense += item.defenseBonus;
+                baseDefense += item.resistanceBonus;
                 baseDamage += item.damageBonus;
                 baseSpeed += item.speedBonus;
                 baseStunChance += item.freezeChanceBonus;

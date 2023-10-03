@@ -6,7 +6,7 @@ using UnityEngine;
 public class Item 
 {
     public int healthBonus;
-    public int defenseBonus;
+    public int resistanceBonus;
     public int damageBonus;
     public int speedBonus;
     public ItemType itemType;

@@ -43,7 +43,7 @@ public class ItemGenerator : MonoBehaviour
         // Adjust these formulas as needed
         newItem.damageBonus = Random.Range(playerLevel * 5, playerLevel * 10);
         newItem.healthBonus = Random.Range(playerLevel * 10, playerLevel * 20);
-        newItem.defenseBonus = Random.Range(playerLevel * 2, playerLevel * 5);
+        newItem.resistanceBonus = Random.Range(playerLevel * 2, playerLevel * 5);
         newItem.speedBonus = Random.Range(playerLevel * 2, playerLevel * 5);
 
         // For rare and epic items, generate additional attributes

@@ -15,10 +15,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Button sellButton;
 
     // Generated Item UI
-    [SerializeField] private TMP_Text newHealthText;
+    [SerializeField] private TMP_Text textNewItemHealth, textNewItemDamage, textNewItemResistance, textNewItemSpeed, textNewItemCounter, textNewItemCombo, textNewItemFreeze, textNewItemFire;
 
     // Equipped item UI
-    [SerializeField] private TMP_Text existingHealthText;
+    [SerializeField] private TMP_Text textExistingItemHealth, textExistingItemDamage, textExistingItemResistance, textExistingItemSpeed, textExistingItemCounter, textExistingItemCombo, textExistingItemFreeze, textExistingItemFire;
 
     private Main main;
 
@@ -36,11 +36,25 @@ public class UIManager : MonoBehaviour
     }
     public void ShowNewItemStatsText(Item newItem)
     {
-        newHealthText.text = newItem.healthBonus.ToString();
+        textNewItemHealth.text = newItem.healthBonus.ToString();
+        /*textNewItemDamage.text = newItem.damageBonus.ToString();
+        textNewItemSpeed.text = newItem.speedBonus.ToString();
+        textNewItemResistance.text = newItem.resistanceBonus.ToString();
+        textNewItemCombo.text = newItem.comboChanceBonus.ToString();
+        textNewItemCounter.text = newItem.counterChanceBonus.ToString();
+        textNewItemFreeze.text = newItem.freezeChanceBonus.ToString();
+        textNewItemFire.text = newItem.fireChanceBonus.ToString();*/
     }
-    public void ShowExistingItemStatsText()
+    public void ShowExistingItemStatsText(int existingItemSlotIndex)
     {
-
+        textExistingItemHealth.text = main.equipmentSlots[existingItemSlotIndex].healthBonus.ToString();
+        /*textExistingItemDamage.text = main.equipmentSlots[existingItemSlotIndex].damageBonus.ToString();
+        textExistingItemSpeed.text = main.equipmentSlots[existingItemSlotIndex].speedBonus.ToString();
+        textExistingItemResistance.text = main.equipmentSlots[existingItemSlotIndex].resistanceBonus.ToString();
+        textExistingItemCombo.text = main.equipmentSlots[existingItemSlotIndex].comboChanceBonus.ToString();
+        textExistingItemCounter.text = main.equipmentSlots[existingItemSlotIndex].counterChanceBonus.ToString();
+        textExistingItemFreeze.text = main.equipmentSlots[existingItemSlotIndex].freezeChanceBonus.ToString();
+        textExistingItemFire.text = main.equipmentSlots[existingItemSlotIndex].fireChanceBonus.ToString();*/
     }
     public void UpdatePlayerTextStats()
     {
