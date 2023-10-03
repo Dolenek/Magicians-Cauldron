@@ -7,6 +7,8 @@ public class ItemGenerator : MonoBehaviour
     // Singleton pattern for ItemGenerator
     public static ItemGenerator Instance { get; private set; }
 
+
+
     // Awake is called when the script instance is being loaded
     private void Awake()
     {
@@ -27,6 +29,8 @@ public class ItemGenerator : MonoBehaviour
 
         // Randomly generate item type
         newItem.itemType = (ItemType)Random.Range(0, System.Enum.GetValues(typeof(ItemType)).Length);
+        newItem.itemLevel = Random.Range(Mathf.Max(1, playerLevel - 1),playerLevel+2);
+        Debug.Log(newItem.itemLevel);
 
         // Randomly generate item rarity
         float rarityRoll = Random.value;
@@ -41,10 +45,10 @@ public class ItemGenerator : MonoBehaviour
 
         // Randomly generate item stats based on player level and rarity
         // Adjust these formulas as needed
-        newItem.damageBonus = Random.Range(playerLevel * 5, playerLevel * 10);
-        newItem.healthBonus = Random.Range(playerLevel * 10, playerLevel * 20);
-        newItem.resistanceBonus = Random.Range(playerLevel * 2, playerLevel * 5);
-        newItem.speedBonus = Random.Range(playerLevel * 2, playerLevel * 5);
+        newItem.damageBonus = Random.Range(newItem.itemLevel * 5, newItem.itemLevel * 10);
+        newItem.healthBonus = Random.Range(newItem.itemLevel * 10, newItem.itemLevel * 20);
+        newItem.resistanceBonus = Random.Range(newItem.itemLevel * 2, newItem.itemLevel * 5);
+        newItem.speedBonus = Random.Range(newItem.itemLevel * 2, newItem.itemLevel * 5);
 
         // For rare and epic items, generate additional attributes
         if (newItem.itemRarity >= ItemRarity.Rare)

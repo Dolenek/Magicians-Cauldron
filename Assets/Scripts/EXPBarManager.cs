@@ -1,21 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EXPBarManager : MonoBehaviour
 {
-    public Slider expBar;       // Reference to the UI Slider representing the exp bar
-    public Text levelText;      // Reference to a UI Text element displaying the player's level
-    public int maxXP = 100;     // Maximum XP needed to reach the next level
-    public int currentXP = 0;   // Current XP
-    public int currentLevel = 1; // Current player level
+    [SerializeField] private Slider barEXP;      // Reference to the UI Slider representing the exp bar
+    [SerializeField] private TMP_Text textLevel; // Reference to a UI Text element displaying the player's level
+    [SerializeField] private TMP_Text textEXP;   // Reference to an UI 
+    [SerializeField] private int maxXP = 100;    // Maximum XP needed to reach the next level
+    [SerializeField] private int currentXP = 0;  // Current XP
+
+    private Main main;
+
+    private void Awake()
+    {
+        main = GetComponent<Main>();
+    }
+
+    private void Start()
+    {
+        UpdateExpBar();
+    }
 
     public void UpdateExpBar()
     {
         float fillAmount = (float)currentXP / maxXP;
-        expBar.value = fillAmount;
-        levelText.text = "Level " + currentLevel;
+        textEXP.text = currentXP.ToString() + "/" + maxXP.ToString();
+        barEXP.value = fillAmount;
+        textLevel.text = "Lv. " + main.playerLevel.ToString();
     }
 
     public void GainXP(int xpAmount)
@@ -25,7 +39,7 @@ public class EXPBarManager : MonoBehaviour
         if (currentXP >= maxXP)
         {
             // Level up
-            currentLevel++;
+            main.playerLevel++;
             currentXP -= maxXP;
             maxXP = CalculateNextLevelXP(); // Implement a function to calculate the XP required for the next level
             UpdateExpBar();
@@ -38,13 +52,9 @@ public class EXPBarManager : MonoBehaviour
 
     int CalculateNextLevelXP()
     {
-        // Implement your logic for calculating the XP required for the next level
-        // This could be a simple formula or a more complex system.
-        // Example: return (int)(maxXP * 1.5f);
-        return 100; // Replace with your calculation
+        return (int)(maxXP * 1.2f);
     }
 
-    //expBarManager.GainXP(20); // Gain 20 XP
 }
 
 

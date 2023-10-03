@@ -14,11 +14,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Button equipButton;
     [SerializeField] public Button sellButton;
 
-    // Generated Item UI
+    // Generated Item Stats UI
     [SerializeField] private TMP_Text textNewItemHealth, textNewItemDamage, textNewItemResistance, textNewItemSpeed, textNewItemCounter, textNewItemCombo, textNewItemFreeze, textNewItemFire;
 
-    // Equipped item UI
+    // Equipped item Stats UI
     [SerializeField] private TMP_Text textExistingItemHealth, textExistingItemDamage, textExistingItemResistance, textExistingItemSpeed, textExistingItemCounter, textExistingItemCombo, textExistingItemFreeze, textExistingItemFire;
+    
+    // Item Names,Rarities,Levels,etc...
+    [SerializeField] private TMP_Text textExistingItemLvl, textNewItemLvl;
+    [SerializeField] private TMP_Text textExistingItemRarity, textNewItemRarity;
+    [SerializeField] private TMP_Text textExistingItemType, textNewItemType;
+
 
     private Main main;
 
@@ -34,8 +40,13 @@ public class UIManager : MonoBehaviour
             main = gameObject.AddComponent<Main>();
         }
     }
-    public void ShowNewItemStatsText(Item newItem)
+    public void ShowNewItemText(Item newItem)
     {
+        // Item UI
+        textNewItemLvl.text = newItem.itemLevel.ToString();
+        textNewItemRarity.text = newItem.itemRarity.ToString();
+        textNewItemType.text = newItem.itemType.ToString();
+        // Stats
         textNewItemHealth.text = newItem.healthBonus.ToString();
         /*textNewItemDamage.text = newItem.damageBonus.ToString();
         textNewItemSpeed.text = newItem.speedBonus.ToString();
@@ -45,8 +56,13 @@ public class UIManager : MonoBehaviour
         textNewItemFreeze.text = newItem.freezeChanceBonus.ToString();
         textNewItemFire.text = newItem.fireChanceBonus.ToString();*/
     }
-    public void ShowExistingItemStatsText(int existingItemSlotIndex)
+    public void ShowExistingItemText(int existingItemSlotIndex)
     {
+        // Item UI
+        textExistingItemLvl.text = main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
+        textExistingItemRarity.text = main.equipmentSlots[existingItemSlotIndex].itemRarity.ToString();
+        textExistingItemType.text = main.equipmentSlots[existingItemSlotIndex].itemType.ToString();
+        // Stats
         textExistingItemHealth.text = main.equipmentSlots[existingItemSlotIndex].healthBonus.ToString();
         /*textExistingItemDamage.text = main.equipmentSlots[existingItemSlotIndex].damageBonus.ToString();
         textExistingItemSpeed.text = main.equipmentSlots[existingItemSlotIndex].speedBonus.ToString();

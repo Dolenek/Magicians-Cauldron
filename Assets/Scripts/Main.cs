@@ -33,12 +33,14 @@ public class Main : MonoBehaviour
 
     private ItemGenerator itemGenerator;
     private UIManager uiManager;
+    private EXPBarManager expBarManager;
     // Initialize itemGenerator in Start or Awake
     private void Awake()
     {
         // Try to find the ItemGenerator component on the Player GameObject
         itemGenerator = GetComponent<ItemGenerator>();
         uiManager = GetComponent<UIManager>();
+        expBarManager = GetComponent<EXPBarManager>();
         // If it's still null, create and attach the component
         if (itemGenerator == null)
         {
@@ -93,9 +95,9 @@ public class Main : MonoBehaviour
         // Show the UI panel with the stats and options
         uiManager.equipOrSellPanel.SetActive(true);
         // Show the stats of newly generated item
-        uiManager.ShowNewItemStatsText(newItem);
+        uiManager.ShowNewItemText(newItem);
         // Show the stats of the already equipped item
-        uiManager.ShowExistingItemStatsText(existingItemSlotIndex);
+        uiManager.ShowExistingItemText(existingItemSlotIndex);
 
         // Add button click events to handle player choice
         uiManager.equipButton.onClick.AddListener(() => ReplaceItemWithNew(newItem, existingItemSlotIndex));
@@ -118,8 +120,10 @@ public class Main : MonoBehaviour
     // Handler for the "Sell" button
     private void SellNewItemAtExisting(Item newItem)
     {
-        // Implement logic to sell the new item (e.g., add currency)
+        // Gain Gold based on the rarity and lvl of the players cauldron
 
+        // Gain EXP based on the rarity of the item
+        expBarManager.GainXP(((int)newItem.itemRarity));
         // Close the UI panel
         uiManager.equipOrSellPanel.SetActive(false);
     }

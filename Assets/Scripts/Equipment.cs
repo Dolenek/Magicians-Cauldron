@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Item 
 {
+    public int itemLevel;
     public int healthBonus;
     public int resistanceBonus;
     public int damageBonus;
@@ -19,10 +20,10 @@ public class Item
 
 public enum ItemRarity
 {
-    Common,
-    Uncommon,
-    Rare,
-    Epic
+    Common = 4,
+    Uncommon = 6,
+    Rare = 8,
+    Epic = 10
 }
 
 public enum ItemType
