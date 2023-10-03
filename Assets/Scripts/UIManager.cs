@@ -15,11 +15,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Button sellButton;
 
     // Generated Item Stats UI
-    [SerializeField] private TMP_Text textNewItemHealth, textNewItemDamage, textNewItemResistance, textNewItemSpeed, textNewItemCounter, textNewItemCombo, textNewItemFreeze, textNewItemFire;
+    [SerializeField] private TMP_Text textNewItemHealth, textNewItemDamage, textNewItemResistance, textNewItemSpeed, textNewItemExtraBuffStat1, textNewItemExtraBuffStat2, textNewItemExtraBuffName1, textNewItemExtraBuffName2;
 
     // Equipped item Stats UI
-    [SerializeField] private TMP_Text textExistingItemHealth, textExistingItemDamage, textExistingItemResistance, textExistingItemSpeed, textExistingItemCounter, textExistingItemCombo, textExistingItemFreeze, textExistingItemFire;
-    
+    [SerializeField] private TMP_Text textExistingItemHealth, textExistingItemDamage, textExistingItemResistance, textExistingItemSpeed, textExistingItemExtraBuffStat1, textExistingItemExtraBuffStat2, textExistingItemExtraBuffName1, textExistingItemExtraBuffName2;
+
+
+
     // Item Names,Rarities,Levels,etc...
     [SerializeField] private TMP_Text textExistingItemLvl, textNewItemLvl;
     [SerializeField] private TMP_Text textExistingItemRarity, textNewItemRarity;
@@ -44,14 +46,14 @@ public class UIManager : MonoBehaviour
     {
         // Item UI
         textNewItemLvl.text = newItem.itemLevel.ToString();
-        textNewItemRarity.text = newItem.itemRarity.ToString();
+        textNewItemRarity.text = "[" + newItem.itemRarity.ToString().ToUpper() + "]";
         textNewItemType.text = newItem.itemType.ToString();
         // Stats
         textNewItemHealth.text = newItem.healthBonus.ToString();
-        /*textNewItemDamage.text = newItem.damageBonus.ToString();
+        textNewItemDamage.text = newItem.damageBonus.ToString();
         textNewItemSpeed.text = newItem.speedBonus.ToString();
         textNewItemResistance.text = newItem.resistanceBonus.ToString();
-        textNewItemCombo.text = newItem.comboChanceBonus.ToString();
+        /*textNewItemCombo.text = newItem.comboChanceBonus.ToString();
         textNewItemCounter.text = newItem.counterChanceBonus.ToString();
         textNewItemFreeze.text = newItem.freezeChanceBonus.ToString();
         textNewItemFire.text = newItem.fireChanceBonus.ToString();*/
@@ -60,14 +62,14 @@ public class UIManager : MonoBehaviour
     {
         // Item UI
         textExistingItemLvl.text = main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
-        textExistingItemRarity.text = main.equipmentSlots[existingItemSlotIndex].itemRarity.ToString();
-        textExistingItemType.text = main.equipmentSlots[existingItemSlotIndex].itemType.ToString();
+        textExistingItemRarity.text = "[" + main.equipmentSlots[existingItemSlotIndex].itemRarity.ToString().ToUpper() + "]";
+        textExistingItemType.text =main.equipmentSlots[existingItemSlotIndex].itemType.ToString();
         // Stats
         textExistingItemHealth.text = main.equipmentSlots[existingItemSlotIndex].healthBonus.ToString();
-        /*textExistingItemDamage.text = main.equipmentSlots[existingItemSlotIndex].damageBonus.ToString();
+        textExistingItemDamage.text = main.equipmentSlots[existingItemSlotIndex].damageBonus.ToString();
         textExistingItemSpeed.text = main.equipmentSlots[existingItemSlotIndex].speedBonus.ToString();
         textExistingItemResistance.text = main.equipmentSlots[existingItemSlotIndex].resistanceBonus.ToString();
-        textExistingItemCombo.text = main.equipmentSlots[existingItemSlotIndex].comboChanceBonus.ToString();
+        /*textExistingItemCombo.text = main.equipmentSlots[existingItemSlotIndex].comboChanceBonus.ToString();
         textExistingItemCounter.text = main.equipmentSlots[existingItemSlotIndex].counterChanceBonus.ToString();
         textExistingItemFreeze.text = main.equipmentSlots[existingItemSlotIndex].freezeChanceBonus.ToString();
         textExistingItemFire.text = main.equipmentSlots[existingItemSlotIndex].fireChanceBonus.ToString();*/
