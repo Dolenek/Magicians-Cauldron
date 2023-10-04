@@ -7,7 +7,7 @@ public class ItemGenerator : MonoBehaviour
     // Singleton pattern for ItemGenerator
     public static ItemGenerator Instance { get; private set; }
 
-
+    
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -30,7 +30,7 @@ public class ItemGenerator : MonoBehaviour
         // Randomly generate item type
         newItem.itemType = (ItemType)Random.Range(0, System.Enum.GetValues(typeof(ItemType)).Length);
         newItem.itemLevel = Random.Range(Mathf.Max(1, playerLevel - 1),playerLevel+2);
-        Debug.Log(newItem.itemLevel);
+        
 
         // Randomly generate item rarity
         float rarityRoll = Random.value;
@@ -54,8 +54,23 @@ public class ItemGenerator : MonoBehaviour
         if (newItem.itemRarity >= ItemRarity.Rare)
         {
             newItem.freezeChanceBonus = Random.Range(1.0f, 10.0f);
-            newItem.fireChanceBonus = Random.Range(1.0f, 10.0f);
         }
+        // Set rarity sprite based on item rarity
+        /*switch (newItem.itemRarity)
+        {
+            case ItemRarity.Common:
+                newItem.spriteRarity = commonSprite;
+                break;
+            case ItemRarity.Uncommon:
+                newItem.spriteRarity = uncommonSprite;
+                break;
+            case ItemRarity.Rare:
+                newItem.spriteRarity = rareSprite;
+                break;
+            case ItemRarity.Epic:
+                newItem.spriteRarity = epicSprite;
+                break;
+        }*/
 
         return newItem;
     }

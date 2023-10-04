@@ -26,7 +26,7 @@ public class EXPBarManager : MonoBehaviour
 
     public void UpdateExpBar()
     {
-        float fillAmount = (float)currentXP / maxXP;
+        float fillAmount = currentXP / maxXP;
         textEXP.text = currentXP.ToString() + "/" + maxXP.ToString();
         barEXP.value = fillAmount;
         textLevel.text = "Lv. " + main.playerLevel.ToString();
@@ -48,6 +48,7 @@ public class EXPBarManager : MonoBehaviour
         {
             UpdateExpBar();
         }
+        
     }
 
     int CalculateNextLevelXP()

@@ -20,13 +20,16 @@ public class UIManager : MonoBehaviour
     // Equipped item Stats UI
     [SerializeField] private TMP_Text textExistingItemHealth, textExistingItemDamage, textExistingItemResistance, textExistingItemSpeed, textExistingItemExtraBuffStat1, textExistingItemExtraBuffStat2, textExistingItemExtraBuffName1, textExistingItemExtraBuffName2;
 
-
-
     // Item Names,Rarities,Levels,etc...
     [SerializeField] private TMP_Text textExistingItemLvl, textNewItemLvl;
     [SerializeField] private TMP_Text textExistingItemRarity, textNewItemRarity;
     [SerializeField] private TMP_Text textExistingItemType, textNewItemType;
 
+    // Item Sprites
+    //Rarity
+    [SerializeField] private Sprite spriteCommon, spriteUncommon, spriteRare, spriteEpic, spriteLegendary;
+    //Item sprites
+    
 
     private Main main;
 
@@ -44,8 +47,28 @@ public class UIManager : MonoBehaviour
     }
     public void ShowNewItemText(Item newItem)
     {
+        // Item Sprites
+        // Set rarity sprite based on item rarity
+        switch (newItem.itemRarity)
+        {
+            case ItemRarity.Common:
+                newItem.spriteRarity = spriteCommon;
+                break;
+            case ItemRarity.Uncommon:
+                newItem.spriteRarity = spriteUncommon;
+                break;
+            case ItemRarity.Rare:
+                newItem.spriteRarity = spriteRare;
+                break;
+            case ItemRarity.Epic:
+                newItem.spriteRarity = spriteEpic;
+                break;
+            case ItemRarity.Legendary:
+                newItem.spriteRarity = spriteLegendary;
+                break;
+        }
         // Item UI
-        textNewItemLvl.text = newItem.itemLevel.ToString();
+        textNewItemLvl.text = "Lv. " + newItem.itemLevel.ToString();
         textNewItemRarity.text = "[" + newItem.itemRarity.ToString().ToUpper() + "]";
         textNewItemType.text = newItem.itemType.ToString();
         // Stats
@@ -60,10 +83,30 @@ public class UIManager : MonoBehaviour
     }
     public void ShowExistingItemText(int existingItemSlotIndex)
     {
+        // Item Sprites
+        // Set rarity sprite based on item rarity
+        switch (main.equipmentSlots[existingItemSlotIndex].itemRarity)
+        {
+            case ItemRarity.Common:
+                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteCommon;
+                break;
+            case ItemRarity.Uncommon:
+                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteUncommon;
+                break;
+            case ItemRarity.Rare:
+                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteRare;
+                break;
+            case ItemRarity.Epic:
+                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteEpic;
+                break;
+            case ItemRarity.Legendary:
+                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteLegendary;
+                break;
+        }
         // Item UI
-        textExistingItemLvl.text = main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
+        textExistingItemLvl.text = "Lv. " + main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
         textExistingItemRarity.text = "[" + main.equipmentSlots[existingItemSlotIndex].itemRarity.ToString().ToUpper() + "]";
-        textExistingItemType.text =main.equipmentSlots[existingItemSlotIndex].itemType.ToString();
+        textExistingItemType.text = main.equipmentSlots[existingItemSlotIndex].itemType.ToString();
         // Stats
         textExistingItemHealth.text = main.equipmentSlots[existingItemSlotIndex].healthBonus.ToString();
         textExistingItemDamage.text = main.equipmentSlots[existingItemSlotIndex].damageBonus.ToString();

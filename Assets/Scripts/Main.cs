@@ -99,6 +99,10 @@ public class Main : MonoBehaviour
         // Show the stats of the already equipped item
         uiManager.ShowExistingItemText(existingItemSlotIndex);
 
+        // Remove any existing listeners first
+        uiManager.equipButton.onClick.RemoveAllListeners();
+        uiManager.sellButton.onClick.RemoveAllListeners();
+
         // Add button click events to handle player choice
         uiManager.equipButton.onClick.AddListener(() => ReplaceItemWithNew(newItem, existingItemSlotIndex));
         uiManager.sellButton.onClick.AddListener(() => SellNewItemAtExisting(newItem));
@@ -126,6 +130,7 @@ public class Main : MonoBehaviour
         expBarManager.GainXP(((int)newItem.itemRarity));
         // Close the UI panel
         uiManager.equipOrSellPanel.SetActive(false);
+        newItem.itemRarity = 0; //Insures that the itemRarity isnt adding up
     }
 
     // Update player stats based on equipped items

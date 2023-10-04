@@ -16,6 +16,9 @@ public class Item
     public float fireChanceBonus;
     public float comboChanceBonus;
     public float counterChanceBonus;
+
+    public Sprite spriteRarity;
+    public Sprite spriteSprite;
 }
 
 public enum ItemRarity
@@ -23,7 +26,8 @@ public enum ItemRarity
     Common = 4,
     Uncommon = 6,
     Rare = 8,
-    Epic = 10
+    Epic = 10,
+    Legendary = 12
 }
 
 public enum ItemType
