@@ -176,7 +176,7 @@ public class UIManager : MonoBehaviour
                     break;
             }
 
-            textPlayerEquippedItemLevel[existingItemSlotIndex].text = "Lv. " + main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
+            //textPlayerEquippedItemLevel[existingItemSlotIndex].text = "Lv. " + main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
         }
 
     }

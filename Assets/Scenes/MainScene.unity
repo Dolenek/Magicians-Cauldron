@@ -4389,7 +4389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -119.999985
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6017,6 +6017,14 @@ MonoBehaviour:
   textNewItemRarity: {fileID: 366171615}
   textExistingItemType: {fileID: 2047636328}
   textNewItemType: {fileID: 1287513627}
+  textPlayerEquippedItemWandLevel: {fileID: 0}
+  textPlayerEquippedItemHeadwearLevel: {fileID: 0}
+  textPlayerEquippedItemOutfitLevel: {fileID: 0}
+  textPlayerEquippedItemCloakLevel: {fileID: 0}
+  textPlayerEquippedItemHandwearLevel: {fileID: 0}
+  textPlayerEquippedItemRingLevel: {fileID: 0}
+  textPlayerEquippedItemNecklesLevel: {fileID: 0}
+  textPlayerEquippedItemBootsLevel: {fileID: 0}
   imagePlayerEquippedItemWandRarity: {fileID: 1191098125}
   imagePlayerEquippedItemHeadwearRarity: {fileID: 1658520321}
   imagePlayerEquippedItemOutfitRarity: {fileID: 1969835855}
@@ -7950,7 +7958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4825653968297271012, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 123.45
+      value: 123.45001
       objectReference: {fileID: 0}
     - target: {fileID: 4825653968297271012, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8018,7 +8026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -119.999985
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8066,9 +8074,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 925206162}
     m_Modifications:
+    - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2afa565b34cbdd049aa222df3e8d8f38, type: 3}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
       value: Wand
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520037300140445843, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6813363907503742637, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Pivot.x
