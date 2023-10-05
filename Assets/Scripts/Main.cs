@@ -93,19 +93,19 @@ public class Main : MonoBehaviour
     {
 
         // Show the UI panel with the stats and options
-        uiManager.equipOrSellPanel.SetActive(true);
+        uiManager.panelEquipOrSell.SetActive(true);
         // Show the stats of newly generated item
         uiManager.ShowNewItemText(newItem);
         // Show the stats of the already equipped item
         uiManager.ShowExistingItemText(existingItemSlotIndex);
 
         // Remove any existing listeners first
-        uiManager.equipButton.onClick.RemoveAllListeners();
-        uiManager.sellButton.onClick.RemoveAllListeners();
+        uiManager.buttonEquip.onClick.RemoveAllListeners();
+        uiManager.buttonSell.onClick.RemoveAllListeners();
 
         // Add button click events to handle player choice
-        uiManager.equipButton.onClick.AddListener(() => ReplaceItemWithNew(newItem, existingItemSlotIndex));
-        uiManager.sellButton.onClick.AddListener(() => SellNewItemAtExisting(newItem));
+        uiManager.buttonEquip.onClick.AddListener(() => ReplaceItemWithNew(newItem, existingItemSlotIndex));
+        uiManager.buttonSell.onClick.AddListener(() => SellNewItemAtExisting(newItem));
     }
 
     // Handler for the "Replace" button
@@ -116,9 +116,10 @@ public class Main : MonoBehaviour
 
         // Update player stats
         UpdateStats();
-
+        // Update player item sprites in players inventory
+        uiManager.UpdatePlayerItemSprites(existingItemSlotIndex);
         // Close the UI panel
-        uiManager.equipOrSellPanel.SetActive(false);
+        uiManager.panelEquipOrSell.SetActive(false);
     }
 
     // Handler for the "Sell" button
@@ -129,7 +130,7 @@ public class Main : MonoBehaviour
         // Gain EXP based on the rarity of the item
         expBarManager.GainXP(((int)newItem.itemRarity));
         // Close the UI panel
-        uiManager.equipOrSellPanel.SetActive(false);
+        uiManager.panelEquipOrSell.SetActive(false);
         newItem.itemRarity = 0; //Insures that the itemRarity isnt adding up
     }
 

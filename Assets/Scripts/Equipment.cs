@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Item 
@@ -17,8 +19,8 @@ public class Item
     public float comboChanceBonus;
     public float counterChanceBonus;
 
-    public Sprite spriteRarity;
-    public Sprite spriteSprite;
+    public Image spriteRarity;
+    public Image spriteSprite;
 }
 
 public enum ItemRarity
@@ -27,7 +29,11 @@ public enum ItemRarity
     Uncommon = 6,
     Rare = 8,
     Epic = 10,
-    Legendary = 12
+    Legendary = 12,
+    Mythic = 14,
+    Ancient = 16,
+    Godly = 20  
+    
 }
 
 public enum ItemType
@@ -41,3 +47,14 @@ public enum ItemType
     Necklace,
     Boots
 }
+
+/*public class EquippedItem
+{
+    private TMP_Text textLevel;
+    private TMP_Text textRarity;
+}
+
+public class ItemTypes : EquippedItem
+{
+    public ItemType Wand;
+}*/

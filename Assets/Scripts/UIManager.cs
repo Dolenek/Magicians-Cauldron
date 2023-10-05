@@ -7,29 +7,47 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    // Player stats
     [SerializeField] private TMP_Text textPlayerHealth, textPlayerDamage, textPlayerResistance, textPlayerSpeed, textPlayerCounter, textPlayerCombo, textPlayerFreeze, textPlayerFire;
 
     // UI
-    [SerializeField] public GameObject equipOrSellPanel;
-    [SerializeField] public Button equipButton;
-    [SerializeField] public Button sellButton;
+    [SerializeField] public GameObject panelEquipOrSell;
+    [SerializeField] public Button buttonEquip;
+    [SerializeField] public Button buttonSell;
 
-    // Generated Item Stats UI
+    // Generated New Item Stats UI
     [SerializeField] private TMP_Text textNewItemHealth, textNewItemDamage, textNewItemResistance, textNewItemSpeed, textNewItemExtraBuffStat1, textNewItemExtraBuffStat2, textNewItemExtraBuffName1, textNewItemExtraBuffName2;
 
-    // Equipped item Stats UI
+    // Generated Equipped item Stats UI
     [SerializeField] private TMP_Text textExistingItemHealth, textExistingItemDamage, textExistingItemResistance, textExistingItemSpeed, textExistingItemExtraBuffStat1, textExistingItemExtraBuffStat2, textExistingItemExtraBuffName1, textExistingItemExtraBuffName2;
 
-    // Item Names,Rarities,Levels,etc...
+    // Generated Item Names,Rarities,Levels,etc...
     [SerializeField] private TMP_Text textExistingItemLvl, textNewItemLvl;
     [SerializeField] private TMP_Text textExistingItemRarity, textNewItemRarity;
     [SerializeField] private TMP_Text textExistingItemType, textNewItemType;
 
-    // Item Sprites
-    //Rarity
-    [SerializeField] private Sprite spriteCommon, spriteUncommon, spriteRare, spriteEpic, spriteLegendary;
-    //Item sprites
+    // Equipped Item texts
+    [SerializeField] private TMP_Text textPlayerEquippedItemWandLevel, textPlayerEquippedItemHeadwearLevel, textPlayerEquippedItemOutfitLevel, textPlayerEquippedItemCloakLevel, textPlayerEquippedItemHandwearLevel, textPlayerEquippedItemRingLevel, textPlayerEquippedItemNecklesLevel, textPlayerEquippedItemBootsLevel;
+
+    // Equipped Item Sprites
+    [SerializeField] private Image imagePlayerEquippedItemWandRarity, imagePlayerEquippedItemHeadwearRarity, imagePlayerEquippedItemOutfitRarity, imagePlayerEquippedItemCloakRarity, imagePlayerEquippedItemHandwearRarity, imagePlayerEquippedItemRingRarity, imagePlayerEquippedItemNecklesRarity, imagePlayerEquippedItemBootsRarity;
+    [SerializeField] private Image imagePlayerEquippedItemWandSprite, imagePlayerEquippedItemHeadwearSprite, imagePlayerEquippedItemOutfitSprite, imagePlayerEquippedItemCloakSprite, imagePlayerEquippedItemHandwearSprite, imagePlayerEquippedItemRingSprite, imagePlayerEquippedItemNecklesSprite, imagePlayerEquippedItemBootsSprite;
     
+    //Generated items
+    [SerializeField] private Image imageExistingItemRarity, imageNewItemRarity;
+    [SerializeField] private Image imageExistingItemSprite, imageNewItemSprite;
+    //Rarities
+    [SerializeField] private Sprite spriteCommon, spriteUncommon, spriteRare, spriteEpic, spriteLegendary, spriteMythic, spriteAncient, spriteGodly;
+    //Wand
+    [SerializeField] private Image[] spriteWand;
+    //Headwear
+    //Outfit
+    //Cloak
+    //Handwear
+    //Ring
+    //Boots
+    //Neckles
+
 
     private Main main;
 
@@ -45,6 +63,7 @@ public class UIManager : MonoBehaviour
             main = gameObject.AddComponent<Main>();
         }
     }
+
     public void ShowNewItemText(Item newItem)
     {
         // Item Sprites
@@ -52,19 +71,19 @@ public class UIManager : MonoBehaviour
         switch (newItem.itemRarity)
         {
             case ItemRarity.Common:
-                newItem.spriteRarity = spriteCommon;
+                imageNewItemRarity.sprite = spriteCommon;
                 break;
             case ItemRarity.Uncommon:
-                newItem.spriteRarity = spriteUncommon;
+                imageNewItemRarity.sprite = spriteUncommon;
                 break;
             case ItemRarity.Rare:
-                newItem.spriteRarity = spriteRare;
+                imageNewItemRarity.sprite = spriteRare;
                 break;
             case ItemRarity.Epic:
-                newItem.spriteRarity = spriteEpic;
+                imageNewItemRarity.sprite = spriteEpic;
                 break;
             case ItemRarity.Legendary:
-                newItem.spriteRarity = spriteLegendary;
+                imageNewItemRarity.sprite = spriteLegendary;
                 break;
         }
         // Item UI
@@ -85,23 +104,26 @@ public class UIManager : MonoBehaviour
     {
         // Item Sprites
         // Set rarity sprite based on item rarity
+        if (main.equipmentSlots[existingItemSlotIndex].itemRarity != 0)
+        { 
         switch (main.equipmentSlots[existingItemSlotIndex].itemRarity)
-        {
+            {
             case ItemRarity.Common:
-                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteCommon;
+                imageExistingItemRarity.sprite = spriteCommon;
                 break;
             case ItemRarity.Uncommon:
-                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteUncommon;
+                imageExistingItemRarity.sprite = spriteUncommon;
                 break;
             case ItemRarity.Rare:
-                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteRare;
+                imageExistingItemRarity.sprite = spriteRare;
                 break;
             case ItemRarity.Epic:
-                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteEpic;
+                imageExistingItemRarity.sprite = spriteEpic;
                 break;
             case ItemRarity.Legendary:
-                main.equipmentSlots[existingItemSlotIndex].spriteRarity = spriteLegendary;
+                imageExistingItemRarity.sprite  = spriteLegendary;
                 break;
+            }
         }
         // Item UI
         textExistingItemLvl.text = "Lv. " + main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
@@ -127,6 +149,36 @@ public class UIManager : MonoBehaviour
         textPlayerFire.text = main.fireChance.ToString();
         textPlayerCombo.text = main.comboChance.ToString();
         textPlayerCounter.text = main.counterChance.ToString(); 
+    }
+    public void UpdatePlayerItemSprites(int existingItemSlotIndex)
+    {
+        Image[] spritePlayerEquippedItemRarity = { imagePlayerEquippedItemWandRarity, imagePlayerEquippedItemHeadwearRarity, imagePlayerEquippedItemOutfitRarity, imagePlayerEquippedItemCloakRarity, imagePlayerEquippedItemHandwearRarity, imagePlayerEquippedItemRingRarity, imagePlayerEquippedItemNecklesRarity, imagePlayerEquippedItemBootsRarity };
+        Image[] spritePlayerEquippedItemSprite = { imagePlayerEquippedItemWandSprite, imagePlayerEquippedItemHeadwearSprite, imagePlayerEquippedItemOutfitSprite, imagePlayerEquippedItemCloakSprite, imagePlayerEquippedItemHandwearSprite, imagePlayerEquippedItemRingSprite, imagePlayerEquippedItemNecklesSprite, imagePlayerEquippedItemBootsSprite };
+        TMP_Text[] textPlayerEquippedItemLevel = { textPlayerEquippedItemWandLevel, textPlayerEquippedItemHeadwearLevel, textPlayerEquippedItemOutfitLevel, textPlayerEquippedItemCloakLevel, textPlayerEquippedItemHandwearLevel, textPlayerEquippedItemRingLevel, textPlayerEquippedItemNecklesLevel, textPlayerEquippedItemBootsLevel };
+        if (main.equipmentSlots[existingItemSlotIndex] != null)
+        {
+            switch (main.equipmentSlots[existingItemSlotIndex].itemRarity)
+            {
+                case ItemRarity.Common:
+                    spritePlayerEquippedItemRarity[existingItemSlotIndex].sprite = spriteCommon;
+                    break;
+                case ItemRarity.Uncommon:
+                    spritePlayerEquippedItemRarity[existingItemSlotIndex].sprite = spriteUncommon;
+                    break;
+                case ItemRarity.Rare:
+                    spritePlayerEquippedItemRarity[existingItemSlotIndex].sprite = spriteRare;
+                    break;
+                case ItemRarity.Epic:
+                    spritePlayerEquippedItemRarity[existingItemSlotIndex].sprite = spriteEpic;
+                    break;
+                case ItemRarity.Legendary:
+                    spritePlayerEquippedItemRarity[existingItemSlotIndex].sprite = spriteLegendary;
+                    break;
+            }
+
+            textPlayerEquippedItemLevel[existingItemSlotIndex].text = "Lv. " + main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
+        }
+
     }
     
 }
