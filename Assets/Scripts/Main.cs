@@ -19,9 +19,6 @@ public class Main : MonoBehaviour
     public float fireChance = 0f; // Percentage chance (0-100) for bleed
 
 
-    // Equipment UI
-
-
     // Equipment types
     private Dictionary<ItemType, Item> equipmentBonuses = new Dictionary<ItemType, Item>();
 
