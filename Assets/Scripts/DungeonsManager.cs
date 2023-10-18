@@ -9,7 +9,7 @@ public class DungeonsManager : MonoBehaviour
     private void ShowAttackPanel()
     {
 
-        // Show the UI panel with the stats and options
+        /*// Show the UI panel with the stats and options
         uiManager.panelEquipOrSell.SetActive(true);
         // Show the stats of newly generated item
         uiManager.ShowNewItemText(newItem);
@@ -20,7 +20,7 @@ public class DungeonsManager : MonoBehaviour
         buttonAttack.onClick.RemoveAllListeners();
 
         // Add button click events to handle player choice
-        buttonAttack.onClick.AddListener(() => Attack());
+        buttonAttack.onClick.AddListener(() => Attack());*/
     }
     private void Attack()
     {
