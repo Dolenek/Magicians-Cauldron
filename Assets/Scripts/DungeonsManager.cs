@@ -3,27 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class DungeonsManager : MonoBehaviour
 {
     [SerializeField] private Button buttonAttack;
-    private void ShowAttackPanel()
+    [SerializeField] private List<EnemyStatsSO> enemyStatsList; // List to hold all the different enemy stats
+    [SerializeField] private GameObject panelAttack;
+    private BattleManager battleManager;
+
+    private void Start()
     {
+        battleManager = GetComponent<BattleManager>();
+    }
 
-        /*// Show the UI panel with the stats and options
-        uiManager.panelEquipOrSell.SetActive(true);
-        // Show the stats of newly generated item
-        uiManager.ShowNewItemText(newItem);
-        // Show the stats of the already equipped item
-        uiManager.ShowExistingItemText(existingItemSlotIndex);
+    // Method to access and manage enemy data
+    public EnemyStatsSO GetEnemyStats(int islandLevel, int stageLevel)
+    {
+        foreach (EnemyStatsSO enemyStats in enemyStatsList)
+        {
+            if (enemyStats.island == islandLevel && enemyStats.stage == stageLevel)
+            {
+                return enemyStats;
+            }
+        }
+        return null; // If the enemy stats for the specified island and stage are not found
+    }
 
-        // Remove any existing listeners first
-        buttonAttack.onClick.RemoveAllListeners();
-
-        // Add button click events to handle player choice
-        buttonAttack.onClick.AddListener(() => Attack());*/
+    public void ShowAttackPanel(int islandLevel)
+    {
+        
+        panelAttack.SetActive(true);
+        buttonAttack.onClick.AddListener(() => Attack());
+        EnemyStatsSO enemyStats = GetEnemyStats(islandLevel, battleManager.stage);
     }
     private void Attack()
     {
 
+    }
+    private int GetStageLevel()
+    {
+        return 1;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Main : MonoBehaviour
@@ -47,7 +48,12 @@ public class Main : MonoBehaviour
     }
     private void Start()
     {
-        uiManager.UpdatePlayerTextStats();
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName == "Main")
+        {
+            uiManager.UpdatePlayerTextStats();
+        }
     }
 
     // In your Player script, call this when you want to generate and equip an item

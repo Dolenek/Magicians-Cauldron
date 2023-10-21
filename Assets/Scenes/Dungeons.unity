@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 206486235}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1396855409}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Battle
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &206486235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 255879116}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1396855414}
+        m_TargetAssemblyTypeName: DungeonsManager, Assembly-CSharp
+        m_MethodName: ShowAttackPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &255879116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +605,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 297021369}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1396855414}
+        m_TargetAssemblyTypeName: DungeonsManager, Assembly-CSharp
+        m_MethodName: ShowAttackPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &297021369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,7 +1127,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 703919789}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1396855414}
+        m_TargetAssemblyTypeName: DungeonsManager, Assembly-CSharp
+        m_MethodName: ShowAttackPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &703919789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1564,7 +1612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1574}
+  m_AnchoredPosition: {x: 0, y: 3036}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911447195
@@ -2556,6 +2604,8 @@ GameObject:
   - component: {fileID: 1396855411}
   - component: {fileID: 1396855410}
   - component: {fileID: 1396855409}
+  - component: {fileID: 1396855414}
+  - component: {fileID: 1396855415}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2660,6 +2710,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1396855414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396855408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ed013963ce76f40bf4e1e40f1c53de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonAttack: {fileID: 206486234}
+  enemyStatsList:
+  - {fileID: 11400000, guid: bd48816c86e5e1142a0ace4541771f2c, type: 2}
+  - {fileID: 11400000, guid: bc84644668495fd49bb8fbfa3c501478, type: 2}
+  - {fileID: 11400000, guid: de3937d6b2df44a42984c5edcab5d7df, type: 2}
+  - {fileID: 11400000, guid: ec30b0bf7b7fa4a40ab633feb4b4684f, type: 2}
+  - {fileID: 11400000, guid: 0000b50558b402c4b9c1a259e9f51730, type: 2}
+  panelAttack: {fileID: 1150452008}
+--- !u!114 &1396855415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396855408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd1239ecee6fdd47a170ecf4c25b327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats:
+    health: 0
+    resistance: 0
+    damage: 0
+    speed: 0
+    comboChance: 0
+    counterChacne: 0
+    stunChancef: 0
+    bleedChance: 0
+  enemyStats: {fileID: 0}
+  stage: 1
+  panelWin: {fileID: 0}
+  panelLose: {fileID: 0}
 --- !u!1 &1578480804
 GameObject:
   m_ObjectHideFlags: 0
@@ -3871,7 +3966,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2042374180}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1396855414}
+        m_TargetAssemblyTypeName: DungeonsManager, Assembly-CSharp
+        m_MethodName: ShowAttackPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2042374180
 MonoBehaviour:
   m_ObjectHideFlags: 0
