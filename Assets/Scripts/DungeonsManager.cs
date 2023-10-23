@@ -11,6 +11,9 @@ public class DungeonsManager : MonoBehaviour
     [SerializeField] private GameObject panelAttack;
     private BattleManager battleManager;
 
+    private int islandLevel = 1;
+    private int stageLevel = 1;
+
     private void Start()
     {
         battleManager = GetComponent<BattleManager>();
@@ -34,14 +37,22 @@ public class DungeonsManager : MonoBehaviour
         
         panelAttack.SetActive(true);
         buttonAttack.onClick.AddListener(() => Attack());
-        EnemyStatsSO enemyStats = GetEnemyStats(islandLevel, battleManager.stage);
+        EnemyStatsSO enemyStatsNew = GetEnemyStats((GetIslandLevel()), battleManager.stage);
     }
     private void Attack()
     {
 
     }
+    public void IslandGetLevel(int islandLevel)
+    {
+
+    }
+    public int GetIslandLevel()
+    {
+        return islandLevel;
+    }
     private int GetStageLevel()
     {
-        return 1;
+        return stageLevel;
     }
 }

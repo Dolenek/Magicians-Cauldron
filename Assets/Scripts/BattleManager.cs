@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
-    public CharacterStats playerStats;
-    public EnemyStatsSO enemyStats;
+    private CharacterStats playerStats;
+    private EnemyStatsSO enemyStats;
     private Main main;
+    private DungeonsManager dungeonsManager;
 
     private bool playerTurn = true;
     private bool battleOngoing = false;
@@ -20,6 +21,7 @@ public class BattleManager : MonoBehaviour
     private void Awake()
     {
         main = GetComponent<Main>();
+        dungeonsManager = GetComponent<DungeonsManager>();
         if (main == null)
         {
             main = gameObject.AddComponent<Main>();
@@ -32,11 +34,14 @@ public class BattleManager : MonoBehaviour
 
         if (currentSceneName == "Battle")
         {
+            
             // Player stats
             playerStats.damage = main.damage;
             playerStats.health = main.health;
             playerStats.speed = main.speed;
             playerStats.resistance = main.resistance;
+            Debug.Log("Player dmg "+playerStats.damage);
+            Debug.Log("Enemy dmg " + enemyStats.damage);
             if (playerStats.speed < enemyStats.speed)
             {
                 playerTurn = false;
@@ -80,6 +85,11 @@ public class BattleManager : MonoBehaviour
             playerTurn = !playerTurn; 
         }
     }
+    public void SetEnemyStats(EnemyStatsSO enemyStats)
+    {
+        this.enemyStats = enemyStats;
+        // You might need to update the UI or perform other actions based on the new enemy stats here
+    }
 
     private void BattleLost()
     {
@@ -87,6 +97,7 @@ public class BattleManager : MonoBehaviour
     }
     private void BattleWon()
     {
+        battleOngoing = false;
         if (stage == 30)
         {
             stage = 1;
@@ -95,7 +106,7 @@ public class BattleManager : MonoBehaviour
         {
             stage++;
         }
-        battleOngoing = false;
+        
 
     }
 }
