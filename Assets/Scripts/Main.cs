@@ -52,6 +52,8 @@ public class Main : MonoBehaviour
 
         if (currentSceneName == "Main")
         {
+            UpdateStats();
+            LoadInventory();
             uiManager.UpdatePlayerTextStats();
         }
     }
@@ -119,6 +121,7 @@ public class Main : MonoBehaviour
 
         // Update player stats
         UpdateStats();
+        uiManager.UpdatePlayerTextStats();
         // Update player item sprites in players inventory
         uiManager.UpdatePlayerItemSprites(existingItemSlotIndex);
         // Close the UI panel
@@ -138,7 +141,7 @@ public class Main : MonoBehaviour
     }
 
     // Update player stats based on equipped items
-    private void UpdateStats()
+    public void UpdateStats()
     {
         // Store the base stats
         int baseHealth = 100;
@@ -175,9 +178,6 @@ public class Main : MonoBehaviour
         fireChance = baseBleedChance;
         comboChance = baseComboChance;
         counterChance = baseCounterChacne;
-
-        // Update stat Text
-        uiManager.UpdatePlayerTextStats();
     }
 
     // Equip an item to a specific slot based on the
@@ -197,6 +197,7 @@ public class Main : MonoBehaviour
 
             // Update player stats based on the equipped item
             UpdateStats();
+            uiManager.UpdatePlayerTextStats();
         }
     }
 
@@ -215,6 +216,7 @@ public class Main : MonoBehaviour
 
                 // Update player stats
                 UpdateStats();
+                uiManager.UpdatePlayerTextStats();
             }
         }
     }
@@ -228,6 +230,34 @@ public class Main : MonoBehaviour
 
             // Update player stats
             UpdateStats();
+            uiManager.UpdatePlayerTextStats();
         }
+    }
+    // Method to save the inventory
+    public void SaveInventory(List<Item> inventory)
+    {
+        // Convert the list to a JSON string
+        string inventoryJson = JsonUtility.ToJson(new SerializableList<Item>(inventory));
+
+        // Save the JSON string to PlayerPrefs
+        PlayerPrefs.SetString("inventory", inventoryJson);
+    }
+
+    // Method to load the inventory
+    public List<Item> LoadInventory()
+    {
+        // Load the JSON string from PlayerPrefs
+        string inventoryJson = PlayerPrefs.GetString("inventory");
+
+        // If no inventory is found, return an empty list
+        if (string.IsNullOrEmpty(inventoryJson))
+        {
+            return new List<Item>();
+        }
+
+        // Convert the JSON string back to a list
+        SerializableList<Item> deserializedInventory = JsonUtility.FromJson<SerializableList<Item>>(inventoryJson);
+
+        return deserializedInventory.ToList();
     }
 }

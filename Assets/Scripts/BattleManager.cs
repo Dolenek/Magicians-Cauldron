@@ -20,12 +20,15 @@ public class BattleManager : MonoBehaviour
 
     private void Awake()
     {
+        playerStats = new CharacterStats();
+        enemyStats = ScriptableObject.CreateInstance<EnemyStatsSO>();
         main = GetComponent<Main>();
         dungeonsManager = GetComponent<DungeonsManager>();
         if (main == null)
         {
             main = gameObject.AddComponent<Main>();
         }
+        
     }
 
     private void Start()
@@ -34,18 +37,19 @@ public class BattleManager : MonoBehaviour
 
         if (currentSceneName == "Battle")
         {
-            
+            main.UpdateStats();
             // Player stats
             playerStats.damage = main.damage;
             playerStats.health = main.health;
             playerStats.speed = main.speed;
             playerStats.resistance = main.resistance;
-            Debug.Log("Player dmg "+playerStats.damage);
+            Debug.Log("Player dmg " + playerStats.damage);
             Debug.Log("Enemy dmg " + enemyStats.damage);
             if (playerStats.speed < enemyStats.speed)
             {
                 playerTurn = false;
             }
+            BattleStarted();
         }
 
 
@@ -54,6 +58,10 @@ public class BattleManager : MonoBehaviour
     private void Update()
     {
 
+      
+    }
+    private void BattleStarted()
+    {
         if (battleOngoing == true)
         {
             if (playerTurn) // Player turn
@@ -82,13 +90,8 @@ public class BattleManager : MonoBehaviour
             }
 
             // Switch turns
-            playerTurn = !playerTurn; 
+            playerTurn = !playerTurn;
         }
-    }
-    public void SetEnemyStats(EnemyStatsSO enemyStats)
-    {
-        this.enemyStats = enemyStats;
-        // You might need to update the UI or perform other actions based on the new enemy stats here
     }
 
     private void BattleLost()

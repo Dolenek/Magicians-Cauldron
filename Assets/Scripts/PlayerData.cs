@@ -3,34 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerData :MonoBehaviour
+[System.Serializable]
+public class PlayerData
 {
-    private Main main;
-    // Player stats
-    public int playerLevel;
-    public int health;
-    public int resistance;
-    public int damage;
-    public int speed;
-    public float comboChance;
-    public float counterChacne;
-    public float freezeChance;
-    public float fireChance; // Percentage chance (0-100) for bleed
+    public int playerLevel = 1;
+    public int health = 100;
+    public int resistance = 10;
+    public int damage = 20;
+    public int speed = 10;
+    public float comboChance = 0f;
+    public float counterChance = 0f;
+    public float freezeChance = 0f;
+    public float fireChance = 0f;
+    public Sprite playerSprite;
 
-    private void Awake()
+    public PlayerData(int damage, int health, int speed, int resistance, Sprite playerSprite)
     {
+        this.damage = damage;
+        this.health = health;
+        this.speed = speed;
+        this.resistance = resistance;
+        this.playerSprite = playerSprite;
         
-    }
-
-    private void UpdatePlayerDataStats()
-    {
-        health = main.health;
-        resistance = main.resistance;
-        damage = main.damage;
-        speed = main.speed;
-        comboChance = main.comboChance;
-        counterChacne = main.counterChance;
-        freezeChance = main.freezeChance;
-        fireChance = main.fireChance;
     }
 }

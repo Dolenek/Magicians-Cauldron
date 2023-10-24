@@ -10,9 +10,7 @@ public class DungeonsManager : MonoBehaviour
     [SerializeField] private List<EnemyStatsSO> enemyStatsList; // List to hold all the different enemy stats
     [SerializeField] private GameObject panelAttack;
     private BattleManager battleManager;
-
-    private int islandLevel = 1;
-    private int stageLevel = 1;
+    
 
     private void Start()
     {
@@ -37,22 +35,10 @@ public class DungeonsManager : MonoBehaviour
         
         panelAttack.SetActive(true);
         buttonAttack.onClick.AddListener(() => Attack());
-        EnemyStatsSO enemyStatsNew = GetEnemyStats((GetIslandLevel()), battleManager.stage);
+        EnemyStatsSO enemyStatsNew = GetEnemyStats((islandLevel), battleManager.stage);
     }
     private void Attack()
     {
 
-    }
-    public void IslandGetLevel(int islandLevel)
-    {
-
-    }
-    public int GetIslandLevel()
-    {
-        return islandLevel;
-    }
-    private int GetStageLevel()
-    {
-        return stageLevel;
     }
 }
