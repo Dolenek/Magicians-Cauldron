@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
@@ -20,9 +21,12 @@ public class BattleManager : MonoBehaviour
 
     private void Awake()
     {
+        // Load stats
         playerStats = new CharacterStats();
-        enemyStats = ScriptableObject.CreateInstance<EnemyStatsSO>();
         main = GetComponent<Main>();
+
+
+        // Declares GameObjects 
         dungeonsManager = GetComponent<DungeonsManager>();
         if (main == null)
         {
@@ -35,12 +39,13 @@ public class BattleManager : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
 
+
+
         if (currentSceneName == "Battle")
         {
-            main.UpdateStats();
             // Player stats
             playerStats.damage = main.damage;
-            playerStats.health = main.health;
+            playerStats.health = main.health - 50;
             playerStats.speed = main.speed;
             playerStats.resistance = main.resistance;
             Debug.Log("Player dmg " + playerStats.damage);
@@ -51,28 +56,27 @@ public class BattleManager : MonoBehaviour
             }
             BattleStarted();
         }
-
-
     }
 
-    private void Update()
-    {
-
-      
-    }
     private void BattleStarted()
     {
-        if (battleOngoing == true)
+        
+        int turn = 1;
+        battleOngoing = true;
+        while (battleOngoing == true && turn < 50)
         {
+            
             if (playerTurn) // Player turn
             {
+                Debug.Log("Player turn");
                 enemyStats.health = enemyStats.health - (playerStats.damage - enemyStats.resistance);
-                playerTurn = false;
+
             }
             else //Enemy turn
             {
+                Debug.Log("Enemy turn");
                 playerStats.health = playerStats.health - (enemyStats.damage - playerStats.resistance);
-                playerTurn = true;
+
             }
 
             // Check if the battle is over
@@ -96,10 +100,12 @@ public class BattleManager : MonoBehaviour
 
     private void BattleLost()
     {
+        Debug.Log("Battle Lost");
         battleOngoing = false;
     }
     private void BattleWon()
     {
+        Debug.Log("Battle Won");
         battleOngoing = false;
         if (stage == 30)
         {

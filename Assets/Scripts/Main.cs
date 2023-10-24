@@ -16,7 +16,7 @@ public class Main : MonoBehaviour
     public int speed = 10;
     public float comboChance = 0f;
     public float counterChance = 0f;
-    public float freezeChance = 0f; 
+    public float freezeChance = 0f;
     public float fireChance = 0f; // Percentage chance (0-100) for bleed
 
 
@@ -44,7 +44,7 @@ public class Main : MonoBehaviour
         {
             itemGenerator = gameObject.AddComponent<ItemGenerator>();
         }
-        
+
     }
     private void Start()
     {
@@ -53,7 +53,6 @@ public class Main : MonoBehaviour
         if (currentSceneName == "Main")
         {
             UpdateStats();
-            LoadInventory();
             uiManager.UpdatePlayerTextStats();
         }
     }
@@ -233,31 +232,6 @@ public class Main : MonoBehaviour
             uiManager.UpdatePlayerTextStats();
         }
     }
-    // Method to save the inventory
-    public void SaveInventory(List<Item> inventory)
-    {
-        // Convert the list to a JSON string
-        string inventoryJson = JsonUtility.ToJson(new SerializableList<Item>(inventory));
-
-        // Save the JSON string to PlayerPrefs
-        PlayerPrefs.SetString("inventory", inventoryJson);
-    }
-
-    // Method to load the inventory
-    public List<Item> LoadInventory()
-    {
-        // Load the JSON string from PlayerPrefs
-        string inventoryJson = PlayerPrefs.GetString("inventory");
-
-        // If no inventory is found, return an empty list
-        if (string.IsNullOrEmpty(inventoryJson))
-        {
-            return new List<Item>();
-        }
-
-        // Convert the JSON string back to a list
-        SerializableList<Item> deserializedInventory = JsonUtility.FromJson<SerializableList<Item>>(inventoryJson);
-
-        return deserializedInventory.ToList();
-    }
+    
 }
+

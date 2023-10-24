@@ -15,10 +15,11 @@ MonoBehaviour:
   island: 1
   stage: 1
   health: 100
-  damage: 10
-  speed: 20
+  damage: 20
+  speed: 30
   resistance: 5
   comboChance: 0
   counterChance: 0
   freezeChance: 0
   fireChance: 0
+  sprite: {fileID: 0}

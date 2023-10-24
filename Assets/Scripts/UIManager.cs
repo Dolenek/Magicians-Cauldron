@@ -7,46 +7,150 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    // Player stats
-    [SerializeField] private TMP_Text textPlayerHealth, textPlayerDamage, textPlayerResistance, textPlayerSpeed, textPlayerCounter, textPlayerCombo, textPlayerFreeze, textPlayerFire;
+    [Header("Player Stats")]
+    [SerializeField] private TMP_Text textPlayerHealth;
+    [SerializeField] private TMP_Text textPlayerDamage;
+    [SerializeField] private TMP_Text textPlayerResistance;
+    [SerializeField] private TMP_Text textPlayerSpeed;
+    [SerializeField] private TMP_Text textPlayerCounter;
+    [SerializeField] private TMP_Text textPlayerCombo;
+    [SerializeField] private TMP_Text textPlayerFreeze;
+    [SerializeField] private TMP_Text textPlayerFire;
 
-    // UI
+    [Header("UI")]
     [SerializeField] public GameObject panelEquipOrSell;
     [SerializeField] public Button buttonEquip;
     [SerializeField] public Button buttonSell;
 
-    // Generated New Item Stats UI
-    [SerializeField] private TMP_Text textNewItemHealth, textNewItemDamage, textNewItemResistance, textNewItemSpeed, textNewItemExtraBuffStat1, textNewItemExtraBuffStat2, textNewItemExtraBuffName1, textNewItemExtraBuffName2;
+    [Header("Generated New Item Stats UI")]
+    [SerializeField] private TMP_Text textNewItemHealth;
+    [SerializeField] private TMP_Text textNewItemDamage;
+    [SerializeField] private TMP_Text textNewItemResistance;
+    [SerializeField] private TMP_Text textNewItemSpeed;
+    [SerializeField] private TMP_Text textNewItemExtraBuffStat1;
+    [SerializeField] private TMP_Text textNewItemExtraBuffStat2;
+    [SerializeField] private TMP_Text textNewItemExtraBuffName1;
+    [SerializeField] private TMP_Text textNewItemExtraBuffName2;
 
-    // Generated Equipped item Stats UI
-    [SerializeField] private TMP_Text textExistingItemHealth, textExistingItemDamage, textExistingItemResistance, textExistingItemSpeed, textExistingItemExtraBuffStat1, textExistingItemExtraBuffStat2, textExistingItemExtraBuffName1, textExistingItemExtraBuffName2;
+    [Header("Generated Equipped item Stats UI")]
+    [SerializeField] private TMP_Text textExistingItemHealth;
+    [SerializeField] private TMP_Text textExistingItemDamage;
+    [SerializeField] private TMP_Text textExistingItemResistance;
+    [SerializeField] private TMP_Text textExistingItemSpeed;
+    [SerializeField] private TMP_Text textExistingItemExtraBuffStat1;
+    [SerializeField] private TMP_Text textExistingItemExtraBuffStat2;
+    [SerializeField] private TMP_Text textExistingItemExtraBuffName1;
+    [SerializeField] private TMP_Text textExistingItemExtraBuffName2;
 
-    // Generated Item Names,Rarities,Levels,etc...
-    [SerializeField] private TMP_Text textExistingItemLvl, textNewItemLvl;
-    [SerializeField] private TMP_Text textExistingItemRarity, textNewItemRarity;
-    [SerializeField] private TMP_Text textExistingItemType, textNewItemType;
+    [Header("Generated Item Names,Rarities,Levels,etc...")]
+    [SerializeField] private TMP_Text textExistingItemLvl;
+    [SerializeField] private TMP_Text textNewItemLvl;
+    [SerializeField] private TMP_Text textExistingItemRarity;
+    [SerializeField] private TMP_Text textNewItemRarity;
+    [SerializeField] private TMP_Text textExistingItemType;
+    [SerializeField] private TMP_Text textNewItemType;
 
-    // Equipped Item texts
-    [SerializeField] private TMP_Text textPlayerEquippedItemWandLevel, textPlayerEquippedItemHeadwearLevel, textPlayerEquippedItemOutfitLevel, textPlayerEquippedItemCloakLevel, textPlayerEquippedItemHandwearLevel, textPlayerEquippedItemRingLevel, textPlayerEquippedItemNecklesLevel, textPlayerEquippedItemBootsLevel;
+    [Header("Equipped Item text Level")]
+    [SerializeField] private TMP_Text textPlayerEquippedItemWandLevel;
+    [SerializeField] private TMP_Text textPlayerEquippedItemHeadwearLevel;
+    [SerializeField] private TMP_Text textPlayerEquippedItemOutfitLevel;
+    [SerializeField] private TMP_Text textPlayerEquippedItemCloakLevel;
+    [SerializeField] private TMP_Text textPlayerEquippedItemHandwearLevel;
+    [SerializeField] private TMP_Text textPlayerEquippedItemRingLevel;
+    [SerializeField] private TMP_Text textPlayerEquippedItemNecklesLevel;
+    [SerializeField] private TMP_Text textPlayerEquippedItemBootsLevel;
 
-    // Equipped Item Sprites
-    [SerializeField] private Image imagePlayerEquippedItemWandRarity, imagePlayerEquippedItemHeadwearRarity, imagePlayerEquippedItemOutfitRarity, imagePlayerEquippedItemCloakRarity, imagePlayerEquippedItemHandwearRarity, imagePlayerEquippedItemRingRarity, imagePlayerEquippedItemNecklesRarity, imagePlayerEquippedItemBootsRarity;
-    [SerializeField] private Image imagePlayerEquippedItemWandSprite, imagePlayerEquippedItemHeadwearSprite, imagePlayerEquippedItemOutfitSprite, imagePlayerEquippedItemCloakSprite, imagePlayerEquippedItemHandwearSprite, imagePlayerEquippedItemRingSprite, imagePlayerEquippedItemNecklesSprite, imagePlayerEquippedItemBootsSprite;
-    
-    //Generated items
-    [SerializeField] private Image imageExistingItemRarity, imageNewItemRarity;
-    [SerializeField] private Image imageExistingItemSprite, imageNewItemSprite;
-    //Rarities
-    [SerializeField] private Sprite spriteCommon, spriteUncommon, spriteRare, spriteEpic, spriteLegendary, spriteMythic, spriteAncient, spriteGodly;
-    //Wand
-    [SerializeField] private Image[] spriteWand;
-    //Headwear
-    //Outfit
-    //Cloak
-    //Handwear
-    //Ring
-    //Boots
-    //Neckles
+    [Header("Equipped Item Image Rarity")]
+    [SerializeField] private Image imagePlayerEquippedItemWandRarity;
+    [SerializeField] private Image imagePlayerEquippedItemHeadwearRarity;
+    [SerializeField] private Image imagePlayerEquippedItemOutfitRarity;
+    [SerializeField] private Image imagePlayerEquippedItemCloakRarity;
+    [SerializeField] private Image imagePlayerEquippedItemHandwearRarity;
+    [SerializeField] private Image imagePlayerEquippedItemRingRarity;
+    [SerializeField] private Image imagePlayerEquippedItemNecklesRarity;
+    [SerializeField] private Image imagePlayerEquippedItemBootsRarity;
+
+    [Header("Equipped Item Image Sprites")]
+    [SerializeField] private Image imagePlayerEquippedItemWandSprite;
+    [SerializeField] private Image imagePlayerEquippedItemHeadwearSprite;
+    [SerializeField] private Image imagePlayerEquippedItemOutfitSprite;
+    [SerializeField] private Image imagePlayerEquippedItemCloakSprite;
+    [SerializeField] private Image imagePlayerEquippedItemHandwearSprite;
+    [SerializeField] private Image imagePlayerEquippedItemRingSprite;
+    [SerializeField] private Image imagePlayerEquippedItemNecklesSprite;
+    [SerializeField] private Image imagePlayerEquippedItemBootsSprite;
+
+    [Header("Generated items Image Rarity and Sprites")]
+    [SerializeField] private Image imageExistingItemRarity;
+    [SerializeField] private Image imageNewItemRarity;
+    [SerializeField] private Image imageExistingItemSprite;
+    [SerializeField] private Image imageNewItemSprite;
+
+    [Header("Rarity sprites")]
+    [SerializeField] private Sprite spriteCommon;
+    [SerializeField] private Sprite spriteUncommon;
+    [SerializeField] private Sprite spriteRare;
+    [SerializeField] private Sprite spriteEpic;
+    [SerializeField] private Sprite spriteLegendary;
+    [SerializeField] private Sprite spriteMythic;
+    [SerializeField] private Sprite spriteAncient;
+    [SerializeField] private Sprite spriteGodly;
+
+    [Header("Wand Sprites")]    
+    [SerializeField] private Image spriteWand1;
+    [SerializeField] private Image spriteWand2;
+    [SerializeField] private Image spriteWand3;
+    [SerializeField] private Image spriteWand4;
+    [SerializeField] private Image spriteWand5;
+
+    [Header("Headwear Sprites")]
+    [SerializeField] private Image spriteHeadwear1;
+    [SerializeField] private Image spriteHeadwear2;
+    [SerializeField] private Image spriteHeadwear3;
+    [SerializeField] private Image spriteHeadwear4;
+    [SerializeField] private Image spriteHeadwear5;
+
+    [Header("Outfit Sprites")]
+    [SerializeField] private Image spriteOutfit1;
+    [SerializeField] private Image spriteOutfit2;
+    [SerializeField] private Image spriteOutfit3;
+    [SerializeField] private Image spriteOutfit4;
+    [SerializeField] private Image spriteOutfit5;
+
+    [Header("Cloak Sprites")]
+    [SerializeField] private Image spriteCloak1;
+    [SerializeField] private Image spriteCloak2;
+    [SerializeField] private Image spriteCloak3;
+    [SerializeField] private Image spriteCloak4;
+    [SerializeField] private Image spriteCloak5;
+
+    [Header("Handwear Sprites")]
+    [SerializeField] private Image spriteHandwear1;
+    [SerializeField] private Image spriteHandwear2;
+    [SerializeField] private Image spriteHandwear3;
+    [SerializeField] private Image spriteHandwear4;
+    [SerializeField] private Image spriteHandwear5;
+
+    [Header("Ring Sprites")]
+    [SerializeField] private Image spriteRing1;
+    [SerializeField] private Image spriteRing2;
+    [SerializeField] private Image spriteRing3;
+    [SerializeField] private Image spriteRing4;
+    [SerializeField] private Image spriteRing5;
+
+    [Header("Boots Sprites")]
+    [SerializeField] private Image spriteBoots1;
+    [SerializeField] private Image spriteBoots2;
+    [SerializeField] private Image spriteBoots3;
+    [SerializeField] private Image spriteBoots4;
+    [SerializeField] private Image spriteBoots5;
+
+    [Header("Neckles Sprites")]
+    [SerializeField] private Image spriteNeckles1;
+    [SerializeField] private Image spriteNeckles2;
+    [SerializeField] private Image spriteNeckles3;
+    [SerializeField] private Image spriteNeckles4;
+    [SerializeField] private Image spriteNeckles5;
 
 
     private Main main;
