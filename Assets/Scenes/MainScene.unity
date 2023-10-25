@@ -3776,9 +3776,9 @@ RectTransform:
   - {fileID: 1617917824}
   m_Father: {fileID: 1399565449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 526, y: -1807}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -14, y: 113}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1051995946
@@ -4502,7 +4502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120
+      value: -119.999985
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6403,7 +6403,46 @@ MonoBehaviour:
   spriteMythic: {fileID: 21300000, guid: 74fe1ef3bd2274342b952a4b0774c5c6, type: 3}
   spriteAncient: {fileID: 21300000, guid: 426bcc4d6c73e2840aeac7f59b573efe, type: 3}
   spriteGodly: {fileID: 21300000, guid: b6eabc1f649559745810027c7eb02668, type: 3}
-  spriteWand: []
+  spriteWand1: {fileID: 0}
+  spriteWand2: {fileID: 0}
+  spriteWand3: {fileID: 0}
+  spriteWand4: {fileID: 0}
+  spriteWand5: {fileID: 0}
+  spriteHeadwear1: {fileID: 0}
+  spriteHeadwear2: {fileID: 0}
+  spriteHeadwear3: {fileID: 0}
+  spriteHeadwear4: {fileID: 0}
+  spriteHeadwear5: {fileID: 0}
+  spriteOutfit1: {fileID: 0}
+  spriteOutfit2: {fileID: 0}
+  spriteOutfit3: {fileID: 0}
+  spriteOutfit4: {fileID: 0}
+  spriteOutfit5: {fileID: 0}
+  spriteCloak1: {fileID: 0}
+  spriteCloak2: {fileID: 0}
+  spriteCloak3: {fileID: 0}
+  spriteCloak4: {fileID: 0}
+  spriteCloak5: {fileID: 0}
+  spriteHandwear1: {fileID: 0}
+  spriteHandwear2: {fileID: 0}
+  spriteHandwear3: {fileID: 0}
+  spriteHandwear4: {fileID: 0}
+  spriteHandwear5: {fileID: 0}
+  spriteRing1: {fileID: 0}
+  spriteRing2: {fileID: 0}
+  spriteRing3: {fileID: 0}
+  spriteRing4: {fileID: 0}
+  spriteRing5: {fileID: 0}
+  spriteBoots1: {fileID: 0}
+  spriteBoots2: {fileID: 0}
+  spriteBoots3: {fileID: 0}
+  spriteBoots4: {fileID: 0}
+  spriteBoots5: {fileID: 0}
+  spriteNeckles1: {fileID: 0}
+  spriteNeckles2: {fileID: 0}
+  spriteNeckles3: {fileID: 0}
+  spriteNeckles4: {fileID: 0}
+  spriteNeckles5: {fileID: 0}
 --- !u!114 &1627701554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8376,7 +8415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120
+      value: -119.999985
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y

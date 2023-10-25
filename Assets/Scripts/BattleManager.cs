@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,6 +48,7 @@ public class BattleManager : MonoBehaviour
             playerStats.speed = main.speed;
             playerStats.resistance = main.resistance;
             Debug.Log("Player dmg " + playerStats.damage);
+            enemyStats = dungeonsManager.GetEnemyStats(dungeonsManager.islandLevel, stage); // Load the enemy stats for the current island and stage level
             Debug.Log("Enemy dmg " + enemyStats.damage);
             if (playerStats.speed < enemyStats.speed)
             {
@@ -63,7 +63,7 @@ public class BattleManager : MonoBehaviour
         
         int turn = 1;
         battleOngoing = true;
-        while (battleOngoing == true && turn < 50)
+        while (battleOngoing == true && turn < 20)
         {
             
             if (playerTurn) // Player turn
