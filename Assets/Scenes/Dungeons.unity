@@ -609,11 +609,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1396855414}
         m_TargetAssemblyTypeName: DungeonsManager, Assembly-CSharp
         m_MethodName: ShowAttackPanel
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2606,6 +2606,7 @@ GameObject:
   - component: {fileID: 1396855409}
   - component: {fileID: 1396855414}
   - component: {fileID: 1396855415}
+  - component: {fileID: 1396855416}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2723,6 +2724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonAttack: {fileID: 206486234}
+  buttonIsland1: {fileID: 0}
   enemyStatsList:
   - {fileID: 11400000, guid: bd48816c86e5e1142a0ace4541771f2c, type: 2}
   - {fileID: 11400000, guid: bc84644668495fd49bb8fbfa3c501478, type: 2}
@@ -2731,6 +2733,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0000b50558b402c4b9c1a259e9f51730, type: 2}
   panelAttack: {fileID: 1150452008}
   textStage: {fileID: 1118920593}
+  islandLevel: 1
 --- !u!114 &1396855415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2746,6 +2749,19 @@ MonoBehaviour:
   stage: 1
   panelWin: {fileID: 0}
   panelLose: {fileID: 0}
+--- !u!114 &1396855416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396855408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df809edd37da2094ea69888a2fa2b113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
 --- !u!1 &1578480804
 GameObject:
   m_ObjectHideFlags: 0

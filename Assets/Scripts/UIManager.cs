@@ -17,6 +17,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text textPlayerFreeze;
     [SerializeField] private TMP_Text textPlayerFire;
 
+    [Header("Coins")]
+    [SerializeField] private TMP_Text textGold;
+    [SerializeField] private TMP_Text textGems;
+    [SerializeField] private TMP_Text textHourglass;
+
     [Header("UI")]
     [SerializeField] public GameObject panelEquipOrSell;
     [SerializeField] public Button buttonEquip;
@@ -54,7 +59,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text textPlayerEquippedItemWandLevel;
     [SerializeField] private TMP_Text textPlayerEquippedItemHeadwearLevel;
     [SerializeField] private TMP_Text textPlayerEquippedItemOutfitLevel;
-    [SerializeField] private TMP_Text textPlayerEquippedItemCloakLevel;
+    [SerializeField] private TMP_Text textPlayerEquippedItemRobeLevel;
     [SerializeField] private TMP_Text textPlayerEquippedItemHandwearLevel;
     [SerializeField] private TMP_Text textPlayerEquippedItemRingLevel;
     [SerializeField] private TMP_Text textPlayerEquippedItemNecklesLevel;
@@ -64,7 +69,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image imagePlayerEquippedItemWandRarity;
     [SerializeField] private Image imagePlayerEquippedItemHeadwearRarity;
     [SerializeField] private Image imagePlayerEquippedItemOutfitRarity;
-    [SerializeField] private Image imagePlayerEquippedItemCloakRarity;
+    [SerializeField] private Image imagePlayerEquippedItemRobeRarity;
     [SerializeField] private Image imagePlayerEquippedItemHandwearRarity;
     [SerializeField] private Image imagePlayerEquippedItemRingRarity;
     [SerializeField] private Image imagePlayerEquippedItemNecklesRarity;
@@ -74,7 +79,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image imagePlayerEquippedItemWandSprite;
     [SerializeField] private Image imagePlayerEquippedItemHeadwearSprite;
     [SerializeField] private Image imagePlayerEquippedItemOutfitSprite;
-    [SerializeField] private Image imagePlayerEquippedItemCloakSprite;
+    [SerializeField] private Image imagePlayerEquippedItemRobeSprite;
     [SerializeField] private Image imagePlayerEquippedItemHandwearSprite;
     [SerializeField] private Image imagePlayerEquippedItemRingSprite;
     [SerializeField] private Image imagePlayerEquippedItemNecklesSprite;
@@ -117,12 +122,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image spriteOutfit4;
     [SerializeField] private Image spriteOutfit5;
 
-    [Header("Cloak Sprites")]
-    [SerializeField] private Image spriteCloak1;
-    [SerializeField] private Image spriteCloak2;
-    [SerializeField] private Image spriteCloak3;
-    [SerializeField] private Image spriteCloak4;
-    [SerializeField] private Image spriteCloak5;
+    [Header("Robe Sprites")]
+    [SerializeField] private Image spriteRobe1;
+    [SerializeField] private Image spriteRobe2;
+    [SerializeField] private Image spriteRobe3;
+    [SerializeField] private Image spriteRobe4;
+    [SerializeField] private Image spriteRobe5;
 
     [Header("Handwear Sprites")]
     [SerializeField] private Image spriteHandwear1;
@@ -166,6 +171,12 @@ public class UIManager : MonoBehaviour
         {
             main = gameObject.AddComponent<Main>();
         }
+    }
+
+    public void UpdateAllMainUI()
+    {
+        UpdatePlayerTextStatsCoin();
+        UpdatePlayerTextItemLevel();
     }
 
     public void ShowNewItemText(Item newItem)
@@ -243,8 +254,9 @@ public class UIManager : MonoBehaviour
         textExistingItemFreeze.text = main.equipmentSlots[existingItemSlotIndex].freezeChanceBonus.ToString();
         textExistingItemFire.text = main.equipmentSlots[existingItemSlotIndex].fireChanceBonus.ToString();*/
     }
-    public void UpdatePlayerTextStats()
+    public void UpdatePlayerTextStatsCoin()
     {
+        //Stats
         textPlayerDamage.text = main.damage.ToString();
         textPlayerHealth.text = main.health.ToString();
         textPlayerSpeed.text = main.speed.ToString();
@@ -252,13 +264,31 @@ public class UIManager : MonoBehaviour
         textPlayerFreeze.text = main.freezeChance.ToString();
         textPlayerFire.text = main.fireChance.ToString();
         textPlayerCombo.text = main.comboChance.ToString();
-        textPlayerCounter.text = main.counterChance.ToString(); 
+        textPlayerCounter.text = main.counterChance.ToString();
+
+        //Coins
+        textGold.text = main.gold.ToString();
+        textGems.text = main.gems.ToString();
+        textHourglass.text = main.hourglass.ToString();
+    }
+
+    public void UpdatePlayerTextItemLevel()
+    {
+        textPlayerEquippedItemWandLevel.text = "Lv. " + main.equipmentSlots[0].itemLevel.ToString();
+        textPlayerEquippedItemHeadwearLevel.text = "Lv. " + main.equipmentSlots[1].itemLevel.ToString();
+        textPlayerEquippedItemOutfitLevel.text = "Lv. " + main.equipmentSlots[2].itemLevel.ToString();
+        textPlayerEquippedItemRobeLevel.text = "Lv. " + main.equipmentSlots[3].itemLevel.ToString();
+        textPlayerEquippedItemHandwearLevel.text = "Lv. " + main.equipmentSlots[4].itemLevel.ToString();
+        textPlayerEquippedItemRingLevel.text = "Lv. " + main.equipmentSlots[5].itemLevel.ToString();
+        textPlayerEquippedItemNecklesLevel.text = "Lv. " + main.equipmentSlots[6].itemLevel.ToString();
+        textPlayerEquippedItemBootsLevel.text = "Lv. " + main.equipmentSlots[7].itemLevel.ToString();
+
     }
     public void UpdatePlayerItemSprites(int existingItemSlotIndex)
     {
-        Image[] spritePlayerEquippedItemRarity = { imagePlayerEquippedItemWandRarity, imagePlayerEquippedItemHeadwearRarity, imagePlayerEquippedItemOutfitRarity, imagePlayerEquippedItemCloakRarity, imagePlayerEquippedItemHandwearRarity, imagePlayerEquippedItemRingRarity, imagePlayerEquippedItemNecklesRarity, imagePlayerEquippedItemBootsRarity };
-        Image[] spritePlayerEquippedItemSprite = { imagePlayerEquippedItemWandSprite, imagePlayerEquippedItemHeadwearSprite, imagePlayerEquippedItemOutfitSprite, imagePlayerEquippedItemCloakSprite, imagePlayerEquippedItemHandwearSprite, imagePlayerEquippedItemRingSprite, imagePlayerEquippedItemNecklesSprite, imagePlayerEquippedItemBootsSprite };
-        TMP_Text[] textPlayerEquippedItemLevel = { textPlayerEquippedItemWandLevel, textPlayerEquippedItemHeadwearLevel, textPlayerEquippedItemOutfitLevel, textPlayerEquippedItemCloakLevel, textPlayerEquippedItemHandwearLevel, textPlayerEquippedItemRingLevel, textPlayerEquippedItemNecklesLevel, textPlayerEquippedItemBootsLevel };
+        Image[] spritePlayerEquippedItemRarity = { imagePlayerEquippedItemWandRarity, imagePlayerEquippedItemHeadwearRarity, imagePlayerEquippedItemOutfitRarity, imagePlayerEquippedItemRobeRarity, imagePlayerEquippedItemHandwearRarity, imagePlayerEquippedItemRingRarity, imagePlayerEquippedItemNecklesRarity, imagePlayerEquippedItemBootsRarity };
+        Image[] spritePlayerEquippedItemSprite = { imagePlayerEquippedItemWandSprite, imagePlayerEquippedItemHeadwearSprite, imagePlayerEquippedItemOutfitSprite, imagePlayerEquippedItemRobeSprite, imagePlayerEquippedItemHandwearSprite, imagePlayerEquippedItemRingSprite, imagePlayerEquippedItemNecklesSprite, imagePlayerEquippedItemBootsSprite };
+        TMP_Text[] textPlayerEquippedItemLevel = { textPlayerEquippedItemWandLevel, textPlayerEquippedItemHeadwearLevel, textPlayerEquippedItemOutfitLevel, textPlayerEquippedItemRobeLevel, textPlayerEquippedItemHandwearLevel, textPlayerEquippedItemRingLevel, textPlayerEquippedItemNecklesLevel, textPlayerEquippedItemBootsLevel };
         if (main.equipmentSlots[existingItemSlotIndex] != null)
         {
             switch (main.equipmentSlots[existingItemSlotIndex].itemRarity)

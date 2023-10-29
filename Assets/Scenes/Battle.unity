@@ -340,6 +340,7 @@ GameObject:
   - component: {fileID: 252754722}
   - component: {fileID: 252754723}
   - component: {fileID: 252754725}
+  - component: {fileID: 252754726}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -462,6 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonAttack: {fileID: 0}
+  buttonIsland1: {fileID: 0}
   enemyStatsList:
   - {fileID: 11400000, guid: bd48816c86e5e1142a0ace4541771f2c, type: 2}
   - {fileID: 11400000, guid: bc84644668495fd49bb8fbfa3c501478, type: 2}
@@ -469,6 +471,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec30b0bf7b7fa4a40ab633feb4b4684f, type: 2}
   - {fileID: 11400000, guid: 0000b50558b402c4b9c1a259e9f51730, type: 2}
   panelAttack: {fileID: 0}
+  textStage: {fileID: 0}
+  islandLevel: 1
 --- !u!114 &252754724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +611,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3f5ce6befd3dd42bd6943f085c86c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &252754726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252754717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df809edd37da2094ea69888a2fa2b113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
 --- !u!1 &400651410
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,27 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+// Class for saving and loading player data
 [System.Serializable]
-public class PlayerData
+public class SaveData
 {
-    public int playerLevel = 1;
-    public int health = 100;
-    public int resistance = 10;
-    public int damage = 20;
-    public int speed = 10;
-    public float comboChance = 0f;
-    public float counterChance = 0f;
-    public float freezeChance = 0f;
-    public float fireChance = 0f;
-    public Sprite playerSprite;
+    public int playerLevel;
+    public int playerExp;
+    public int health;
+    public int resistance;
+    public int damage;
+    public int speed;
+    public float comboChance;
+    public float counterChance;
+    public float freezeChance;
+    public float fireChance;
+    public ItemData[] equipmentSlots;
+}
 
-    public PlayerData(int damage, int health, int speed, int resistance, Sprite playerSprite)
+// Class for serializing Item data
+[System.Serializable]
+public class ItemData
+{
+    public ItemType itemType;
+    public ItemRarity itemRarity;
+    public int itemLevel;
+    public int healthBonus;
+    public int resistanceBonus;
+    public int damageBonus;
+    public int speedBonus;
+    public float comboChanceBonus;
+    public float counterChanceBonus;
+    public float freezeChanceBonus;
+    public float fireChanceBonus;
+
+    public ItemData(Item item)
     {
-        this.damage = damage;
-        this.health = health;
-        this.speed = speed;
-        this.resistance = resistance;
-        this.playerSprite = playerSprite;
-        
+
+        itemType = item.itemType;
+        itemRarity = item.itemRarity;
+        itemLevel = item.itemLevel;
+        healthBonus = item.healthBonus;
+        resistanceBonus = item.resistanceBonus;
+        damageBonus = item.damageBonus;
+        speedBonus = item.speedBonus;
+        comboChanceBonus = item.comboChanceBonus;
+        counterChanceBonus = item.counterChanceBonus;
+        freezeChanceBonus = item.freezeChanceBonus;
+        fireChanceBonus = item.fireChanceBonus;
+    }
+
+    public Item ToItem()
+    {
+        Item item = new Item();
+
+        item.itemType = itemType;
+        item.itemRarity = itemRarity;
+        item.itemLevel = itemLevel;
+        item.healthBonus = healthBonus;
+        item.resistanceBonus = resistanceBonus;
+        item.damageBonus = damageBonus;
+        item.speedBonus = speedBonus;
+        item.comboChanceBonus = comboChanceBonus;
+        item.counterChanceBonus = counterChanceBonus;
+        item.freezeChanceBonus = freezeChanceBonus;
+        item.fireChanceBonus = fireChanceBonus;
+        return item;
     }
 }

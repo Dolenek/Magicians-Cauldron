@@ -4,34 +4,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class BattleManager : MonoBehaviour
 {
     private CharacterStats playerStats;
     private EnemyStatsSO enemyStats;
     private Main main;
-    private DungeonsManager dungeonsManager;
 
     private bool playerTurn = true;
     private bool battleOngoing = false;
-    public int stage = 1;
+
+    public int stage;
 
     [SerializeField] public GameObject panelWin;
     [SerializeField] public GameObject panelLose;
 
+
     private void Awake()
     {
+
+        string currentSceneName = SceneManager.GetActiveScene().name;
         // Load stats
         playerStats = new CharacterStats();
         main = GetComponent<Main>();
 
 
-        // Declares GameObjects 
-        dungeonsManager = GetComponent<DungeonsManager>();
         if (main == null)
         {
             main = gameObject.AddComponent<Main>();
         }
-        
+        stage = PlayerPrefs.GetInt("CurrentStage", 1);
+        if (currentSceneName == "Battle")
+        {
+
+            SetEnemies(1, stage);
+        }
     }
 
     private void Start()
@@ -42,13 +49,16 @@ public class BattleManager : MonoBehaviour
 
         if (currentSceneName == "Battle")
         {
+
+
             // Player stats
             playerStats.damage = main.damage;
             playerStats.health = main.health - 50;
             playerStats.speed = main.speed;
             playerStats.resistance = main.resistance;
             Debug.Log("Player dmg " + playerStats.damage);
-            enemyStats = dungeonsManager.GetEnemyStats(dungeonsManager.islandLevel, stage); // Load the enemy stats for the current island and stage level
+
+            // Enemy stats
             Debug.Log("Enemy dmg " + enemyStats.damage);
             if (playerStats.speed < enemyStats.speed)
             {
@@ -60,15 +70,17 @@ public class BattleManager : MonoBehaviour
 
     private void BattleStarted()
     {
-        
+
         int turn = 1;
+        
         battleOngoing = true;
-        while (battleOngoing == true && turn < 20)
+        while (battleOngoing == true && turn <= 20)
         {
-            
+            Debug.Log(turn);
             if (playerTurn) // Player turn
             {
                 Debug.Log("Player turn");
+
                 enemyStats.health = enemyStats.health - (playerStats.damage - enemyStats.resistance);
 
             }
@@ -95,6 +107,12 @@ public class BattleManager : MonoBehaviour
 
             // Switch turns
             playerTurn = !playerTurn;
+            turn++;
+        }
+        if (turn > 20)
+        {
+            Debug.Log("Battle timed out");
+            BattleLost();
         }
     }
 
@@ -115,7 +133,13 @@ public class BattleManager : MonoBehaviour
         {
             stage++;
         }
-        
+        PlayerPrefs.SetInt("CurrentStage", stage);
+        PlayerPrefs.Save();
 
+    }
+    public void SetEnemies(int island, int stage)
+    {
+        EnemyStatsSO enemy = EnemyDatabase.instance.GetEnemy(island, stage);
+        enemyStats = enemy;
     }
 }

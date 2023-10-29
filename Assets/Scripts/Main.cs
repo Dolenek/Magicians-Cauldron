@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class Main : MonoBehaviour
 {
     // Player stats
-    public int playerLevel = 1;
-    public int health = 100;
-    public int resistance = 10;
-    public int damage = 20;
-    public int speed = 10;
-    public float comboChance = 0f;
-    public float counterChance = 0f;
-    public float freezeChance = 0f;
-    public float fireChance = 0f; // Percentage chance (0-100) for bleed
+    public int playerLevel;
+    public int health;
+    public int resistance;
+    public int damage;
+    public int speed;
+    public float comboChance;
+    public float counterChance;
+    public float freezeChance;
+    public float fireChance;
 
+    public int gold;
+    public int gems;
+    public int hourglass = 100;
 
     // Equipment types
     private Dictionary<ItemType, Item> equipmentBonuses = new Dictionary<ItemType, Item>();
@@ -27,11 +33,11 @@ public class Main : MonoBehaviour
     public Item[] equipmentSlots = new Item[8];
 
     // Equipped item index (corresponding to equipmentSlots)
-    private int equippedItemIndex = -1;
 
     private ItemGenerator itemGenerator;
     private UIManager uiManager;
     private EXPBarManager expBarManager;
+
     // Initialize itemGenerator in Start or Awake
     private void Awake()
     {
@@ -44,38 +50,47 @@ public class Main : MonoBehaviour
         {
             itemGenerator = gameObject.AddComponent<ItemGenerator>();
         }
-
     }
+
+
     private void Start()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
-
-        if (currentSceneName == "Main")
+        if (currentSceneName == "MainScene")
         {
+            LoadPlayerData();
             UpdateStats();
-            uiManager.UpdatePlayerTextStats();
+            uiManager.UpdateAllMainUI();
         }
     }
+
 
     // In your Player script, call this when you want to generate and equip an item
     public void GenerateAndEquipRandomItem()
     {
         // Generate a random item based on player level
-        Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
-
-        // Check if the player already has an item of the same ItemType
-        ItemType newItemType = newItem.itemType;
-        int existingItemSlotIndex = GetItemSlotIndexByType(newItemType);
-
-        if (existingItemSlotIndex >= 0)
+        if (hourglass > 0)
         {
-            // Player already has an item of the same type
-            ShowEquipOrSellPrompt(newItem, existingItemSlotIndex);
+            hourglass--;
+            Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
+
+            // Check if the player already has an item of the same ItemType
+            ItemType newItemType = newItem.itemType;
+            int existingItemSlotIndex = GetItemSlotIndexByType(newItemType);
+
+            if (existingItemSlotIndex >= 0)
+            {
+                // Player already has an item of the same type
+                ShowEquipOrSellPrompt(newItem, existingItemSlotIndex);
+            }
+            else
+            {
+                Debug.LogError("AAAAAAAAA Main GenerateAndEquipRandomItem");
+            }
         }
         else
         {
-            // Player doesn't have an item of the same type, simply equip the new item
-            EquipItem(newItem.itemType);
+            Debug.Log("Not enough hourglass");
         }
     }
 
@@ -115,16 +130,21 @@ public class Main : MonoBehaviour
     // Handler for the "Replace" button
     private void ReplaceItemWithNew(Item newItem, int existingItemSlotIndex)
     {
+        // Sell the existing item before equipping the new one
+        SellItem(equipmentSlots[existingItemSlotIndex]);
+
         // Equip the new item in place of the existing item
         equipmentSlots[existingItemSlotIndex] = newItem;
 
         // Update player stats
         UpdateStats();
-        uiManager.UpdatePlayerTextStats();
+        uiManager.UpdateAllMainUI();
         // Update player item sprites in players inventory
         uiManager.UpdatePlayerItemSprites(existingItemSlotIndex);
         // Close the UI panel
         uiManager.panelEquipOrSell.SetActive(false);
+
+        SavePlayerData();
     }
 
     // Handler for the "Sell" button
@@ -134,15 +154,32 @@ public class Main : MonoBehaviour
 
         // Gain EXP based on the rarity of the item
         expBarManager.GainXP(((int)newItem.itemRarity));
+        // Update player stats
+        UpdateStats();
+        uiManager.UpdateAllMainUI();
         // Close the UI panel
         uiManager.panelEquipOrSell.SetActive(false);
         newItem.itemRarity = 0; //Insures that the itemRarity isnt adding up
+
+        SavePlayerData();
+    }
+
+    private void SellItem(Item item)
+    {
+        // Gain Gold based on the rarity and lvl of the players cauldron
+
+        // Gain EXP based on the rarity of the item
+        expBarManager.GainXP(((int)item.itemRarity));
+        // Update player stats
+        UpdateStats();
+        uiManager.UpdateAllMainUI();
+        item.itemRarity = 0; //Insures that the itemRarity isnt adding up
     }
 
     // Update player stats based on equipped items
     public void UpdateStats()
     {
-        // Store the base stats
+
         int baseHealth = 100;
         int baseDefense = 10;
         int baseDamage = 20;
@@ -179,59 +216,95 @@ public class Main : MonoBehaviour
         counterChance = baseCounterChacne;
     }
 
-    // Equip an item to a specific slot based on the
-    public void EquipItem(ItemType itemType)
+    public void SavePlayerData()
     {
-        if (equipmentBonuses.ContainsKey(itemType))
+        Debug.Log("Saving player data");
+        // Create a new instance of the SaveData class
+        SaveData saveData = new SaveData();
+
+        // Save player stats
+        saveData.playerLevel = playerLevel;
+        saveData.playerExp = expBarManager.currentXP;
+        saveData.health = health;
+        saveData.resistance = resistance;
+        saveData.damage = damage;
+        saveData.speed = speed;
+        saveData.comboChance = comboChance;
+        saveData.counterChance = counterChance;
+        saveData.freezeChance = freezeChance;
+        saveData.fireChance = fireChance;
+
+        // Save player inventory
+        saveData.equipmentSlots = new ItemData[equipmentSlots.Length];
+        for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            Item item = equipmentBonuses[itemType];
-
-            // Unequip the current item in the same slot (if any)
-            UnequipItem(itemType);
-
-            // Equip the new item
-            int slotIndex = (int)itemType;
-            equipmentSlots[slotIndex] = item;
-            equippedItemIndex = slotIndex;
-
-            // Update player stats based on the equipped item
-            UpdateStats();
-            uiManager.UpdatePlayerTextStats();
-        }
-    }
-
-    // Unequip an item based on the generated ItemType
-    public void UnequipItem(ItemType itemType)
-    {
-        if (equipmentBonuses.ContainsKey(itemType))
-        {
-            int slotIndex = (int)itemType;
-
-            // Check if an item is currently equipped in the specified slot
-            if (equipmentSlots[slotIndex] != null)
+            if (equipmentSlots[i] != null)
             {
-                // Unequip the item from the specified slot
-                equipmentSlots[slotIndex] = null;
-
-                // Update player stats
-                UpdateStats();
-                uiManager.UpdatePlayerTextStats();
+                saveData.equipmentSlots[i] = new ItemData(equipmentSlots[i]);
             }
         }
-    }
-    // Sell the equipped item ????????
-    public void SellItem()
-    {
-        if (equippedItemIndex >= 0 && equippedItemIndex < equipmentSlots.Length)
-        {
-            equipmentSlots[equippedItemIndex] = null;
-            equippedItemIndex = -1;
 
-            // Update player stats
+        // Save the data to a file
+        string savePath = Application.persistentDataPath + "/saveData.dat";
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(savePath);
+        bf.Serialize(file, saveData);
+        file.Close();
+    }
+
+    // Load player inventory and stats
+    public void LoadPlayerData()
+    {
+        Debug.Log("Loading player data");
+
+        // Load the data from the file
+        string savePath = Application.persistentDataPath + "/saveData.dat";
+        if (File.Exists(savePath))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(savePath, FileMode.Open);
+            SaveData saveData = (SaveData)bf.Deserialize(file);
+            file.Close();
+
+            // Load player stats
+            playerLevel = saveData.playerLevel;
+            expBarManager.currentXP = saveData.playerExp;
+            health = saveData.health;
+            resistance = saveData.resistance;
+            damage = saveData.damage;
+            speed = saveData.speed;
+            comboChance = saveData.comboChance;
+            counterChance = saveData.counterChance;
+            freezeChance = saveData.freezeChance;
+            fireChance = saveData.fireChance;
+
+            // Load player inventory
+            for (int i = 0; i < equipmentSlots.Length; i++)
+            {
+                if (saveData.equipmentSlots[i] != null)
+                {
+                    equipmentSlots[i] = saveData.equipmentSlots[i].ToItem();
+                }
+            }
+
+            // Update player item sprites in players inventory
+            for (int i = 0; i < equipmentSlots.Length; i++)
+            {
+                if (saveData.equipmentSlots[i] != null)
+                {
+                    uiManager.UpdatePlayerItemSprites(i);
+                }
+            }
+
+            // Update player level text
+            uiManager.UpdatePlayerTextItemLevel();
+            
+
+            // Update player stats and inventory UI
             UpdateStats();
-            uiManager.UpdatePlayerTextStats();
+            uiManager.UpdateAllMainUI();
+            
         }
     }
-    
 }
 
