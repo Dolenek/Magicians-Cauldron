@@ -8,7 +8,8 @@ using UnityEngine;
 public class SaveData
 {
     public int playerLevel;
-    public int playerExp;
+    public int playerCurrentExp;
+    public int playerMaxExp;
     public int health;
     public int resistance;
     public int damage;
@@ -17,6 +18,7 @@ public class SaveData
     public float counterChance;
     public float freezeChance;
     public float fireChance;
+    public int gold;
     public int hourglass;
     public ItemData[] equipmentSlots;
 }

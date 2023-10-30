@@ -9,7 +9,7 @@ public class EXPBarManager : MonoBehaviour
     [SerializeField] private Slider barEXP;      // Reference to the UI Slider representing the exp bar
     [SerializeField] private TMP_Text textLevel; // Reference to a UI Text element displaying the player's level
     [SerializeField] private TMP_Text textEXP;   // Reference to an UI 
-    [SerializeField] private int maxXP = 100;    // Maximum XP needed to reach the next level
+    [SerializeField] public int maxXP = 100;    // Maximum XP needed to reach the next level
     [SerializeField] public int currentXP = 0;  // Current XP
 
     private Main main;
@@ -26,7 +26,7 @@ public class EXPBarManager : MonoBehaviour
 
     public void UpdateExpBar()
     {
-        int fillAmount = currentXP / maxXP;
+        float fillAmount = (float)currentXP / (float)maxXP;
         textEXP.text = currentXP.ToString() + "/" + maxXP.ToString();
         barEXP.value = fillAmount;
         textLevel.text = "Lv. " + main.playerLevel.ToString();

@@ -26,9 +26,6 @@ public class Main : MonoBehaviour
     public int gems;
     public int hourglass;
 
-    // Equipment types
-    private Dictionary<ItemType, Item> equipmentBonuses = new Dictionary<ItemType, Item>();
-
     // Inventory
     public Item[] equipmentSlots = new Item[8];
 
@@ -64,6 +61,7 @@ public class Main : MonoBehaviour
             UpdateStats();
             uiManager.UpdateAllMainUI();
         }
+        
     }
 
 
@@ -227,7 +225,10 @@ public class Main : MonoBehaviour
         // Save player stats
         saveData.playerLevel = playerLevel;
         if (expBarManager != null)
-            expBarManager.currentXP = saveData.playerExp;
+        {
+            saveData.playerCurrentExp = expBarManager.currentXP;
+            saveData.playerMaxExp = expBarManager.maxXP;
+        }
         saveData.health = health;
         saveData.resistance = resistance;
         saveData.damage = damage;
@@ -272,7 +273,10 @@ public class Main : MonoBehaviour
             // Load player stats
             playerLevel = saveData.playerLevel;
             if (expBarManager != null)
-                expBarManager.currentXP = saveData.playerExp;
+            {
+                expBarManager.currentXP = saveData.playerCurrentExp;
+                expBarManager.maxXP = saveData.playerMaxExp;
+            }
             health = saveData.health;
             resistance = saveData.resistance;
             damage = saveData.damage;
@@ -312,6 +316,14 @@ public class Main : MonoBehaviour
             }
           
             
+        }
+    }
+    public void DeleteSaveData()
+    {
+        string savePath = Application.persistentDataPath + "/saveData.dat";
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
         }
     }
 }
