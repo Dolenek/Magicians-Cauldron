@@ -49,7 +49,7 @@ public class BattleManager : MonoBehaviour
 
         if (currentSceneName == "Battle")
         {
-
+            main.LoadPlayerData();
 
             // Player stats
             playerStats.damage = main.damage;
@@ -124,6 +124,11 @@ public class BattleManager : MonoBehaviour
     private void BattleWon()
     {
         Debug.Log("Battle Won");
+
+        Debug.Log("hourglass before: " + main.hourglass);
+        main.hourglass = main.hourglass + enemyStats.hourglass;
+        Debug.Log("hourglass after: " + main.hourglass);
+        main.SavePlayerData();
         battleOngoing = false;
         if (stage == 30)
         {

@@ -17,6 +17,8 @@ public class EnemyStatsSO : ScriptableObject
     public float freezeChance = 0f;
     public float fireChance = 0f;
 
+    public int hourglass;
+
     //public Sprite sprite;
 
 }

@@ -17,6 +17,7 @@ public class SaveData
     public float counterChance;
     public float freezeChance;
     public float fireChance;
+    public int hourglass;
     public ItemData[] equipmentSlots;
 }
 

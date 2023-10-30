@@ -24,7 +24,7 @@ public class Main : MonoBehaviour
 
     public int gold;
     public int gems;
-    public int hourglass = 100;
+    public int hourglass;
 
     // Equipment types
     private Dictionary<ItemType, Item> equipmentBonuses = new Dictionary<ItemType, Item>();
@@ -50,12 +50,14 @@ public class Main : MonoBehaviour
         {
             itemGenerator = gameObject.AddComponent<ItemGenerator>();
         }
+        
     }
 
 
     private void Start()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
+        
         if (currentSceneName == "MainScene")
         {
             LoadPlayerData();
@@ -224,7 +226,8 @@ public class Main : MonoBehaviour
 
         // Save player stats
         saveData.playerLevel = playerLevel;
-        saveData.playerExp = expBarManager.currentXP;
+        if (expBarManager != null)
+            expBarManager.currentXP = saveData.playerExp;
         saveData.health = health;
         saveData.resistance = resistance;
         saveData.damage = damage;
@@ -233,7 +236,7 @@ public class Main : MonoBehaviour
         saveData.counterChance = counterChance;
         saveData.freezeChance = freezeChance;
         saveData.fireChance = fireChance;
-
+        saveData.hourglass = hourglass;
         // Save player inventory
         saveData.equipmentSlots = new ItemData[equipmentSlots.Length];
         for (int i = 0; i < equipmentSlots.Length; i++)
@@ -268,7 +271,8 @@ public class Main : MonoBehaviour
 
             // Load player stats
             playerLevel = saveData.playerLevel;
-            expBarManager.currentXP = saveData.playerExp;
+            if (expBarManager != null)
+                expBarManager.currentXP = saveData.playerExp;
             health = saveData.health;
             resistance = saveData.resistance;
             damage = saveData.damage;
@@ -277,6 +281,7 @@ public class Main : MonoBehaviour
             counterChance = saveData.counterChance;
             freezeChance = saveData.freezeChance;
             fireChance = saveData.fireChance;
+            hourglass = saveData.hourglass;
 
             // Load player inventory
             for (int i = 0; i < equipmentSlots.Length; i++)
@@ -288,21 +293,24 @@ public class Main : MonoBehaviour
             }
 
             // Update player item sprites in players inventory
-            for (int i = 0; i < equipmentSlots.Length; i++)
+            if (uiManager != null)
             {
-                if (saveData.equipmentSlots[i] != null)
+                for (int i = 0; i < equipmentSlots.Length; i++)
                 {
-                    uiManager.UpdatePlayerItemSprites(i);
+                    if (saveData.equipmentSlots[i] != null)
+                    {
+                        uiManager.UpdatePlayerItemSprites(i);
+                    }
                 }
+                // Update player level text
+                uiManager.UpdatePlayerTextItemLevel();
+
+
+                // Update player stats and inventory UI
+                UpdateStats();
+                uiManager.UpdateAllMainUI();
             }
-
-            // Update player level text
-            uiManager.UpdatePlayerTextItemLevel();
-            
-
-            // Update player stats and inventory UI
-            UpdateStats();
-            uiManager.UpdateAllMainUI();
+          
             
         }
     }
