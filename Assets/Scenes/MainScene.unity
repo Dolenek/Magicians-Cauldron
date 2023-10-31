@@ -2379,6 +2379,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExtraBuffNew2
       objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
       value: 'HP:
@@ -4179,6 +4183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExtraBuffExisting2
       objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
       value: 'HP:
@@ -4278,7 +4286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1214299354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4598,9 +4606,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1214299354}
     m_Modifications:
+    - target: {fileID: 421167049699307424, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3285503858305731502, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 320
+      value: 347
       objectReference: {fileID: 0}
     - target: {fileID: 4825653968297271012, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4608,7 +4620,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4825653968297271012, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 122.910034
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944220601417372064, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_Pivot.x
@@ -4672,7 +4688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120.00011
+      value: -120.00012
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6293,6 +6309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExtraBuffNew1
       objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
       value: 'HP:
@@ -6546,7 +6566,7 @@ MonoBehaviour:
   textPlayerEquippedItemWandLevel: {fileID: 1058475518}
   textPlayerEquippedItemHeadwearLevel: {fileID: 243065920}
   textPlayerEquippedItemOutfitLevel: {fileID: 2131414581}
-  textPlayerEquippedItemRobeLevel: {fileID: 1268889141}
+  textPlayerEquippedItemScrollLevel: {fileID: 1268889141}
   textPlayerEquippedItemHandwearLevel: {fileID: 146788147}
   textPlayerEquippedItemRingLevel: {fileID: 65834082}
   textPlayerEquippedItemNecklesLevel: {fileID: 2017180597}
@@ -6554,7 +6574,7 @@ MonoBehaviour:
   imagePlayerEquippedItemWandRarity: {fileID: 1191098125}
   imagePlayerEquippedItemHeadwearRarity: {fileID: 1658520321}
   imagePlayerEquippedItemOutfitRarity: {fileID: 1969835855}
-  imagePlayerEquippedItemRobeRarity: {fileID: 1214050114}
+  imagePlayerEquippedItemScrollRarity: {fileID: 1214050114}
   imagePlayerEquippedItemHandwearRarity: {fileID: 327797085}
   imagePlayerEquippedItemRingRarity: {fileID: 1251022057}
   imagePlayerEquippedItemNecklesRarity: {fileID: 243293618}
@@ -6562,7 +6582,7 @@ MonoBehaviour:
   imagePlayerEquippedItemWandSprite: {fileID: 1150284475}
   imagePlayerEquippedItemHeadwearSprite: {fileID: 1553205383}
   imagePlayerEquippedItemOutfitSprite: {fileID: 375985423}
-  imagePlayerEquippedItemRobeSprite: {fileID: 1808381652}
+  imagePlayerEquippedItemScrollSprite: {fileID: 1808381652}
   imagePlayerEquippedItemHandwearSprite: {fileID: 1395858545}
   imagePlayerEquippedItemRingSprite: {fileID: 300947718}
   imagePlayerEquippedItemNecklesSprite: {fileID: 803859006}
@@ -6594,11 +6614,11 @@ MonoBehaviour:
   spriteOutfit3: {fileID: 0}
   spriteOutfit4: {fileID: 0}
   spriteOutfit5: {fileID: 0}
-  spriteRobe1: {fileID: 0}
-  spriteRobe2: {fileID: 0}
-  spriteRobe3: {fileID: 0}
-  spriteRobe4: {fileID: 0}
-  spriteRobe5: {fileID: 0}
+  spriteScroll1: {fileID: 0}
+  spriteScroll2: {fileID: 0}
+  spriteScroll3: {fileID: 0}
+  spriteScroll4: {fileID: 0}
+  spriteScroll5: {fileID: 0}
   spriteHandwear1: {fileID: 0}
   spriteHandwear2: {fileID: 0}
   spriteHandwear3: {fileID: 0}
@@ -7091,11 +7111,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 72367890266534020, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
-      value: TextRobeLvl
+      value: TextScrollLvl
       objectReference: {fileID: 0}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
-      value: Robe
+      value: Scroll
       objectReference: {fileID: 0}
     - target: {fileID: 6813363907503742637, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Pivot.x
@@ -8461,6 +8481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExtraBuffExisting1
       objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
       value: 'HP:
@@ -8554,9 +8578,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1214299354}
     m_Modifications:
+    - target: {fileID: 421167049699307424, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3285503858305731502, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 320
+      value: 346
       objectReference: {fileID: 0}
     - target: {fileID: 4825653968297271012, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -8568,11 +8596,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4825653968297271012, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 123.45003
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 4825653968297271012, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944220601417372064, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_Pivot.x
@@ -8636,7 +8668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120.00011
+      value: -120.00012
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y

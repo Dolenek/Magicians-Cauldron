@@ -9,7 +9,6 @@ public class SaveData
 {
     public int playerLevel;
     public int playerCurrentExp;
-    public int playerMaxExp;
     public int health;
     public int resistance;
     public int damage;

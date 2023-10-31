@@ -53,24 +53,25 @@ public class ItemGenerator : MonoBehaviour
         // For rare and epic items, generate additional attributes
         if (newItem.itemRarity >= ItemRarity.Rare)
         {
-            newItem.freezeChanceBonus = Random.Range(1.0f, 10.0f);
+            int randomStat = Random.Range(0, 4);
+            float randomNum = Random.Range(1.0f, 10.0f);
+            float roundedNum = Mathf.Round(randomNum * 10.0f) / 10.0f;
+            switch (randomStat)
+            {
+                case 0:
+                    newItem.freezeChanceBonus = roundedNum;
+                    break;
+                case 1:
+                    newItem.fireChanceBonus = roundedNum;
+                    break;
+                case 2:
+                    newItem.comboChanceBonus = roundedNum;
+                    break;
+                case 3:
+                    newItem.counterChanceBonus = roundedNum;
+                    break;
+            }
         }
-        // Set rarity sprite based on item rarity
-        /*switch (newItem.itemRarity)
-        {
-            case ItemRarity.Common:
-                newItem.spriteRarity = commonSprite;
-                break;
-            case ItemRarity.Uncommon:
-                newItem.spriteRarity = uncommonSprite;
-                break;
-            case ItemRarity.Rare:
-                newItem.spriteRarity = rareSprite;
-                break;
-            case ItemRarity.Epic:
-                newItem.spriteRarity = epicSprite;
-                break;
-        }*/
 
         return newItem;
     }

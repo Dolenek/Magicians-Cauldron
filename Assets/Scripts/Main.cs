@@ -143,6 +143,10 @@ public class Main : MonoBehaviour
         uiManager.UpdatePlayerItemSprites(existingItemSlotIndex);
         // Close the UI panel
         uiManager.panelEquipOrSell.SetActive(false);
+        uiManager.textNewItemExtraBuffStat1.enabled = false;
+        uiManager.textNewItemExtraBuffName1.enabled = false;
+        uiManager.textExistingItemExtraBuffName1.enabled = false;
+        uiManager.textExistingItemExtraBuffStat1.enabled = false;
 
         SavePlayerData();
     }
@@ -157,8 +161,13 @@ public class Main : MonoBehaviour
         // Update player stats
         UpdateStats();
         uiManager.UpdateAllMainUI();
-        // Close the UI panel
+        // Close the UI panel and other UIs
         uiManager.panelEquipOrSell.SetActive(false);
+        uiManager.textNewItemExtraBuffStat1.enabled = false;
+        uiManager.textNewItemExtraBuffName1.enabled = false;
+        uiManager.textExistingItemExtraBuffName1.enabled = false;
+        uiManager.textExistingItemExtraBuffStat1.enabled = false;
+
         newItem.itemRarity = 0; //Insures that the itemRarity isnt adding up
 
         SavePlayerData();
@@ -227,7 +236,6 @@ public class Main : MonoBehaviour
         if (expBarManager != null)
         {
             saveData.playerCurrentExp = expBarManager.currentXP;
-            saveData.playerMaxExp = expBarManager.maxXP;
         }
         saveData.health = health;
         saveData.resistance = resistance;
@@ -275,7 +283,6 @@ public class Main : MonoBehaviour
             if (expBarManager != null)
             {
                 expBarManager.currentXP = saveData.playerCurrentExp;
-                expBarManager.maxXP = saveData.playerMaxExp;
             }
             health = saveData.health;
             resistance = saveData.resistance;

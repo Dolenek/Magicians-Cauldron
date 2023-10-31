@@ -9,7 +9,7 @@ public class EXPBarManager : MonoBehaviour
     [SerializeField] private Slider barEXP;      // Reference to the UI Slider representing the exp bar
     [SerializeField] private TMP_Text textLevel; // Reference to a UI Text element displaying the player's level
     [SerializeField] private TMP_Text textEXP;   // Reference to an UI 
-    [SerializeField] public int maxXP = 100;    // Maximum XP needed to reach the next level
+    [SerializeField] public int maxXP = 60;    // Maximum XP needed to reach the next level
     [SerializeField] public int currentXP = 0;  // Current XP
 
     private Main main;
@@ -21,6 +21,8 @@ public class EXPBarManager : MonoBehaviour
 
     private void Start()
     {
+        
+        maxXP = (int)(main.playerLevel * 100 * 0.6f);
         UpdateExpBar();
     }
 
@@ -41,7 +43,7 @@ public class EXPBarManager : MonoBehaviour
             // Level up
             main.playerLevel++;
             currentXP -= maxXP;
-            maxXP = CalculateNextLevelXP(); // Implement a function to calculate the XP required for the next level
+            maxXP = CalculateNextLevelXP(main.playerLevel); // Implement a function to calculate the XP required for the next level
             UpdateExpBar();
         }
         else
@@ -51,9 +53,9 @@ public class EXPBarManager : MonoBehaviour
         
     }
 
-    int CalculateNextLevelXP()
+    int CalculateNextLevelXP(int playerLevel)
     {
-        return (int)(maxXP * 1.2f);
+        return (int)(playerLevel * 100 * 0.6f);
     }
 
 }

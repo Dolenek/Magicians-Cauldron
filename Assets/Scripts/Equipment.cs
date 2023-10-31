@@ -41,7 +41,7 @@ public enum ItemType
     Wand,
     Headwear,
     Outfit,
-    Cloak,
+    Scroll,
     Handwear,
     Ring,
     Necklace,
