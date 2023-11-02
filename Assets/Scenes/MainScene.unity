@@ -2455,6 +2455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextHandwearLvl
       objectReference: {fileID: 0}
+    - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 77887167bf330d045b025e123cff3baf, type: 3}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
       value: Handwear
@@ -2830,6 +2834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextOutfitLvl
       objectReference: {fileID: 0}
+    - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae90f4431c7804e498c63f2bd1b7767f, type: 3}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
       value: Outfit
@@ -2936,6 +2944,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextRingLvl
       objectReference: {fileID: 0}
+    - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d7386e3ff63dfc1479293f0c33a318ab, type: 3}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
       value: Ring
@@ -3597,6 +3609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextHeadwearLvl
       objectReference: {fileID: 0}
+    - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8fca35698dda67145aeae0931c90f2c0, type: 3}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
       value: Headwear
@@ -6898,6 +6914,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextBootsLvl
       objectReference: {fileID: 0}
+    - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 511ece9f8c83a5e4eb311299ad467362, type: 3}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
       value: Boots
@@ -7113,9 +7133,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextScrollLvl
       objectReference: {fileID: 0}
+    - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 655c364e9c5318e43a837d917bb772b2, type: 3}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
-      value: Scroll
+      value: Orb
       objectReference: {fileID: 0}
     - target: {fileID: 6813363907503742637, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Pivot.x
@@ -8049,6 +8073,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextNecklesLvl
       objectReference: {fileID: 0}
+    - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 155c06fa8b685424e87244ae037b95c6, type: 3}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
       value: Neckles
