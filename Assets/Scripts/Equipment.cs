@@ -19,8 +19,7 @@ public class Item
     public float comboChanceBonus;
     public float counterChanceBonus;
 
-    public Image spriteRarity;
-    public Image spriteSprite;
+    public Sprite itemSprite;
 }
 
 public enum ItemRarity

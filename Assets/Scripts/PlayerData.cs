@@ -37,6 +37,7 @@ public class ItemData
     public float counterChanceBonus;
     public float freezeChanceBonus;
     public float fireChanceBonus;
+    public Sprite itemSprite;
 
     public ItemData(Item item)
     {
@@ -52,6 +53,7 @@ public class ItemData
         counterChanceBonus = item.counterChanceBonus;
         freezeChanceBonus = item.freezeChanceBonus;
         fireChanceBonus = item.fireChanceBonus;
+        itemSprite = item.itemSprite;
     }
 
     public Item ToItem()
@@ -69,6 +71,7 @@ public class ItemData
         item.counterChanceBonus = counterChanceBonus;
         item.freezeChanceBonus = freezeChanceBonus;
         item.fireChanceBonus = fireChanceBonus;
+        item.itemSprite = itemSprite;
         return item;
     }
 }

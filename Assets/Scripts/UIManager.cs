@@ -103,60 +103,91 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Sprite spriteGodly;
 
     [Header("Wand Sprites")]    
-    [SerializeField] private Image spriteWand1;
-    [SerializeField] private Image spriteWand2;
-    [SerializeField] private Image spriteWand3;
-    [SerializeField] private Image spriteWand4;
-    [SerializeField] private Image spriteWand5;
+    [SerializeField] private Sprite spriteWand1;
+    [SerializeField] private Sprite spriteWand2;
+    [SerializeField] private Sprite spriteWand3;
+    [SerializeField] private Sprite spriteWand4;
+    [SerializeField] private Sprite spriteWand5;
+    [SerializeField] private Sprite spriteWand6;
+    [SerializeField] private Sprite spriteWand7;
+    [SerializeField] private Sprite spriteWand8;
+    [SerializeField] private Sprite spriteWand9;
+    [SerializeField] private Sprite spriteWand10;
+    [SerializeField] private Sprite spriteWand11;
+    [SerializeField] private Sprite spriteWand12;
+    [SerializeField] private Sprite spriteWand13;
 
     [Header("Headwear Sprites")]
-    [SerializeField] private Image spriteHeadwear1;
-    [SerializeField] private Image spriteHeadwear2;
-    [SerializeField] private Image spriteHeadwear3;
-    [SerializeField] private Image spriteHeadwear4;
-    [SerializeField] private Image spriteHeadwear5;
+    [SerializeField] private Sprite spriteHeadwear1;
+    [SerializeField] private Sprite spriteHeadwear2;
+    [SerializeField] private Sprite spriteHeadwear3;
+    [SerializeField] private Sprite spriteHeadwear4;
+    [SerializeField] private Sprite spriteHeadwear5;
+    [SerializeField] private Sprite spriteHeadwear6;
+    [SerializeField] private Sprite spriteHeadwear7;
+    [SerializeField] private Sprite spriteHeadwear8;
+    [SerializeField] private Sprite spriteHeadwear9;
+    [SerializeField] private Sprite spriteHeadwear10;
 
     [Header("Outfit Sprites")]
-    [SerializeField] private Image spriteOutfit1;
-    [SerializeField] private Image spriteOutfit2;
-    [SerializeField] private Image spriteOutfit3;
-    [SerializeField] private Image spriteOutfit4;
-    [SerializeField] private Image spriteOutfit5;
+    [SerializeField] public Sprite[] spritesOutfit;
+    /*[SerializeField] private Sprite spriteOutfit1;
+    [SerializeField] private Sprite spriteOutfit2;
+    [SerializeField] private Sprite spriteOutfit3;
+    [SerializeField] private Sprite spriteOutfit4;
+    [SerializeField] private Sprite spriteOutfit5;
+    [SerializeField] private Sprite spriteOutfit6;*/
 
-    [Header("Scroll Sprites")]
-    [SerializeField] private Image spriteScroll1;
-    [SerializeField] private Image spriteScroll2;
-    [SerializeField] private Image spriteScroll3;
-    [SerializeField] private Image spriteScroll4;
-    [SerializeField] private Image spriteScroll5;
+    [Header("Orb Sprites")]
+    [SerializeField] private Sprite spriteOrb1;
+    [SerializeField] private Sprite spriteOrb2;
+    [SerializeField] private Sprite spriteOrb3;
+    [SerializeField] private Sprite spriteOrb4;
+    [SerializeField] private Sprite spriteOrb5;
+    [SerializeField] private Sprite spriteOrb6;
+    [SerializeField] private Sprite spriteOrb7;
+    [SerializeField] private Sprite spriteOrb8;
+    [SerializeField] private Sprite spriteOrb9;
+    [SerializeField] private Sprite spriteOrb10;
 
     [Header("Handwear Sprites")]
-    [SerializeField] private Image spriteHandwear1;
-    [SerializeField] private Image spriteHandwear2;
-    [SerializeField] private Image spriteHandwear3;
-    [SerializeField] private Image spriteHandwear4;
-    [SerializeField] private Image spriteHandwear5;
+    [SerializeField] private Sprite spriteHandwear1;
+    [SerializeField] private Sprite spriteHandwear2;
+    [SerializeField] private Sprite spriteHandwear3;
+    [SerializeField] private Sprite spriteHandwear4;
 
     [Header("Ring Sprites")]
-    [SerializeField] private Image spriteRing1;
-    [SerializeField] private Image spriteRing2;
-    [SerializeField] private Image spriteRing3;
-    [SerializeField] private Image spriteRing4;
-    [SerializeField] private Image spriteRing5;
+    [SerializeField] private Sprite spriteRing1;
+    [SerializeField] private Sprite spriteRing2;
+    [SerializeField] private Sprite spriteRing3;
+    [SerializeField] private Sprite spriteRing4;
+    [SerializeField] private Sprite spriteRing5;
+    [SerializeField] private Sprite spriteRing6;
+    [SerializeField] private Sprite spriteRing7;
+    [SerializeField] private Sprite spriteRing8;
 
     [Header("Boots Sprites")]
-    [SerializeField] private Image spriteBoots1;
-    [SerializeField] private Image spriteBoots2;
-    [SerializeField] private Image spriteBoots3;
-    [SerializeField] private Image spriteBoots4;
-    [SerializeField] private Image spriteBoots5;
+    [SerializeField] private Sprite spriteBoots1;
+    [SerializeField] private Sprite spriteBoots2;
+    [SerializeField] private Sprite spriteBoots3;
+    [SerializeField] private Sprite spriteBoots4;
+    [SerializeField] private Sprite spriteBoots5;
+    [SerializeField] private Sprite spriteBoots6;
 
     [Header("Neckles Sprites")]
-    [SerializeField] private Image spriteNeckles1;
-    [SerializeField] private Image spriteNeckles2;
-    [SerializeField] private Image spriteNeckles3;
-    [SerializeField] private Image spriteNeckles4;
-    [SerializeField] private Image spriteNeckles5;
+    [SerializeField] private Sprite spriteNeckles1;
+    [SerializeField] private Sprite spriteNeckles2;
+    [SerializeField] private Sprite spriteNeckles3;
+    [SerializeField] private Sprite spriteNeckles4;
+    [SerializeField] private Sprite spriteNeckles5;
+    [SerializeField] private Sprite spriteNeckles6;
+    [SerializeField] private Sprite spriteNeckles7;
+    [SerializeField] private Sprite spriteNeckles8;
+    [SerializeField] private Sprite spriteNeckles9;
+    [SerializeField] private Sprite spriteNeckles10;
+    [SerializeField] private Sprite spriteNeckles11;
+    [SerializeField] private Sprite spriteNeckles12;
+    [SerializeField] private Sprite spriteNeckles13;
 
 
     private Main main;
@@ -248,10 +279,6 @@ public class UIManager : MonoBehaviour
                 textNewItemExtraBuffStat1.text = newItem.counterChanceBonus.ToString();
             }
         }
-        /*textNewItemCombo.text = newItem.comboChanceBonus.ToString();
-        textNewItemCounter.text = newItem.counterChanceBonus.ToString();
-        textNewItemFreeze.text = newItem.freezeChanceBonus.ToString();
-        textNewItemFire.text = newItem.fireChanceBonus.ToString();*/
     }
     public void ShowExistingItemText(int existingItemSlotIndex)
     {
@@ -314,10 +341,6 @@ public class UIManager : MonoBehaviour
                 textExistingItemExtraBuffStat1.text = main.equipmentSlots[existingItemSlotIndex].counterChanceBonus.ToString();
             }
         }
-        /*textExistingItemCombo.text = main.equipmentSlots[existingItemSlotIndex].comboChanceBonus.ToString();
-        textExistingItemCounter.text = main.equipmentSlots[existingItemSlotIndex].counterChanceBonus.ToString();
-        textExistingItemFreeze.text = main.equipmentSlots[existingItemSlotIndex].freezeChanceBonus.ToString();
-        textExistingItemFire.text = main.equipmentSlots[existingItemSlotIndex].fireChanceBonus.ToString();*/
     }
     public void UpdatePlayerTextStatsCoin()
     {

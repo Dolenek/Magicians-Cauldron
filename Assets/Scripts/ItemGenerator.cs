@@ -7,12 +7,13 @@ public class ItemGenerator : MonoBehaviour
     // Singleton pattern for ItemGenerator
     public static ItemGenerator Instance { get; private set; }
 
-    
+    private UIManager uiManager;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
     {
         // Ensure there is only one instance of ItemGenerator
+        uiManager = GetComponent<UIManager>();
         if (Instance == null)
         {
             Instance = this;
@@ -72,7 +73,12 @@ public class ItemGenerator : MonoBehaviour
                     break;
             }
         }
-
+        /*switch(newItem.itemType)
+        {
+            case ItemType.Outfit:
+                newItem.itemSprite = uiManager.spritesOutfit[Random.Range(0, uiManager.spritesOutfit.Length)];
+                break;
+        }*/
         return newItem;
     }
 }
