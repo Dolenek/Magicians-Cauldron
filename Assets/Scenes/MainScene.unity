@@ -6438,8 +6438,7 @@ MonoBehaviour:
     fireChanceBonus: 0
     comboChanceBonus: 0
     counterChanceBonus: 0
-    spriteRarity: {fileID: 0}
-    spriteSprite: {fileID: 0}
+    itemSprite: {fileID: 0}
   - itemLevel: 0
     healthBonus: 0
     resistanceBonus: 0
@@ -6451,8 +6450,7 @@ MonoBehaviour:
     fireChanceBonus: 0
     comboChanceBonus: 0
     counterChanceBonus: 0
-    spriteRarity: {fileID: 0}
-    spriteSprite: {fileID: 0}
+    itemSprite: {fileID: 0}
   - itemLevel: 0
     healthBonus: 0
     resistanceBonus: 0
@@ -6464,8 +6462,7 @@ MonoBehaviour:
     fireChanceBonus: 0
     comboChanceBonus: 0
     counterChanceBonus: 0
-    spriteRarity: {fileID: 0}
-    spriteSprite: {fileID: 0}
+    itemSprite: {fileID: 0}
   - itemLevel: 0
     healthBonus: 0
     resistanceBonus: 0
@@ -6477,8 +6474,7 @@ MonoBehaviour:
     fireChanceBonus: 0
     comboChanceBonus: 0
     counterChanceBonus: 0
-    spriteRarity: {fileID: 0}
-    spriteSprite: {fileID: 0}
+    itemSprite: {fileID: 0}
   - itemLevel: 0
     healthBonus: 0
     resistanceBonus: 0
@@ -6490,8 +6486,7 @@ MonoBehaviour:
     fireChanceBonus: 0
     comboChanceBonus: 0
     counterChanceBonus: 0
-    spriteRarity: {fileID: 0}
-    spriteSprite: {fileID: 0}
+    itemSprite: {fileID: 0}
   - itemLevel: 0
     healthBonus: 0
     resistanceBonus: 0
@@ -6503,8 +6498,7 @@ MonoBehaviour:
     fireChanceBonus: 0
     comboChanceBonus: 0
     counterChanceBonus: 0
-    spriteRarity: {fileID: 0}
-    spriteSprite: {fileID: 0}
+    itemSprite: {fileID: 0}
   - itemLevel: 0
     healthBonus: 0
     resistanceBonus: 0
@@ -6516,8 +6510,7 @@ MonoBehaviour:
     fireChanceBonus: 0
     comboChanceBonus: 0
     counterChanceBonus: 0
-    spriteRarity: {fileID: 0}
-    spriteSprite: {fileID: 0}
+    itemSprite: {fileID: 0}
   - itemLevel: 0
     healthBonus: 0
     resistanceBonus: 0
@@ -6529,8 +6522,7 @@ MonoBehaviour:
     fireChanceBonus: 0
     comboChanceBonus: 0
     counterChanceBonus: 0
-    spriteRarity: {fileID: 0}
-    spriteSprite: {fileID: 0}
+    itemSprite: {fileID: 0}
 --- !u!114 &1627701553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6638,12 +6630,13 @@ MonoBehaviour:
   spriteHeadwear8: {fileID: 21300000, guid: 29bc13c8875247947a6e88b89f35e74d, type: 3}
   spriteHeadwear9: {fileID: 21300000, guid: 4209bbd9ec5bfd84492e05580bd590b0, type: 3}
   spriteHeadwear10: {fileID: 21300000, guid: b00ad81568d2586408d9049f0b14383d, type: 3}
-  spriteOutfit1: {fileID: 21300000, guid: c8e5fa490bb2e904db1441e885ff2dc9, type: 3}
-  spriteOutfit2: {fileID: 21300000, guid: ace0036d82768394daf466cecbbf5882, type: 3}
-  spriteOutfit3: {fileID: 21300000, guid: ecab609b1797bec4ca8a3d2585c94d8e, type: 3}
-  spriteOutfit4: {fileID: 21300000, guid: 4d8d3314d3371c542970cc0398d8117b, type: 3}
-  spriteOutfit5: {fileID: 21300000, guid: 67a151bff887cdd41b5e7dcebc6f61e3, type: 3}
-  spriteOutfit6: {fileID: 21300000, guid: 4db82f176d8619940928ac2c7bb8dac2, type: 3}
+  spritesOutfit:
+  - {fileID: 21300000, guid: c8e5fa490bb2e904db1441e885ff2dc9, type: 3}
+  - {fileID: 21300000, guid: ace0036d82768394daf466cecbbf5882, type: 3}
+  - {fileID: 21300000, guid: ecab609b1797bec4ca8a3d2585c94d8e, type: 3}
+  - {fileID: 21300000, guid: 4d8d3314d3371c542970cc0398d8117b, type: 3}
+  - {fileID: 21300000, guid: 67a151bff887cdd41b5e7dcebc6f61e3, type: 3}
+  - {fileID: 21300000, guid: 4db82f176d8619940928ac2c7bb8dac2, type: 3}
   spriteOrb1: {fileID: 21300000, guid: 3eb9657ce19d8f145ae16e8f41f29dcc, type: 3}
   spriteOrb2: {fileID: 21300000, guid: 8d735d6f7be4e144082a2f709339cadd, type: 3}
   spriteOrb3: {fileID: 21300000, guid: 77130d70ccfc207409da2c482c9834f4, type: 3}
