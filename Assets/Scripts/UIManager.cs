@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text textPlayerEquippedItemScrollLevel;
     [SerializeField] private TMP_Text textPlayerEquippedItemHandwearLevel;
     [SerializeField] private TMP_Text textPlayerEquippedItemRingLevel;
-    [SerializeField] private TMP_Text textPlayerEquippedItemNecklesLevel;
+    [SerializeField] private TMP_Text textPlayerEquippedItemNecklaceLevel;
     [SerializeField] private TMP_Text textPlayerEquippedItemBootsLevel;
 
     [Header("Equipped Item Image Rarity")]
@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image imagePlayerEquippedItemScrollRarity;
     [SerializeField] private Image imagePlayerEquippedItemHandwearRarity;
     [SerializeField] private Image imagePlayerEquippedItemRingRarity;
-    [SerializeField] private Image imagePlayerEquippedItemNecklesRarity;
+    [SerializeField] private Image imagePlayerEquippedItemNecklaceRarity;
     [SerializeField] private Image imagePlayerEquippedItemBootsRarity;
 
     [Header("Equipped Item Image Sprites")]
@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image imagePlayerEquippedItemScrollSprite;
     [SerializeField] private Image imagePlayerEquippedItemHandwearSprite;
     [SerializeField] private Image imagePlayerEquippedItemRingSprite;
-    [SerializeField] private Image imagePlayerEquippedItemNecklesSprite;
+    [SerializeField] private Image imagePlayerEquippedItemNecklaceSprite;
     [SerializeField] private Image imagePlayerEquippedItemBootsSprite;
 
     [Header("Generated items Image Rarity and Sprites")]
@@ -102,92 +102,30 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Sprite spriteAncient;
     [SerializeField] private Sprite spriteGodly;
 
-    [Header("Wand Sprites")]    
-    [SerializeField] private Sprite spriteWand1;
-    [SerializeField] private Sprite spriteWand2;
-    [SerializeField] private Sprite spriteWand3;
-    [SerializeField] private Sprite spriteWand4;
-    [SerializeField] private Sprite spriteWand5;
-    [SerializeField] private Sprite spriteWand6;
-    [SerializeField] private Sprite spriteWand7;
-    [SerializeField] private Sprite spriteWand8;
-    [SerializeField] private Sprite spriteWand9;
-    [SerializeField] private Sprite spriteWand10;
-    [SerializeField] private Sprite spriteWand11;
-    [SerializeField] private Sprite spriteWand12;
-    [SerializeField] private Sprite spriteWand13;
+    [Header("Wand Sprites")]
+    [SerializeField] public Sprite[] spritesWand;
 
     [Header("Headwear Sprites")]
-    [SerializeField] private Sprite spriteHeadwear1;
-    [SerializeField] private Sprite spriteHeadwear2;
-    [SerializeField] private Sprite spriteHeadwear3;
-    [SerializeField] private Sprite spriteHeadwear4;
-    [SerializeField] private Sprite spriteHeadwear5;
-    [SerializeField] private Sprite spriteHeadwear6;
-    [SerializeField] private Sprite spriteHeadwear7;
-    [SerializeField] private Sprite spriteHeadwear8;
-    [SerializeField] private Sprite spriteHeadwear9;
-    [SerializeField] private Sprite spriteHeadwear10;
+    [SerializeField] public Sprite[] spritesHeadwear;
 
     [Header("Outfit Sprites")]
     [SerializeField] public Sprite[] spritesOutfit;
-    /*[SerializeField] private Sprite spriteOutfit1;
-    [SerializeField] private Sprite spriteOutfit2;
-    [SerializeField] private Sprite spriteOutfit3;
-    [SerializeField] private Sprite spriteOutfit4;
-    [SerializeField] private Sprite spriteOutfit5;
-    [SerializeField] private Sprite spriteOutfit6;*/
 
     [Header("Orb Sprites")]
-    [SerializeField] private Sprite spriteOrb1;
-    [SerializeField] private Sprite spriteOrb2;
-    [SerializeField] private Sprite spriteOrb3;
-    [SerializeField] private Sprite spriteOrb4;
-    [SerializeField] private Sprite spriteOrb5;
-    [SerializeField] private Sprite spriteOrb6;
-    [SerializeField] private Sprite spriteOrb7;
-    [SerializeField] private Sprite spriteOrb8;
-    [SerializeField] private Sprite spriteOrb9;
-    [SerializeField] private Sprite spriteOrb10;
+    [SerializeField] public Sprite[] spritesOrb;
 
     [Header("Handwear Sprites")]
-    [SerializeField] private Sprite spriteHandwear1;
-    [SerializeField] private Sprite spriteHandwear2;
-    [SerializeField] private Sprite spriteHandwear3;
-    [SerializeField] private Sprite spriteHandwear4;
+    [SerializeField] public Sprite[] spritesHandwear;
 
     [Header("Ring Sprites")]
-    [SerializeField] private Sprite spriteRing1;
-    [SerializeField] private Sprite spriteRing2;
-    [SerializeField] private Sprite spriteRing3;
-    [SerializeField] private Sprite spriteRing4;
-    [SerializeField] private Sprite spriteRing5;
-    [SerializeField] private Sprite spriteRing6;
-    [SerializeField] private Sprite spriteRing7;
-    [SerializeField] private Sprite spriteRing8;
+    [SerializeField] public Sprite[] spritesRing;
 
     [Header("Boots Sprites")]
-    [SerializeField] private Sprite spriteBoots1;
-    [SerializeField] private Sprite spriteBoots2;
-    [SerializeField] private Sprite spriteBoots3;
-    [SerializeField] private Sprite spriteBoots4;
-    [SerializeField] private Sprite spriteBoots5;
-    [SerializeField] private Sprite spriteBoots6;
+    [SerializeField] public Sprite[] spritesBoots;
 
-    [Header("Neckles Sprites")]
-    [SerializeField] private Sprite spriteNeckles1;
-    [SerializeField] private Sprite spriteNeckles2;
-    [SerializeField] private Sprite spriteNeckles3;
-    [SerializeField] private Sprite spriteNeckles4;
-    [SerializeField] private Sprite spriteNeckles5;
-    [SerializeField] private Sprite spriteNeckles6;
-    [SerializeField] private Sprite spriteNeckles7;
-    [SerializeField] private Sprite spriteNeckles8;
-    [SerializeField] private Sprite spriteNeckles9;
-    [SerializeField] private Sprite spriteNeckles10;
-    [SerializeField] private Sprite spriteNeckles11;
-    [SerializeField] private Sprite spriteNeckles12;
-    [SerializeField] private Sprite spriteNeckles13;
+    [Header("Necklace Sprites")]
+    [SerializeField] public Sprite[] spritesNecklace;
+    
 
 
     private Main main;
@@ -242,6 +180,33 @@ public class UIManager : MonoBehaviour
                 break;
             case ItemRarity.Legendary:
                 imageNewItemRarity.sprite = spriteLegendary;
+                break;
+        }
+        switch (newItem.itemType)
+        {
+            case ItemType.Wand:
+                imageNewItemSprite.sprite = spritesWand[newItem.itemIntSprite]; ;
+                break;
+            case ItemType.Headwear:
+                imageNewItemSprite.sprite = spritesHeadwear[newItem.itemIntSprite];
+                break;
+            case ItemType.Outfit:
+                imageNewItemSprite.sprite = spritesOutfit[newItem.itemIntSprite];
+                break;
+            case ItemType.Orb:
+                imageNewItemSprite.sprite = spritesOrb[newItem.itemIntSprite];
+                break;
+            case ItemType.Handwear:
+                imageNewItemSprite.sprite = spritesHandwear[newItem.itemIntSprite];
+                break;
+            case ItemType.Ring:
+                imageNewItemSprite.sprite = spritesRing[newItem.itemIntSprite];
+                break;
+            case ItemType.Necklace:
+                imageNewItemSprite.sprite = spritesNecklace[newItem.itemIntSprite];
+                break;
+            case ItemType.Boots:
+                imageNewItemSprite.sprite = spritesBoots[newItem.itemIntSprite];
                 break;
         }
         // Item UI
@@ -305,6 +270,38 @@ public class UIManager : MonoBehaviour
                    break;
             }
         }
+        // Set sprite based on item type
+        if (main.equipmentSlots[existingItemSlotIndex].itemSprite != null)
+        {
+            switch (main.equipmentSlots[existingItemSlotIndex].itemType)
+            {
+                case ItemType.Wand:
+                    imageExistingItemSprite.sprite = spritesWand[main.equipmentSlots[existingItemSlotIndex].itemIntSprite]; ;
+                    break;
+                case ItemType.Headwear:
+                    imageExistingItemSprite.sprite = spritesHeadwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Outfit:
+                    imageExistingItemSprite.sprite = spritesOutfit[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Orb:
+                    imageExistingItemSprite.sprite = spritesOrb[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Handwear:
+                    imageExistingItemSprite.sprite = spritesHandwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Ring:
+                    imageExistingItemSprite.sprite = spritesRing[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Necklace:
+                    imageExistingItemSprite.sprite = spritesNecklace[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Boots:
+                    imageExistingItemSprite.sprite = spritesBoots[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+            }
+        }
+        
         // Item UI
         textExistingItemLvl.text = "Lv. " + main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
         textExistingItemRarity.text = "[" + main.equipmentSlots[existingItemSlotIndex].itemRarity.ToString().ToUpper() + "]";
@@ -368,14 +365,14 @@ public class UIManager : MonoBehaviour
         textPlayerEquippedItemScrollLevel.text = "Lv. " + main.equipmentSlots[3].itemLevel.ToString();
         textPlayerEquippedItemHandwearLevel.text = "Lv. " + main.equipmentSlots[4].itemLevel.ToString();
         textPlayerEquippedItemRingLevel.text = "Lv. " + main.equipmentSlots[5].itemLevel.ToString();
-        textPlayerEquippedItemNecklesLevel.text = "Lv. " + main.equipmentSlots[6].itemLevel.ToString();
+        textPlayerEquippedItemNecklaceLevel.text = "Lv. " + main.equipmentSlots[6].itemLevel.ToString();
         textPlayerEquippedItemBootsLevel.text = "Lv. " + main.equipmentSlots[7].itemLevel.ToString();
 
     }
     public void UpdatePlayerItemSprites(int existingItemSlotIndex)
     {
-        Image[] spritePlayerEquippedItemRarity = { imagePlayerEquippedItemWandRarity, imagePlayerEquippedItemHeadwearRarity, imagePlayerEquippedItemOutfitRarity, imagePlayerEquippedItemScrollRarity, imagePlayerEquippedItemHandwearRarity, imagePlayerEquippedItemRingRarity, imagePlayerEquippedItemNecklesRarity, imagePlayerEquippedItemBootsRarity };
-        Image[] spritePlayerEquippedItemSprite = { imagePlayerEquippedItemWandSprite, imagePlayerEquippedItemHeadwearSprite, imagePlayerEquippedItemOutfitSprite, imagePlayerEquippedItemScrollSprite, imagePlayerEquippedItemHandwearSprite, imagePlayerEquippedItemRingSprite, imagePlayerEquippedItemNecklesSprite, imagePlayerEquippedItemBootsSprite };
+        Image[] spritePlayerEquippedItemRarity = { imagePlayerEquippedItemWandRarity, imagePlayerEquippedItemHeadwearRarity, imagePlayerEquippedItemOutfitRarity, imagePlayerEquippedItemScrollRarity, imagePlayerEquippedItemHandwearRarity, imagePlayerEquippedItemRingRarity, imagePlayerEquippedItemNecklaceRarity, imagePlayerEquippedItemBootsRarity };
+        Image[] spritePlayerEquippedItemSprite = { imagePlayerEquippedItemWandSprite, imagePlayerEquippedItemHeadwearSprite, imagePlayerEquippedItemOutfitSprite, imagePlayerEquippedItemScrollSprite, imagePlayerEquippedItemHandwearSprite, imagePlayerEquippedItemRingSprite, imagePlayerEquippedItemNecklaceSprite, imagePlayerEquippedItemBootsSprite };
         if (main.equipmentSlots[existingItemSlotIndex] != null)
         {
             switch (main.equipmentSlots[existingItemSlotIndex].itemRarity)
@@ -398,33 +395,34 @@ public class UIManager : MonoBehaviour
             }
 
         }
-        /*switch (main.equipmentSlots[existingItemSlotIndex].itemType)
+        
+        switch (main.equipmentSlots[existingItemSlotIndex].itemType)
         {
             case ItemType.Wand:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = ;
+                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesWand[main.equipmentSlots[existingItemSlotIndex].itemIntSprite]; ;
                 break;
             case ItemType.Headwear:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spriteHeadwear1;
+                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesHeadwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
                 break;
             case ItemType.Outfit:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spriteOutfit1;
+                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesOutfit[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
                 break;
-            case ItemType.Scroll:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spriteScroll1;
+            case ItemType.Orb:
+                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesOrb[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
                 break;
             case ItemType.Handwear:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spriteHandwear1;
+                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesHandwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
                 break;
             case ItemType.Ring:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spriteRing1;
+                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesRing[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
                 break;
             case ItemType.Necklace:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spriteNeckles1;
+                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesNecklace[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
                 break;
             case ItemType.Boots:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spriteBoots1;
+                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesBoots[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
                 break;
-        }   */
+        }   
 
     }
     

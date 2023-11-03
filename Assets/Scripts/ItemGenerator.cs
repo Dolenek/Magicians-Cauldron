@@ -73,12 +73,41 @@ public class ItemGenerator : MonoBehaviour
                     break;
             }
         }
-        /*switch(newItem.itemType)
+        switch(newItem.itemType)
         {
-            case ItemType.Outfit:
-                newItem.itemSprite = uiManager.spritesOutfit[Random.Range(0, uiManager.spritesOutfit.Length)];
+            case ItemType.Wand:
+                newItem.itemIntSprite = Random.Range(0, uiManager.spritesWand.Length);
+                newItem.itemSprite = uiManager.spritesWand[newItem.itemIntSprite];
                 break;
-        }*/
+            case ItemType.Headwear:
+                newItem.itemIntSprite = Random.Range(0, uiManager.spritesHeadwear.Length);
+                newItem.itemSprite = uiManager.spritesHeadwear[newItem.itemIntSprite];
+                break;
+            case ItemType.Outfit:
+                newItem.itemIntSprite = Random.Range(0, uiManager.spritesOutfit.Length);
+                newItem.itemSprite = uiManager.spritesOutfit[newItem.itemIntSprite];
+                break;
+            case ItemType.Orb:
+                newItem.itemIntSprite = Random.Range(0, uiManager.spritesOrb.Length);
+                newItem.itemSprite = uiManager.spritesOrb[newItem.itemIntSprite];
+                break;
+            case ItemType.Handwear:
+                newItem.itemIntSprite = Random.Range(0, uiManager.spritesHandwear.Length);
+                newItem.itemSprite = uiManager.spritesHandwear[newItem.itemIntSprite];
+                break;
+            case ItemType.Ring:
+                newItem.itemIntSprite = Random.Range(0, uiManager.spritesRing.Length);
+                newItem.itemSprite = uiManager.spritesRing[newItem.itemIntSprite];
+                break;
+            case ItemType.Necklace :
+                newItem.itemIntSprite = Random.Range(0, uiManager.spritesNecklace.Length);
+                newItem.itemSprite = uiManager.spritesNecklace[newItem.itemIntSprite];
+                break;
+            case ItemType.Boots:
+                newItem.itemIntSprite = Random.Range(0, uiManager.spritesBoots.Length);
+                newItem.itemSprite = uiManager.spritesBoots[newItem.itemIntSprite];
+                break;
+        }
         return newItem;
     }
 }

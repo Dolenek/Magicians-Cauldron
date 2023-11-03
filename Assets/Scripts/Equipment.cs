@@ -18,8 +18,8 @@ public class Item
     public float fireChanceBonus;
     public float comboChanceBonus;
     public float counterChanceBonus;
-
     public Sprite itemSprite;
+    public int itemIntSprite;
 }
 
 public enum ItemRarity
@@ -40,7 +40,7 @@ public enum ItemType
     Wand,
     Headwear,
     Outfit,
-    Scroll,
+    Orb,
     Handwear,
     Ring,
     Necklace,

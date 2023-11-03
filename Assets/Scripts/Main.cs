@@ -54,7 +54,7 @@ public class Main : MonoBehaviour
     private void Start()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
-        
+        DeleteSaveData();
         if (currentSceneName == "MainScene")
         {
             LoadPlayerData();
