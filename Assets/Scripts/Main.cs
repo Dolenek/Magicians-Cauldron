@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -29,13 +30,15 @@ public class Main : MonoBehaviour
     // Inventory
     public Item[] equipmentSlots = new Item[8];
 
-    // Equipped item index (corresponding to equipmentSlots)
+    //FX
+    [SerializeField] private GameObject clickFX;
+    [SerializeField] private RectTransform buttonPosition;
 
     private ItemGenerator itemGenerator;
     private UIManager uiManager;
     private EXPBarManager expBarManager;
 
-    // Initialize itemGenerator in Start or Awake
+
     private void Awake()
     {
         // Try to find the ItemGenerator component on the Player GameObject
@@ -65,13 +68,15 @@ public class Main : MonoBehaviour
     }
 
 
-    // In your Player script, call this when you want to generate and equip an item
-    public void GenerateAndEquipRandomItem()
+    public async void GenerateAndEquipRandomItem()
     {
         // Generate a random item based on player level
         if (hourglass > 0)
         {
             hourglass--;
+            // Animation
+            Instantiate(clickFX, buttonPosition.position, Quaternion.identity);
+            await Task.Delay(1000);
             Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
 
             // Check if the player already has an item of the same ItemType

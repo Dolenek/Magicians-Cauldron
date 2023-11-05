@@ -5,11 +5,11 @@ using UnityEngine;
 public class ItemGenerator : MonoBehaviour
 {
     // Singleton pattern for ItemGenerator
+    // Static znamená, že mùže existovat pouze jenom 1 instance této tøídy
     public static ItemGenerator Instance { get; private set; }
 
     private UIManager uiManager;
 
-    // Awake is called when the script instance is being loaded
     private void Awake()
     {
         // Ensure there is only one instance of ItemGenerator

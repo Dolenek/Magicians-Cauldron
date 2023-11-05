@@ -4801,7 +4801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120.00014
+      value: -120.00009
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6644,6 +6644,8 @@ MonoBehaviour:
     counterChanceBonus: 0
     itemSprite: {fileID: 0}
     itemIntSprite: 0
+  clickFX: {fileID: 5411376050152322402, guid: a6f37ea391b1c0141a4eaac0dd814734, type: 3}
+  buttonPosition: {fileID: 280638508}
 --- !u!114 &1627701553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8910,7 +8912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120.00014
+      value: -120.00009
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
