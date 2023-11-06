@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 54526497}
   - component: {fileID: 54526499}
   - component: {fileID: 54526498}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: TextButtonEquip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,13 +349,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameSpeedNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatSpeedNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: SpeedNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
@@ -415,7 +427,7 @@ GameObject:
   - component: {fileID: 75883018}
   - component: {fileID: 75883020}
   - component: {fileID: 75883019}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: TextButtonSell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1406,13 +1418,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameDamageNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatDamageNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: DamageNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
@@ -1751,13 +1775,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameSpeedExisting
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatSpeedExisting
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: SpeedExisting
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
@@ -2201,13 +2237,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameHPExisting
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatHPExisting
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: HPExisting
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
@@ -2371,13 +2419,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameExtraBuffNew2
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatExtraBuffNew2
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: ExtraBuffNew2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_IsActive
@@ -3288,7 +3348,7 @@ GameObject:
   - component: {fileID: 898293498}
   - component: {fileID: 898293500}
   - component: {fileID: 898293499}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: TextTMPNEW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3924,13 +3984,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameResistanceNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatResistanceNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: ResistanceNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
@@ -4288,13 +4360,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameExtraBuffExisting2
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatExtraBuffExisting2
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: ExtraBuffExisting2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_IsActive
@@ -4393,7 +4477,7 @@ GameObject:
   - component: {fileID: 1214299354}
   - component: {fileID: 1214299356}
   - component: {fileID: 1214299355}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: PanelEquipOrSell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4579,13 +4663,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameHPNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatHPNew
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: HPNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
@@ -4801,7 +4897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120.00009
+      value: -120.00011
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4823,13 +4919,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNewItemRarity
       objectReference: {fileID: 0}
+    - target: {fileID: 7631882389316480729, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8021164008626859877, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_Name
       value: TextTMPNewItemType
       objectReference: {fileID: 0}
+    - target: {fileID: 8021164008626859877, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 9011563125813214432, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_Name
       value: NameItemNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011563125813214432, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5889,13 +5997,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameDamageExisting
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatDamageExisting
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: DamageExisting
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
@@ -5929,6 +6049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextExistingItemLvl
       objectReference: {fileID: 0}
+    - target: {fileID: 72367890266534020, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5937,9 +6061,17 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1158472944506623066, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
       value: ItemExisting
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5520037300140445843, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Color.a
@@ -5956,6 +6088,10 @@ PrefabInstance:
     - target: {fileID: 5520037300140445843, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158066483782878977, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6813363907503742637, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Pivot.x
@@ -6037,6 +6173,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8146334827955962724, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735309073997510271, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6059,6 +6203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextNewItemLvl
       objectReference: {fileID: 0}
+    - target: {fileID: 72367890266534020, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 716802407163424432, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6067,9 +6215,17 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1158472944506623066, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Name
       value: ItemNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728371262135717510, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5520037300140445843, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Color.a
@@ -6086,6 +6242,10 @@ PrefabInstance:
     - target: {fileID: 5520037300140445843, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158066483782878977, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6813363907503742637, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_Pivot.x
@@ -6166,6 +6326,14 @@ PrefabInstance:
     - target: {fileID: 6813363907503742637, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8146334827955962724, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735309073997510271, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6430,13 +6598,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameExtraBuffNew1
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatExtraBuffNew1
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: ExtraBuffNew1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_IsActive
@@ -6946,7 +7126,7 @@ GameObject:
   - component: {fileID: 1667145493}
   - component: {fileID: 1667145492}
   - component: {fileID: 1667145491}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: ButtonEquip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7312,13 +7492,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameResistanceExisting
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatResistanceExisting
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: ResistanceExisting
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7410889763703103805, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_text
@@ -8164,7 +8356,7 @@ GameObject:
   - component: {fileID: 1919041075}
   - component: {fileID: 1919041074}
   - component: {fileID: 1919041073}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: ButtonSell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8717,13 +8909,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPNameExtraBuffExisting1
       objectReference: {fileID: 0}
+    - target: {fileID: 5452810290812427844, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: TextTMPStatExtraBuffExisting1
       objectReference: {fileID: 0}
+    - target: {fileID: 5554421185504518136, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_Name
       value: ExtraBuffExisting1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6866338393373428861, guid: 65c08164e71ed554d8b38dcc9ca42796, type: 3}
       propertyPath: m_IsActive
@@ -8912,7 +9116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120.00009
+      value: -120.00011
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8934,13 +9138,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTMPExistingItemRarity
       objectReference: {fileID: 0}
+    - target: {fileID: 7631882389316480729, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8021164008626859877, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_Name
       value: TextTMPExistingItemType
       objectReference: {fileID: 0}
+    - target: {fileID: 8021164008626859877, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 9011563125813214432, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_Name
       value: NameItemExisting
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011563125813214432, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

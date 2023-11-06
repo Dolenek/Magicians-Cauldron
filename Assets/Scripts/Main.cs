@@ -63,10 +63,11 @@ public class Main : MonoBehaviour
             LoadPlayerData();
             UpdateStats();
             uiManager.UpdateAllMainUI();
+            uiManager.panelEquipOrSell.SetActive(false);
         }
         
     }
-
+    
 
     public async void GenerateAndEquipRandomItem()
     {
@@ -75,8 +76,11 @@ public class Main : MonoBehaviour
         {
             hourglass--;
             // Animation
-            Instantiate(clickFX, buttonPosition.position, Quaternion.identity);
-            await Task.Delay(1000);
+            Vector3 buttonNewPosition = buttonPosition.position;
+            buttonNewPosition.z = 0; buttonNewPosition.y += 0;
+            Vector3 coneDirection = Quaternion.Euler(0, 0, 90) * Vector3.right;
+            Instantiate(clickFX, buttonNewPosition, Quaternion.LookRotation(coneDirection));
+            await Task.Delay(2000);
             Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
 
             // Check if the player already has an item of the same ItemType
