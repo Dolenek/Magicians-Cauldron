@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 [System.Serializable]
 public class Quest
 {
@@ -35,6 +36,11 @@ public class QuestGiver : MonoBehaviour
             hourglassRewardText.text = quest.hourglassReward.ToString();
         }
 
+    }
+    public void SetQuest(int number)
+    {
+        QuestsSO quest = QuestDatabase.instance.GetQuest(number);
+        
     }
 }
 [System.Serializable]

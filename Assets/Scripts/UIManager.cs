@@ -26,6 +26,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject panelEquipOrSell;
     [SerializeField] public Button buttonEquip;
     [SerializeField] public Button buttonSell;
+    
+    [Header("Quests")]
+    [SerializeField] public TMP_Text textQuestTitle;
+    [SerializeField] public TMP_Text textQuestObjective;
+    [SerializeField] public TMP_Text textQuestHourglassReward;
+    [SerializeField] public Image imageQuest;
 
     [Header("Generated New Item Stats UI")]
     [SerializeField] private TMP_Text textNewItemHealth;
