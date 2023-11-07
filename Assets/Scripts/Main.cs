@@ -34,6 +34,7 @@ public class Main : MonoBehaviour
     [SerializeField] private GameObject clickFX;
     [SerializeField] private RectTransform buttonPosition;
 
+    private Quest quest;
     private ItemGenerator itemGenerator;
     private UIManager uiManager;
     private EXPBarManager expBarManager;
@@ -82,6 +83,17 @@ public class Main : MonoBehaviour
             Instantiate(clickFX, buttonNewPosition, Quaternion.LookRotation(coneDirection));
             await Task.Delay(2000);
             Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
+
+            //Quest
+            // Check if the player has any active quests
+            if (quest.isActive)
+            {
+                quest.goal.ItemGenerated();
+                if (quest.goal.IsReached())
+                {
+                    hourglass += quest.hourglassReward;
+                }
+            }
 
             // Check if the player already has an item of the same ItemType
             ItemType newItemType = newItem.itemType;
