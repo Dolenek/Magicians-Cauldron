@@ -7449,6 +7449,10 @@ MonoBehaviour:
   panelEquipOrSell: {fileID: 1214299353}
   buttonEquip: {fileID: 1667145491}
   buttonSell: {fileID: 1919041073}
+  textQuestTitle: {fileID: 192380977}
+  textQuestObjective: {fileID: 1426132386}
+  textQuestHourglassReward: {fileID: 90481050}
+  imageQuest: {fileID: 1973122766}
   textNewItemHealth: {fileID: 1268296390}
   textNewItemDamage: {fileID: 254864307}
   textNewItemResistance: {fileID: 1005718318}
