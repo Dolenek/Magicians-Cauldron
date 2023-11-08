@@ -16,12 +16,14 @@ public class DungeonsManager : MonoBehaviour
 
     public int islandLevel = 1;
 
+    private Main main;
     private BattleManager battleManager;
 
     private void Awake()
     {
         battleManager = GetComponent<BattleManager>();
-        battleManager.stage = PlayerPrefs.GetInt("CurrentStage");
+        main = GetComponent<Main>();
+        main.currentStage = PlayerPrefs.GetInt("CurrentStage");
     }
 
     public void ShowAttackPanel()
@@ -29,9 +31,9 @@ public class DungeonsManager : MonoBehaviour
         panelAttack.SetActive(true);
         buttonAttack.onClick.AddListener(() => Attack());
 
-        textStage.text = "Stage: " + battleManager.stage.ToString();
+        textStage.text = "Stage: " + main.currentStage.ToString();
 
-        battleManager.SetEnemies(islandLevel, battleManager.stage);
+        battleManager.SetEnemies(islandLevel, main.currentStage);
 
     }
 

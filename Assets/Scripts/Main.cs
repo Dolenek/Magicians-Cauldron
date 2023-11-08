@@ -29,6 +29,8 @@ public class Main : MonoBehaviour
     public int gems;
     public int hourglass;
 
+    public int currentStage;
+
     // Inventory
     public Item[] equipmentSlots = new Item[8];
 
@@ -36,11 +38,12 @@ public class Main : MonoBehaviour
     [SerializeField] private GameObject clickFX;
     [SerializeField] private RectTransform buttonPosition;
 
-    private Quest quest;
+    //private Quest quest;
     private ItemGenerator itemGenerator;
     private UIManager uiManager;
     private EXPBarManager expBarManager;
     private QuestDatabase questDatabase;
+    private QuestsSO questsSO;
 
     private void Awake()
     {
@@ -74,8 +77,7 @@ public class Main : MonoBehaviour
 
     }
 
-
-    public async void GenerateAndEquipRandomItem()
+    public void GenerateAndEquipRandomItem()
     {
         // Generate a random item based on player level
         if (hourglass > 0)
@@ -85,19 +87,19 @@ public class Main : MonoBehaviour
             Vector3 buttonNewPosition = buttonPosition.position;
             buttonNewPosition.z = 0; buttonNewPosition.y += 0;
             Vector3 coneDirection = Quaternion.Euler(0, 0, 90) * Vector3.right;
-            Instantiate(clickFX, buttonNewPosition, Quaternion.LookRotation(coneDirection));
-            await Task.Delay(2000);
-            Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
 
-            //Quest
-            // Check if the player has any active quests
-            if (quest.isActive)
+            //Instantiate(clickFX, buttonNewPosition, Quaternion.LookRotation(coneDirection));
+            //await Task.Delay(2000);
+
+            Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
+            SetQuest(questDatabase.currentQuest);
+            //Quests
+            if (questsSO.goalType == GoalType.GenerateItem)
             {
-                quest.goal.ItemGenerated();
-                uiManager.UpdateQuestUI();
-                if (quest.goal.IsReached())
+                if (!questsSO.IsReached())
                 {
-                    hourglass += quest.hourglassReward;
+                    questsSO.currentAmount++;
+                    uiManager.UpdateQuestUI();
                 }
             }
 
@@ -273,6 +275,8 @@ public class Main : MonoBehaviour
         saveData.freezeChance = freezeChance;
         saveData.fireChance = fireChance;
         saveData.hourglass = hourglass;
+        saveData.currentQuest = questDatabase.currentQuest;
+        saveData.currentStage = currentStage;
         // Save player inventory
         saveData.equipmentSlots = new ItemData[equipmentSlots.Length];
         for (int i = 0; i < equipmentSlots.Length; i++)
@@ -320,7 +324,8 @@ public class Main : MonoBehaviour
             freezeChance = saveData.freezeChance;
             fireChance = saveData.fireChance;
             hourglass = saveData.hourglass;
-
+            questDatabase.currentQuest = saveData.currentQuest;
+            currentStage = saveData.currentStage;
             // Load player inventory
             for (int i = 0; i < equipmentSlots.Length; i++)
             {
@@ -352,6 +357,16 @@ public class Main : MonoBehaviour
 
         }
     }
+    public void CompleteQuest()
+    {
+        if (questsSO.IsReached())
+        {
+            hourglass += questsSO.hourglass;
+            questDatabase.currentQuest++;
+            uiManager.UpdateAllMainUI();
+        }
+    }
+
     public void DeleteSaveData()
     {
         string savePath = Application.persistentDataPath + "/saveData.dat";
@@ -359,6 +374,11 @@ public class Main : MonoBehaviour
         {
             File.Delete(savePath);
         }
+    }
+    private void SetQuest(int number)
+    {
+        QuestsSO quest = QuestDatabase.instance.GetQuest(number);
+        questsSO = quest;
     }
 }
 

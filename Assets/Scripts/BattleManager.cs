@@ -14,8 +14,6 @@ public class BattleManager : MonoBehaviour
     private bool playerTurn = true;
     private bool battleOngoing = false;
 
-    public int stage;
-
     [SerializeField] public GameObject panelWin;
     [SerializeField] public GameObject panelLose;
 
@@ -33,11 +31,11 @@ public class BattleManager : MonoBehaviour
         {
             main = gameObject.AddComponent<Main>();
         }
-        stage = PlayerPrefs.GetInt("CurrentStage", 1);
+        main.currentStage = PlayerPrefs.GetInt("CurrentStage", 1);
         if (currentSceneName == "Battle")
         {
 
-            SetEnemies(1, stage);
+            SetEnemies(1, main.currentStage);
         }
     }
 
@@ -128,15 +126,15 @@ public class BattleManager : MonoBehaviour
         main.hourglass = main.hourglass + enemyStatsSO.hourglass;
         main.SavePlayerData();
         battleOngoing = false;
-        if (stage == 30)
+        if (main.currentStage == 30)
         {
-            stage = 1;
+            main.currentStage = 1;
         }
         else
         {
-            stage++;
+            main.currentStage++;
         }
-        PlayerPrefs.SetInt("CurrentStage", stage);
+        PlayerPrefs.SetInt("CurrentStage", main.currentStage);
         PlayerPrefs.Save();
 
     }

@@ -435,7 +435,7 @@ public class UIManager : MonoBehaviour
         }   
 
     }
-    public void SetQuest(int number)
+    private void SetQuest(int number)
     {
         QuestsSO quest = QuestDatabase.instance.GetQuest(number);
         questsSO = quest;
@@ -446,10 +446,28 @@ public class UIManager : MonoBehaviour
         
         SetQuest(questDatabase.currentQuest);
         // Quest UI
-        Debug.Log(questDatabase.currentQuest);
-        Debug.Log(questsSO);
+        Debug.Log("Updated Quest UI " + questsSO.title);
         textQuestTitle.text = questsSO.title;
-        textQuestObjective.text = questsSO.objective;
+        if (questsSO.goalType == GoalType.GenerateItem)
+        {
+            if (questsSO.currentAmount >= questsSO.requiredAmount)
+            {
+                textQuestObjective.text = "<color=green>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
+            }
+            else
+            {
+                textQuestObjective.text = "<color=red>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
+            }
+        }
+        /*else if (questsSO.goalType == GoalType.ReachStage)
+        {
+            textQuestObjective.text = "<color=red>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
+        }
+        else if (questsSO.goalType == GoalType.ReachLevel)
+        {
+            textQuestObjective.text = "<color=red>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
+        }*/
+        
         textQuestHourglassReward.text = questsSO.hourglass.ToString();
         //imageQuest.sprite = main.questSprite;
     }

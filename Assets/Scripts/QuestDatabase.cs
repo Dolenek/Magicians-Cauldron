@@ -21,36 +21,42 @@ public class QuestDatabase : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        Debug.Log("QuestDatabase Awoken");
+        Debug.Log("QuestDatabase Started");
 
         QuestsSO quest1 = ScriptableObject.CreateInstance<QuestsSO>();
         quest1.number = 1;
+        quest1.goalType = GoalType.GenerateItem;
         quest1.title = "Generate 5 items";
-        quest1.objective = "<color=red>" + quest1.currentAmount + " <color=white>/ " + quest1.requiredAmount;
-        quest1.goal = GoalType.GenerateItem;
         quest1.requiredAmount = 5;
         quest1.hourglass = 10;
         quests.Add(quest1);
 
         QuestsSO quest2 = ScriptableObject.CreateInstance<QuestsSO>();
         quest2.number = 2;
-        quest1.goal = GoalType.GenerateItem;
-        quest1.requiredAmount = 20;
+        quest2.goalType = GoalType.GenerateItem;
+        quest2.title = "Generate 10 items";
+        quest2.requiredAmount = 10;
         quest2.hourglass = 20;
         quests.Add(quest2);
+
+        QuestsSO quest3 = ScriptableObject.CreateInstance<QuestsSO>();
+        quest3.number = 3;
+        quest3.goalType = GoalType.GenerateItem;
+        quest3.title = "Generate 20 items";
+        quest3.requiredAmount = 20;
+        quest3.hourglass = 30;
+        quests.Add(quest3);
     }
+
 
     public QuestsSO GetQuest(int questNumber)
     {
-        Debug.Log("got quest");
         foreach (QuestsSO quest in quests)
         {
             if (quest.number == questNumber)
             {
                 Debug.Log("Quest Loaded via GetQuest: " + quest.number);
                 return quest;
-
             }
         }
         return null;

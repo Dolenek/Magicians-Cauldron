@@ -7,8 +7,10 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
+    
     public int playerLevel;
     public int playerCurrentExp;
+
     public int health;
     public int resistance;
     public int damage;
@@ -17,8 +19,16 @@ public class SaveData
     public float counterChance;
     public float freezeChance;
     public float fireChance;
+
     public int gold;
+    public int gems;
     public int hourglass;
+
+    public int currentStage;
+    public int currentIsland;
+
+    public int currentQuest;
+
     public ItemData[] equipmentSlots;
 }
 
