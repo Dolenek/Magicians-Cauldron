@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     private CharacterStats playerStats;
-    private EnemyStatsSO enemyStats;
+    private EnemyStatsSO enemyStatsSO;
     private Main main;
 
     private bool playerTurn = true;
@@ -59,8 +59,8 @@ public class BattleManager : MonoBehaviour
             Debug.Log("Player dmg " + playerStats.damage);
 
             // Enemy stats
-            Debug.Log("Enemy dmg " + enemyStats.damage);
-            if (playerStats.speed < enemyStats.speed)
+            Debug.Log("Enemy dmg " + enemyStatsSO.damage);
+            if (playerStats.speed < enemyStatsSO.speed)
             {
                 playerTurn = false;
             }
@@ -81,13 +81,13 @@ public class BattleManager : MonoBehaviour
             {
                 Debug.Log("Player turn");
 
-                enemyStats.health = enemyStats.health - (playerStats.damage - enemyStats.resistance);
+                enemyStatsSO.health = enemyStatsSO.health - (playerStats.damage - enemyStatsSO.resistance);
 
             }
             else //Enemy turn
             {
                 Debug.Log("Enemy turn");
-                playerStats.health = playerStats.health - (enemyStats.damage - playerStats.resistance);
+                playerStats.health = playerStats.health - (enemyStatsSO.damage - playerStats.resistance);
 
             }
 
@@ -98,7 +98,7 @@ public class BattleManager : MonoBehaviour
                 panelLose.SetActive(true);
 
             }
-            else if (enemyStats.health <= 0) // Win
+            else if (enemyStatsSO.health <= 0) // Win
             {
                 BattleWon();
                 panelWin.SetActive(true);
@@ -125,7 +125,7 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("Battle Won");
 
-        main.hourglass = main.hourglass + enemyStats.hourglass;
+        main.hourglass = main.hourglass + enemyStatsSO.hourglass;
         main.SavePlayerData();
         battleOngoing = false;
         if (stage == 30)
@@ -143,6 +143,6 @@ public class BattleManager : MonoBehaviour
     public void SetEnemies(int island, int stage)
     {
         EnemyStatsSO enemy = EnemyDatabase.instance.GetEnemy(island, stage);
-        enemyStats = enemy;
+        enemyStatsSO = enemy;
     }
 }

@@ -5357,7 +5357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120.00011
+      value: -120.00012
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7266,6 +7266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1627701551}
+  - component: {fileID: 1627701556}
   - component: {fileID: 1627701553}
   - component: {fileID: 1627701552}
   - component: {fileID: 1627701554}
@@ -7618,6 +7619,21 @@ MonoBehaviour:
   textEXP: {fileID: 324033703}
   maxXP: 100
   currentXP: 0
+--- !u!114 &1627701556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627701550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d15ab455592b04db3d1108d817aed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests: []
+  questsSO: {fileID: 0}
+  currentQuest: 1
 --- !u!1 &1645811243
 GameObject:
   m_ObjectHideFlags: 0
@@ -9912,7 +9928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120.00011
+      value: -120.00012
       objectReference: {fileID: 0}
     - target: {fileID: 7505714346478943975, guid: f936e3da434973045b90d813d3c1a24a, type: 3}
       propertyPath: m_AnchoredPosition.y

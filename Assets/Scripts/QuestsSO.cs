@@ -5,9 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewQuest", menuName = "Quest")]
 public class QuestsSO : ScriptableObject
 {
+
     public int number;
 
-    public QuestGoal goal;
+    public GoalType goal;
     public string title;
     public string objective;
     public int currentAmount;

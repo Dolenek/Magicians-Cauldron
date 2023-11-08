@@ -49,6 +49,13 @@ public class QuestGoal
             
         }
     }   
+    public void NewItemGenerated()
+    {
+        if (goalType == GoalType.GenerateItem)
+        {
+            currentAmount++;
+        }
+    }
 }
 public enum GoalType
 {

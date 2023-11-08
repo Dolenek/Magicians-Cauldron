@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
+
+
 public class Main : MonoBehaviour
 {
     // Player stats
@@ -38,7 +40,7 @@ public class Main : MonoBehaviour
     private ItemGenerator itemGenerator;
     private UIManager uiManager;
     private EXPBarManager expBarManager;
-
+    private QuestDatabase questDatabase;
 
     private void Awake()
     {
@@ -46,29 +48,32 @@ public class Main : MonoBehaviour
         itemGenerator = GetComponent<ItemGenerator>();
         uiManager = GetComponent<UIManager>();
         expBarManager = GetComponent<EXPBarManager>();
+        questDatabase = GetComponent<QuestDatabase>();
         // If it's still null, create and attach the component
         if (itemGenerator == null)
         {
             itemGenerator = gameObject.AddComponent<ItemGenerator>();
         }
-        
+
     }
 
 
     private void Start()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
+        
         DeleteSaveData();
         if (currentSceneName == "MainScene")
         {
+
             LoadPlayerData();
             UpdateStats();
             uiManager.UpdateAllMainUI();
             uiManager.panelEquipOrSell.SetActive(false);
         }
-        
+
     }
-    
+
 
     public async void GenerateAndEquipRandomItem()
     {
@@ -89,6 +94,7 @@ public class Main : MonoBehaviour
             if (quest.isActive)
             {
                 quest.goal.ItemGenerated();
+                uiManager.UpdateQuestUI();
                 if (quest.goal.IsReached())
                 {
                     hourglass += quest.hourglassReward;
@@ -342,8 +348,8 @@ public class Main : MonoBehaviour
                 UpdateStats();
                 uiManager.UpdateAllMainUI();
             }
-          
-            
+
+
         }
     }
     public void DeleteSaveData()

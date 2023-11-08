@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject panelEquipOrSell;
     [SerializeField] public Button buttonEquip;
     [SerializeField] public Button buttonSell;
-    
+
     [Header("Quests")]
     [SerializeField] public TMP_Text textQuestTitle;
     [SerializeField] public TMP_Text textQuestObjective;
@@ -131,9 +131,10 @@ public class UIManager : MonoBehaviour
 
     [Header("Necklace Sprites")]
     [SerializeField] public Sprite[] spritesNecklace;
-    
 
 
+    private QuestDatabase questDatabase;
+    private QuestsSO questsSO;
     private Main main;
 
     // Initialize itemGenerator in Start or Awake
@@ -141,7 +142,7 @@ public class UIManager : MonoBehaviour
     {
         // Try to find the ItemGenerator component on the Player GameObject
         main = GetComponent<Main>();
-
+        questDatabase = GetComponent<QuestDatabase>();
         // If it's still null, create and attach the component
         if (main == null)
         {
@@ -154,6 +155,9 @@ public class UIManager : MonoBehaviour
         // Main UI Update
         UpdatePlayerTextStatsCoin();
         UpdatePlayerTextItemLevel();
+        UpdateQuestUI();
+
+        //Èerná na èerný, odebrat lvly když nejsou
 
         // Making sure that the generated ExtraBuffs dont show up when they arent supposed to.
         textExistingItemExtraBuffName1.enabled = false;
@@ -431,5 +435,23 @@ public class UIManager : MonoBehaviour
         }   
 
     }
-    
+    public void SetQuest(int number)
+    {
+        QuestsSO quest = QuestDatabase.instance.GetQuest(number);
+        questsSO = quest;
+    }
+
+    public void UpdateQuestUI()
+    {
+        
+        SetQuest(questDatabase.currentQuest);
+        // Quest UI
+        Debug.Log(questDatabase.currentQuest);
+        Debug.Log(questsSO);
+        textQuestTitle.text = questsSO.title;
+        textQuestObjective.text = questsSO.objective;
+        textQuestHourglassReward.text = questsSO.hourglass.ToString();
+        //imageQuest.sprite = main.questSprite;
+    }
+
 }
