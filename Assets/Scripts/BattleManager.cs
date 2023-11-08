@@ -51,7 +51,7 @@ public class BattleManager : MonoBehaviour
 
             // Player stats
             playerStats.damage = main.damage;
-            playerStats.health = main.health - 50;
+            playerStats.health = main.health;
             playerStats.speed = main.speed;
             playerStats.resistance = main.resistance;
             Debug.Log("Player dmg " + playerStats.damage);

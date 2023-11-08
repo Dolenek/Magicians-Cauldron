@@ -46,6 +46,14 @@ public class QuestDatabase : MonoBehaviour
         quest3.requiredAmount = 20;
         quest3.hourglass = 30;
         quests.Add(quest3);
+
+        QuestsSO quest4 = ScriptableObject.CreateInstance<QuestsSO>();
+        quest4.number = 4;
+        quest4.goalType = GoalType.ReachLevel;
+        quest4.title = "Reach Level 100";
+        quest4.requiredAmount = 100;
+        quest4.hourglass = 666;
+        quests.Add(quest4);
     }
 
 

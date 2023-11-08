@@ -31,6 +31,8 @@ public class Main : MonoBehaviour
 
     public int currentStage;
 
+    private bool delayIsActive = false;
+
     // Inventory
     public Item[] equipmentSlots = new Item[8];
 
@@ -77,20 +79,22 @@ public class Main : MonoBehaviour
 
     }
 
-    public void GenerateAndEquipRandomItem()
+    public async void GenerateAndEquipRandomItem()
     {
         // Generate a random item based on player level
-        if (hourglass > 0)
+        if (hourglass > 0 && delayIsActive == false)
         {
+            
             hourglass--;
             // Animation
             Vector3 buttonNewPosition = buttonPosition.position;
             buttonNewPosition.z = 0; buttonNewPosition.y += 0;
             Vector3 coneDirection = Quaternion.Euler(0, 0, 90) * Vector3.right;
 
-            //Instantiate(clickFX, buttonNewPosition, Quaternion.LookRotation(coneDirection));
-            //await Task.Delay(2000);
-
+            Instantiate(clickFX, buttonNewPosition, Quaternion.LookRotation(coneDirection));
+            delayIsActive = true;
+            await Task.Delay(2000);
+            delayIsActive = false;
             Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
             SetQuest(questDatabase.currentQuest);
             //Quests

@@ -459,14 +459,14 @@ public class UIManager : MonoBehaviour
                 textQuestObjective.text = "<color=red>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
             }
         }
-        /*else if (questsSO.goalType == GoalType.ReachStage)
+        else if (questsSO.goalType == GoalType.ReachStage)
         {
-            textQuestObjective.text = "<color=red>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
+            textQuestObjective.text = "<color=red>" + main.currentStage + "<color=white> / " + questsSO.requiredAmount;
         }
         else if (questsSO.goalType == GoalType.ReachLevel)
         {
-            textQuestObjective.text = "<color=red>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
-        }*/
+            textQuestObjective.text = "<color=red>" + main.playerLevel + "<color=white> / " + questsSO.requiredAmount;
+        }
         
         textQuestHourglassReward.text = questsSO.hourglass.ToString();
         //imageQuest.sprite = main.questSprite;
