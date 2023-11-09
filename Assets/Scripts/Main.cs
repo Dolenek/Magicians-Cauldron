@@ -145,22 +145,58 @@ public class Main : MonoBehaviour
     {
 
         // Show the UI panel with the stats and options
-        uiManager.panelEquipOrSell.SetActive(true);
-        // Show the stats of newly generated item
-        uiManager.ShowNewItemText(newItem);
-        // Show the stats of the already equipped item
-        uiManager.ShowExistingItemText(existingItemSlotIndex);
+        Debug.Log(equipmentSlots[existingItemSlotIndex]);
+        if (equipmentSlots[existingItemSlotIndex].damageBonus == 0)
+        {
+            uiManager.panelEquipOrSellFirst.SetActive(true);
+            // Show the stats of newly generated item
+            uiManager.ShowNewFirstItemText(newItem);
 
-        // Remove any existing listeners first
-        uiManager.buttonEquip.onClick.RemoveAllListeners();
-        uiManager.buttonSell.onClick.RemoveAllListeners();
+            // Remove any existing listeners first
+            uiManager.buttonEquipFirst.onClick.RemoveAllListeners();
 
-        // Add button click events to handle player choice
-        uiManager.buttonEquip.onClick.AddListener(() => ReplaceItemWithNew(newItem, existingItemSlotIndex));
-        uiManager.buttonSell.onClick.AddListener(() => SellNewItemAtExisting(newItem));
+            // Add button click events to handle player choice
+            uiManager.buttonEquipFirst.onClick.AddListener(() => EquipFirstItem(newItem, existingItemSlotIndex));
+        }
+        else
+        {
+            uiManager.panelEquipOrSell.SetActive(true);
+            // Show the stats of newly generated item
+            uiManager.ShowNewItemText(newItem);
+            // Show the stats of the already equipped item
+            uiManager.ShowExistingItemText(existingItemSlotIndex);
+
+            // Remove any existing listeners first
+            uiManager.buttonEquip.onClick.RemoveAllListeners();
+            uiManager.buttonSell.onClick.RemoveAllListeners();
+
+            // Add button click events to handle player choice
+            uiManager.buttonEquip.onClick.AddListener(() => ReplaceItemWithNew(newItem, existingItemSlotIndex));
+            uiManager.buttonSell.onClick.AddListener(() => SellNewItemAtExisting(newItem));
+        }
+        
+        
     }
 
     // Handler for the "Replace" button
+    private void EquipFirstItem(Item newItem, int existingItemSlotIndex)
+    {
+
+        // Equip the new item in place of the existing item
+        equipmentSlots[existingItemSlotIndex] = newItem;
+
+        // Update player stats
+        UpdateStats();
+        uiManager.UpdateAllMainUI();
+        // Update player item sprites in players inventory
+        uiManager.UpdatePlayerItemSprites(existingItemSlotIndex);
+        // Close the UI panel
+        uiManager.panelEquipOrSellFirst.SetActive(false);
+        uiManager.textNewFirstItemExtraBuffStat1.enabled = false;
+        uiManager.textNewFirstItemExtraBuffName1.enabled = false;
+
+        SavePlayerData();
+    }
     private void ReplaceItemWithNew(Item newItem, int existingItemSlotIndex)
     {
         // Sell the existing item before equipping the new one

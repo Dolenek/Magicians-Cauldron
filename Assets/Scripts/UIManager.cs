@@ -26,6 +26,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject panelEquipOrSell;
     [SerializeField] public Button buttonEquip;
     [SerializeField] public Button buttonSell;
+    [SerializeField] public GameObject panelEquipOrSellFirst;
+    [SerializeField] public Button buttonEquipFirst;
+    [SerializeField] public Button buttonSellFirst;
 
     [Header("Quests")]
     [SerializeField] public TMP_Text textQuestTitle;
@@ -53,6 +56,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] public TMP_Text textExistingItemExtraBuffName1;
     [SerializeField] public TMP_Text textExistingItemExtraBuffName2;
 
+    [Header("Generated New Item First Stats UI")]
+    [SerializeField] private TMP_Text textNewFirstItemHealth;
+    [SerializeField] private TMP_Text textNewFirstItemDamage;
+    [SerializeField] private TMP_Text textNewFirstItemResistance;
+    [SerializeField] private TMP_Text textNewFirstItemSpeed;
+    [SerializeField] public TMP_Text textNewFirstItemExtraBuffStat1;
+    [SerializeField] public TMP_Text textNewFirstItemExtraBuffStat2;
+    [SerializeField] public TMP_Text textNewFirstItemExtraBuffName1;
+    [SerializeField] public TMP_Text textNewFirstItemExtraBuffName2;
 
     [Header("Generated Item Names,Rarities,Levels,etc...")]
     [SerializeField] private TMP_Text textExistingItemLvl;
@@ -61,6 +73,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text textNewItemRarity;
     [SerializeField] private TMP_Text textExistingItemType;
     [SerializeField] private TMP_Text textNewItemType;
+    [SerializeField] private TMP_Text textNewFirstItemLvl;
+    [SerializeField] private TMP_Text textNewFirstItemRarity;
+    [SerializeField] private TMP_Text textNewFirstItemType;
 
     [Header("Equipped Item text Level")]
     [SerializeField] private TMP_Text textPlayerEquippedItemWandLevel;
@@ -97,6 +112,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image imageNewItemRarity;
     [SerializeField] private Image imageExistingItemSprite;
     [SerializeField] private Image imageNewItemSprite;
+    [SerializeField] private Image imageNewFirstItemSprite;
+    [SerializeField] private Image imageNewFirstItemRarity;
 
     [Header("Rarity sprites")]
     [SerializeField] private Sprite spriteCommon;
@@ -157,8 +174,6 @@ public class UIManager : MonoBehaviour
         UpdatePlayerTextItemLevel();
         UpdateQuestUI();
 
-        //Èerná na èerný, odebrat lvly když nejsou
-
         // Making sure that the generated ExtraBuffs dont show up when they arent supposed to.
         textExistingItemExtraBuffName1.enabled = false;
         textExistingItemExtraBuffStat1.enabled = false;
@@ -168,6 +183,11 @@ public class UIManager : MonoBehaviour
         textExistingItemExtraBuffStat2.enabled = false;
         textNewItemExtraBuffName2.enabled = false;
         textNewItemExtraBuffStat2.enabled = false;
+        textNewFirstItemExtraBuffName1.enabled = false;
+        textNewFirstItemExtraBuffStat1.enabled = false;
+        textNewFirstItemExtraBuffName2.enabled = false;
+        textNewFirstItemExtraBuffStat2.enabled = false;
+
     }
 
     public void ShowNewItemText(Item newItem)
@@ -349,6 +369,93 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+    public void ShowNewFirstItemText(Item newItem)
+    {
+        // Item Sprites
+        // Set rarity sprite based on item rarity
+        switch (newItem.itemRarity)
+        {
+            case ItemRarity.Common:
+                imageNewFirstItemRarity.sprite = spriteCommon;
+                break;
+            case ItemRarity.Uncommon:
+                imageNewFirstItemRarity.sprite = spriteUncommon;
+                break;
+            case ItemRarity.Rare:
+                imageNewFirstItemRarity.sprite = spriteRare;
+                break;
+            case ItemRarity.Epic:
+                imageNewFirstItemRarity.sprite = spriteEpic;
+                break;
+            case ItemRarity.Legendary:
+                imageNewFirstItemRarity.sprite = spriteLegendary;
+                break;
+        }
+        switch (newItem.itemType)
+        {
+            case ItemType.Wand:
+                imageNewFirstItemSprite.sprite = spritesWand[newItem.itemIntSprite]; ;
+                break;
+            case ItemType.Headwear:
+                imageNewFirstItemSprite.sprite = spritesHeadwear[newItem.itemIntSprite];
+                break;
+            case ItemType.Outfit:
+                imageNewFirstItemSprite.sprite = spritesOutfit[newItem.itemIntSprite];
+                break;
+            case ItemType.Orb:
+                imageNewFirstItemSprite.sprite = spritesOrb[newItem.itemIntSprite];
+                break;
+            case ItemType.Handwear:
+                imageNewFirstItemSprite.sprite = spritesHandwear[newItem.itemIntSprite];
+                break;
+            case ItemType.Ring:
+                imageNewFirstItemSprite.sprite = spritesRing[newItem.itemIntSprite];
+                break;
+            case ItemType.Necklace:
+                imageNewFirstItemSprite.sprite = spritesNecklace[newItem.itemIntSprite];
+                break;
+            case ItemType.Boots:
+                imageNewFirstItemSprite.sprite = spritesBoots[newItem.itemIntSprite];
+                break;
+        }
+        // Item UI
+        textNewFirstItemLvl.text = "Lv. " + newItem.itemLevel.ToString();
+        textNewFirstItemRarity.text = "[" + newItem.itemRarity.ToString().ToUpper() + "]";
+        textNewFirstItemType.text = newItem.itemType.ToString();
+        // Stats
+        textNewFirstItemHealth.text = newItem.healthBonus.ToString();
+        textNewFirstItemDamage.text = newItem.damageBonus.ToString();
+        textNewFirstItemSpeed.text = newItem.speedBonus.ToString();
+        textNewFirstItemResistance.text = newItem.resistanceBonus.ToString();
+        // For rare and epic items, generate additional attributes
+        if (newItem.itemRarity == ItemRarity.Rare || newItem.itemRarity == ItemRarity.Epic)
+        {
+            textNewFirstItemExtraBuffName1.enabled = true;
+            textNewFirstItemExtraBuffStat1.enabled = true;
+            if (newItem.freezeChanceBonus.ToString() != null)
+            {
+                textNewFirstItemExtraBuffName1.text = "FRZ";
+                textNewFirstItemExtraBuffStat1.text = newItem.freezeChanceBonus.ToString();
+            }
+            if (newItem.fireChanceBonus.ToString() != null)
+            {
+                textNewFirstItemExtraBuffName1.text = "FIRE";
+                textNewFirstItemExtraBuffStat1.text = newItem.fireChanceBonus.ToString();
+            }
+            if (newItem.comboChanceBonus.ToString() != null)
+            {
+                textNewFirstItemExtraBuffName1.text = "CMB";
+                textNewFirstItemExtraBuffStat1.text = newItem.comboChanceBonus.ToString();
+            }
+            if (newItem.counterChanceBonus.ToString() != null)
+            {
+                textNewFirstItemExtraBuffName1.text = "CTR";
+                textNewFirstItemExtraBuffStat1.text = newItem.counterChanceBonus.ToString();
+            }
+        }
+    }
+
     public void UpdatePlayerTextStatsCoin()
     {
         //Stats

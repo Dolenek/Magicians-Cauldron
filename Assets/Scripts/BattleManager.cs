@@ -14,6 +14,12 @@ public class BattleManager : MonoBehaviour
     private bool playerTurn = true;
     private bool battleOngoing = false;
 
+    private bool playerFrozen = false;
+    private bool enemyFrozen = false;
+    private bool playeOnFire = false;
+    private bool enemyOnFire = false;
+
+
     [SerializeField] public GameObject panelWin;
     [SerializeField] public GameObject panelLose;
 
@@ -54,6 +60,10 @@ public class BattleManager : MonoBehaviour
             playerStats.health = main.health;
             playerStats.speed = main.speed;
             playerStats.resistance = main.resistance;
+            playerStats.counterChance = main.counterChance;
+            playerStats.comboChance = main.comboChance;
+            playerStats.fireChance = main.fireChance;
+            playerStats.freezeChance = main.freezeChance;
             Debug.Log("Player dmg " + playerStats.damage);
 
             // Enemy stats
@@ -80,6 +90,7 @@ public class BattleManager : MonoBehaviour
                 Debug.Log("Player turn");
 
                 enemyStatsSO.health = enemyStatsSO.health - (playerStats.damage - enemyStatsSO.resistance);
+
 
             }
             else //Enemy turn

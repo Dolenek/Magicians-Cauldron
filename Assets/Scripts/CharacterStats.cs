@@ -11,7 +11,7 @@ public class CharacterStats
     public int damage;
     public int speed;
     public float comboChance;
-    public float counterChacne;
-    public float stunChancef;
-    public float bleedChance;
+    public float counterChance;
+    public float freezeChance;
+    public float fireChance;
 }
