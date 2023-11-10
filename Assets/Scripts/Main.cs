@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 
 
-
+[DefaultExecutionOrder(-100)]
 public class Main : MonoBehaviour
 {
     // Player stats
@@ -29,7 +29,7 @@ public class Main : MonoBehaviour
     public int gems;
     public int hourglass;
 
-    public int currentStage;
+    public int currentStage = 1;
 
     private bool delayIsActive = false;
 
@@ -40,7 +40,6 @@ public class Main : MonoBehaviour
     [SerializeField] private GameObject clickFX;
     [SerializeField] private RectTransform buttonPosition;
 
-    //private Quest quest;
     private ItemGenerator itemGenerator;
     private UIManager uiManager;
     private EXPBarManager expBarManager;
@@ -68,6 +67,12 @@ public class Main : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         
         DeleteSaveData();
+        Debug.Log(currentStage + "      STAGEEEEEEEEEEEEE");
+        if (currentStage ==0 )
+        {
+            currentStage = 1;
+        }
+        Debug.Log(currentStage + "      STAGEEEEEEEEEEEEE");
         if (currentSceneName == "MainScene")
         {
 
@@ -76,7 +81,7 @@ public class Main : MonoBehaviour
             uiManager.UpdateAllMainUI();
             uiManager.panelEquipOrSell.SetActive(false);
         }
-
+        
     }
 
     public async void GenerateAndEquipRandomItem()
@@ -140,12 +145,10 @@ public class Main : MonoBehaviour
         return -1; // Item not found
     }
 
-    // Show a UI prompt to let the player choose whether to replace or sell the new item
     private void ShowEquipOrSellPrompt(Item newItem, int existingItemSlotIndex)
     {
 
         // Show the UI panel with the stats and options
-        Debug.Log(equipmentSlots[existingItemSlotIndex]);
         if (equipmentSlots[existingItemSlotIndex].damageBonus == 0)
         {
             uiManager.panelEquipOrSellFirst.SetActive(true);
@@ -366,6 +369,7 @@ public class Main : MonoBehaviour
             hourglass = saveData.hourglass;
             questDatabase.currentQuest = saveData.currentQuest;
             currentStage = saveData.currentStage;
+            
             // Load player inventory
             for (int i = 0; i < equipmentSlots.Length; i++)
             {

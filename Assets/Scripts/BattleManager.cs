@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     private CharacterStats playerStats;
-    private EnemyStatsSO enemyStatsSO;
+    private EnemyStatsSO enemyStats;
     private Main main;
 
     private bool playerTurn = true;
@@ -16,8 +16,8 @@ public class BattleManager : MonoBehaviour
 
     private bool playerFrozen = false;
     private bool enemyFrozen = false;
-    private bool playeOnFire = false;
-    private bool enemyOnFire = false;
+    private int playerOnFire = 0;
+    private int enemyOnFire = 0;
 
 
     [SerializeField] public GameObject panelWin;
@@ -37,12 +37,6 @@ public class BattleManager : MonoBehaviour
         {
             main = gameObject.AddComponent<Main>();
         }
-        main.currentStage = PlayerPrefs.GetInt("CurrentStage", 1);
-        if (currentSceneName == "Battle")
-        {
-
-            SetEnemies(1, main.currentStage);
-        }
     }
 
     private void Start()
@@ -53,6 +47,7 @@ public class BattleManager : MonoBehaviour
 
         if (currentSceneName == "Battle")
         {
+            SetEnemies(1, main.currentStage);
             main.LoadPlayerData();
 
             // Player stats
@@ -67,8 +62,8 @@ public class BattleManager : MonoBehaviour
             Debug.Log("Player dmg " + playerStats.damage);
 
             // Enemy stats
-            Debug.Log("Enemy dmg " + enemyStatsSO.damage);
-            if (playerStats.speed < enemyStatsSO.speed)
+            Debug.Log("Enemy dmg " + enemyStats.damage);
+            if (playerStats.speed < enemyStats.speed)
             {
                 playerTurn = false;
             }
@@ -78,6 +73,7 @@ public class BattleManager : MonoBehaviour
 
     private void BattleStarted()
     {
+        System.Random random = new System.Random();
 
         int turn = 1;
         
@@ -88,16 +84,97 @@ public class BattleManager : MonoBehaviour
             if (playerTurn) // Player turn
             {
                 Debug.Log("Player turn");
+                if (playerOnFire > 0) // Player is on fire
+                {
+                    playerStats.health = playerStats.health - enemyStats.damage / 10;
+                    playerOnFire--;
+                }
 
-                enemyStatsSO.health = enemyStatsSO.health - (playerStats.damage - enemyStatsSO.resistance);
+                int randomNumberFire = random.Next(1, 101);
+                int randomNumberFreeze = random.Next(1, 101);
+                int randomNumberCounter = random.Next(1, 101);
+                int randomNumberCombo = random.Next(1, 101);
 
+               
+                if (playerFrozen == true) // Player is frozen
+                {
+                       playerFrozen = false;
+                }
+                else
+                {
+                    do
+                    {
+                        randomNumberCombo = random.Next(1, 101);
+                        randomNumberCounter = random.Next(1, 101);
+                        if (randomNumberFire <= playerStats.fireChance && enemyOnFire < 3) // Player sets Enemy on fire
+                        {
+                            enemyOnFire = 3;
+                        }
+
+                        if (randomNumberFreeze <= playerStats.freezeChance && enemyFrozen == false) // Player freezes Enemy
+                        {
+                            enemyFrozen = true;
+                        }
+
+                        //Attack enemy
+                        enemyStats.health -= (playerStats.damage - enemyStats.resistance);
+                        //Check if enemy Counters
+                        if (randomNumberCounter <= enemyStats.counterChance)
+                        {
+                            playerStats.health -= (enemyStats.damage - playerStats.resistance);
+                        }
+
+                    } while (randomNumberCombo <= playerStats.comboChance && enemyStats.health > 0);
+                }
+                
 
             }
             else //Enemy turn
             {
                 Debug.Log("Enemy turn");
-                playerStats.health = playerStats.health - (enemyStatsSO.damage - playerStats.resistance);
+                if (enemyOnFire > 0) // Enemy is on fire
+                {
+                    enemyStats.health -= playerStats.damage / 10;
+                    enemyOnFire--;
+                }
 
+                int randomNumberFire = random.Next(1, 101);
+                int randomNumberFreeze = random.Next(1, 101);
+                int randomNumberCounter = random.Next(1, 101);
+                int randomNumberCombo = random.Next(1, 101);
+
+                
+                if (enemyFrozen == true) // Enemy is frozen
+                {
+                    enemyFrozen = false;
+                }
+                else
+                {
+                    do
+                    {
+                        randomNumberCombo = random.Next(1, 101);
+                        randomNumberCounter = random.Next(1, 101);
+                        if (randomNumberFire <= enemyStats.fireChance && playerOnFire < 3) // Enemy sets player on fire
+                        {
+                            playerOnFire = 3;
+                        }
+
+                        if (randomNumberFreeze <= enemyStats.freezeChance && playerFrozen == false) // Enemy freezes Player
+                        {
+                            playerFrozen = true;
+                        }
+
+                        //Attack enemy
+                        enemyStats.health -= (playerStats.damage - enemyStats.resistance);
+                        //Check if player Counters
+                        if (randomNumberCounter <= playerStats.counterChance)
+                        {
+                            enemyStats.health -= (playerStats.damage - enemyStats.resistance);
+                        }
+
+                    } while (randomNumberCombo <= playerStats.comboChance && enemyStats.health > 0);
+                }
+                
             }
 
             // Check if the battle is over
@@ -107,7 +184,7 @@ public class BattleManager : MonoBehaviour
                 panelLose.SetActive(true);
 
             }
-            else if (enemyStatsSO.health <= 0) // Win
+            else if (enemyStats.health <= 0) // Win
             {
                 BattleWon();
                 panelWin.SetActive(true);
@@ -134,7 +211,7 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("Battle Won");
 
-        main.hourglass = main.hourglass + enemyStatsSO.hourglass;
+        main.hourglass = main.hourglass + enemyStats.hourglass;
         main.SavePlayerData();
         battleOngoing = false;
         if (main.currentStage == 30)
@@ -152,6 +229,6 @@ public class BattleManager : MonoBehaviour
     public void SetEnemies(int island, int stage)
     {
         EnemyStatsSO enemy = EnemyDatabase.instance.GetEnemy(island, stage);
-        enemyStatsSO = enemy;
+        enemyStats = enemy;
     }
 }

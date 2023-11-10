@@ -23,14 +23,13 @@ public class DungeonsManager : MonoBehaviour
     {
         battleManager = GetComponent<BattleManager>();
         main = GetComponent<Main>();
-        main.currentStage = PlayerPrefs.GetInt("CurrentStage");
     }
 
     public void ShowAttackPanel()
     {
         panelAttack.SetActive(true);
         buttonAttack.onClick.AddListener(() => Attack());
-
+        Debug.Log(main.currentStage);
         textStage.text = "Stage: " + main.currentStage.ToString();
 
         battleManager.SetEnemies(islandLevel, main.currentStage);
