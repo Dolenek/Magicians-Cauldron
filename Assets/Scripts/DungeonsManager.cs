@@ -23,16 +23,20 @@ public class DungeonsManager : MonoBehaviour
     {
         battleManager = GetComponent<BattleManager>();
         main = GetComponent<Main>();
+        if (main == null)
+        {
+            main = gameObject.AddComponent<Main>();
+        }
     }
 
     public void ShowAttackPanel()
     {
         panelAttack.SetActive(true);
         buttonAttack.onClick.AddListener(() => Attack());
-        Debug.Log(main.currentStage);
+        Debug.Log(main.currentStage + " ShowAttackPanel DungeonsManager");
         textStage.text = "Stage: " + main.currentStage.ToString();
 
-        battleManager.SetEnemies(islandLevel, main.currentStage);
+        battleManager.SetEnemyStats(islandLevel, main.currentStage);
 
     }
 

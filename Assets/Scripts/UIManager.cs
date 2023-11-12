@@ -5,6 +5,7 @@ using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(-1)]
 public class UIManager : MonoBehaviour
 {
     [Header("Player Stats")]
@@ -162,8 +163,11 @@ public class UIManager : MonoBehaviour
         questDatabase = GetComponent<QuestDatabase>();
         // If it's still null, create and attach the component
         if (main == null)
-        {
             main = gameObject.AddComponent<Main>();
+        if (main.currentSceneName == "MainScene")
+        {
+            if (questDatabase == null)
+                questDatabase = gameObject.AddComponent<QuestDatabase>();
         }
     }
 
@@ -511,35 +515,36 @@ public class UIManager : MonoBehaviour
                     break;
             }
 
+            switch (main.equipmentSlots[existingItemSlotIndex].itemType)
+            {
+                case ItemType.Wand:
+                    spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesWand[main.equipmentSlots[existingItemSlotIndex].itemIntSprite]; ;
+                    break;
+                case ItemType.Headwear:
+                    spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesHeadwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Outfit:
+                    spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesOutfit[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Orb:
+                    spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesOrb[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Handwear:
+                    spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesHandwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Ring:
+                    spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesRing[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Necklace:
+                    spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesNecklace[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Boots:
+                    spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesBoots[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+            }
         }
         
-        switch (main.equipmentSlots[existingItemSlotIndex].itemType)
-        {
-            case ItemType.Wand:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesWand[main.equipmentSlots[existingItemSlotIndex].itemIntSprite]; ;
-                break;
-            case ItemType.Headwear:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesHeadwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
-                break;
-            case ItemType.Outfit:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesOutfit[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
-                break;
-            case ItemType.Orb:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesOrb[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
-                break;
-            case ItemType.Handwear:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesHandwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
-                break;
-            case ItemType.Ring:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesRing[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
-                break;
-            case ItemType.Necklace:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesNecklace[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
-                break;
-            case ItemType.Boots:
-                spritePlayerEquippedItemSprite[existingItemSlotIndex].sprite = spritesBoots[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
-                break;
-        }   
+        
 
     }
     private void SetQuest(int number)
@@ -550,31 +555,20 @@ public class UIManager : MonoBehaviour
 
     public void UpdateQuestUI()
     {
-        
-        SetQuest(questDatabase.currentQuest);
+        SetQuest(main.currentQuest);
+        Debug.Log(main.currentQuest + " UpdateQuestUI");
         // Quest UI
         Debug.Log("Updated Quest UI " + questsSO.title);
         textQuestTitle.text = questsSO.title;
-        if (questsSO.goalType == GoalType.GenerateItem)
+        if (main.currentAmount >= questsSO.requiredAmount)
         {
-            if (questsSO.currentAmount >= questsSO.requiredAmount)
-            {
-                textQuestObjective.text = "<color=green>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
-            }
-            else
-            {
-                textQuestObjective.text = "<color=red>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
-            }
+            textQuestObjective.text = "<color=green>" + main.currentAmount + "<color=white> / " + questsSO.requiredAmount;
         }
-        else if (questsSO.goalType == GoalType.ReachStage)
+        else
         {
-            textQuestObjective.text = "<color=red>" + main.currentStage + "<color=white> / " + questsSO.requiredAmount;
+            textQuestObjective.text = "<color=red>" + main.currentAmount + "<color=white> / " + questsSO.requiredAmount;
         }
-        else if (questsSO.goalType == GoalType.ReachLevel)
-        {
-            textQuestObjective.text = "<color=red>" + main.playerLevel + "<color=white> / " + questsSO.requiredAmount;
-        }
-        
+
         textQuestHourglassReward.text = questsSO.hourglass.ToString();
         //imageQuest.sprite = main.questSprite;
     }

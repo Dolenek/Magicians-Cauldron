@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(-95)]
 public class EnemyDatabase : MonoBehaviour
 {
     public static EnemyDatabase instance;

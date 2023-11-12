@@ -47,8 +47,9 @@ public class BattleManager : MonoBehaviour
 
         if (currentSceneName == "Battle")
         {
-            SetEnemies(1, main.currentStage);
             main.LoadPlayerData();
+            Debug.Log(main.currentStage + "BattleManager main.currentStage");
+            enemyStats = SetEnemyStats(1, main.currentStage);
 
             // Player stats
             playerStats.damage = main.damage;
@@ -73,14 +74,15 @@ public class BattleManager : MonoBehaviour
 
     private void BattleStarted()
     {
+        Debug.Log("Battle Started");
         System.Random random = new System.Random();
 
         int turn = 1;
-        
+
         battleOngoing = true;
         while (battleOngoing == true && turn <= 20)
         {
-            Debug.Log(turn);
+            Debug.Log(turn + " turn");
             if (playerTurn) // Player turn
             {
                 Debug.Log("Player turn");
@@ -95,10 +97,10 @@ public class BattleManager : MonoBehaviour
                 int randomNumberCounter = random.Next(1, 101);
                 int randomNumberCombo = random.Next(1, 101);
 
-               
+
                 if (playerFrozen == true) // Player is frozen
                 {
-                       playerFrozen = false;
+                    playerFrozen = false;
                 }
                 else
                 {
@@ -126,7 +128,7 @@ public class BattleManager : MonoBehaviour
 
                     } while (randomNumberCombo <= playerStats.comboChance && enemyStats.health > 0);
                 }
-                
+
 
             }
             else //Enemy turn
@@ -143,7 +145,7 @@ public class BattleManager : MonoBehaviour
                 int randomNumberCounter = random.Next(1, 101);
                 int randomNumberCombo = random.Next(1, 101);
 
-                
+
                 if (enemyFrozen == true) // Enemy is frozen
                 {
                     enemyFrozen = false;
@@ -164,17 +166,17 @@ public class BattleManager : MonoBehaviour
                             playerFrozen = true;
                         }
 
-                        //Attack enemy
-                        enemyStats.health -= (playerStats.damage - enemyStats.resistance);
+                        //Attack player
+                        playerStats.health -= (enemyStats.damage - playerStats.resistance);
                         //Check if player Counters
                         if (randomNumberCounter <= playerStats.counterChance)
                         {
                             enemyStats.health -= (playerStats.damage - enemyStats.resistance);
                         }
 
-                    } while (randomNumberCombo <= playerStats.comboChance && enemyStats.health > 0);
+                    } while (randomNumberCombo <= enemyStats.comboChance && playerStats.health > 0);
                 }
-                
+
             }
 
             // Check if the battle is over
@@ -222,13 +224,12 @@ public class BattleManager : MonoBehaviour
         {
             main.currentStage++;
         }
-        PlayerPrefs.SetInt("CurrentStage", main.currentStage);
-        PlayerPrefs.Save();
+        main.SavePlayerData();
 
     }
-    public void SetEnemies(int island, int stage)
+    public EnemyStatsSO SetEnemyStats(int island, int stage)
     {
         EnemyStatsSO enemy = EnemyDatabase.instance.GetEnemy(island, stage);
-        enemyStats = enemy;
+        return enemy;
     }
 }

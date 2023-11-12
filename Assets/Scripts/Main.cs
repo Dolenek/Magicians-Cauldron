@@ -15,7 +15,6 @@ using UnityEngine.UI;
 public class Main : MonoBehaviour
 {
     // Player stats
-    public int playerLevel;
     public int health;
     public int resistance;
     public int damage;
@@ -25,14 +24,27 @@ public class Main : MonoBehaviour
     public float freezeChance;
     public float fireChance;
 
+    // Player level
+    public int playerLevel;
+    public int playerCurrentExp;
+
+    // Resources
     public int gold;
     public int gems;
     public int hourglass;
 
+    //Dungeons
     public int currentStage = 1;
 
+    //Quests
+    public int currentQuest = 1;
+    public int currentAmount;
+
+    //Animation
     private bool delayIsActive = false;
 
+    public string currentSceneName;
+    
     // Inventory
     public Item[] equipmentSlots = new Item[8];
 
@@ -48,6 +60,7 @@ public class Main : MonoBehaviour
 
     private void Awake()
     {
+        currentSceneName = SceneManager.GetActiveScene().name;
         // Try to find the ItemGenerator component on the Player GameObject
         itemGenerator = GetComponent<ItemGenerator>();
         uiManager = GetComponent<UIManager>();
@@ -55,33 +68,42 @@ public class Main : MonoBehaviour
         questDatabase = GetComponent<QuestDatabase>();
         // If it's still null, create and attach the component
         if (itemGenerator == null)
-        {
             itemGenerator = gameObject.AddComponent<ItemGenerator>();
+        if (currentSceneName == "MainScene")
+        {
+            if (uiManager == null)
+                uiManager = gameObject.AddComponent<UIManager>();
         }
+        
 
     }
 
 
     private void Start()
     {
-        string currentSceneName = SceneManager.GetActiveScene().name;
         
-        DeleteSaveData();
-        Debug.Log(currentStage + "      STAGEEEEEEEEEEEEE");
-        if (currentStage ==0 )
+        
+        //DeleteSaveData();
+        Debug.Log(currentStage + " current Stage");
+        if (currentSceneName == "MainScene")
         {
-            currentStage = 1;
+            SetQuest(currentQuest);
         }
-        Debug.Log(currentStage + "      STAGEEEEEEEEEEEEE");
+        LoadPlayerData();
         if (currentSceneName == "MainScene")
         {
 
-            LoadPlayerData();
+            SetQuest(currentQuest);
+            if (currentStage == 0)
+            {
+                currentStage = 1;
+                SavePlayerData();
+            }
+            
             UpdateStats();
             uiManager.UpdateAllMainUI();
             uiManager.panelEquipOrSell.SetActive(false);
         }
-        
     }
 
     public async void GenerateAndEquipRandomItem()
@@ -89,8 +111,8 @@ public class Main : MonoBehaviour
         // Generate a random item based on player level
         if (hourglass > 0 && delayIsActive == false)
         {
-            
             hourglass--;
+
             // Animation
             Vector3 buttonNewPosition = buttonPosition.position;
             buttonNewPosition.z = 0; buttonNewPosition.y += 0;
@@ -100,21 +122,15 @@ public class Main : MonoBehaviour
             delayIsActive = true;
             await Task.Delay(2000);
             delayIsActive = false;
-            Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
-            SetQuest(questDatabase.currentQuest);
-            //Quests
-            if (questsSO.goalType == GoalType.GenerateItem)
-            {
-                if (!questsSO.IsReached())
-                {
-                    questsSO.currentAmount++;
-                    uiManager.UpdateQuestUI();
-                }
-            }
 
-            // Check if the player already has an item of the same ItemType
+            //Item Generation
+            Item newItem = itemGenerator.GenerateRandomItem(playerLevel);
             ItemType newItemType = newItem.itemType;
             int existingItemSlotIndex = GetItemSlotIndexByType(newItemType);
+
+            //Quest
+            if (questsSO.goalType == GoalType.GenerateItem)
+                currentAmount++;
 
             if (existingItemSlotIndex >= 0)
             {
@@ -151,6 +167,7 @@ public class Main : MonoBehaviour
         // Show the UI panel with the stats and options
         if (equipmentSlots[existingItemSlotIndex].damageBonus == 0)
         {
+
             uiManager.panelEquipOrSellFirst.SetActive(true);
             // Show the stats of newly generated item
             uiManager.ShowNewFirstItemText(newItem);
@@ -318,20 +335,33 @@ public class Main : MonoBehaviour
         saveData.freezeChance = freezeChance;
         saveData.fireChance = fireChance;
         saveData.hourglass = hourglass;
-        saveData.currentQuest = questDatabase.currentQuest;
+        if (currentSceneName == "MainScene")
+        {
+            if (currentQuest > 0)
+            {
+                saveData.currentQuest = currentQuest;
+            }
+            if (currentAmount > 0)
+            {
+                saveData.currentAmount = currentAmount;
+            }
+            UpdateQuests();
+        }
+        
         saveData.currentStage = currentStage;
         // Save player inventory
         saveData.equipmentSlots = new ItemData[equipmentSlots.Length];
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            if (equipmentSlots[i] != null)
+            if (equipmentSlots[i].damageBonus != 0)
             {
                 saveData.equipmentSlots[i] = new ItemData(equipmentSlots[i]);
             }
         }
 
+
         // Save the data to a file
-        string savePath = Application.persistentDataPath + "/saveData.dat";
+        string savePath = Application.persistentDataPath + "/saveData.kys";
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(savePath);
         bf.Serialize(file, saveData);
@@ -344,7 +374,7 @@ public class Main : MonoBehaviour
         Debug.Log("Loading player data");
 
         // Load the data from the file
-        string savePath = Application.persistentDataPath + "/saveData.dat";
+        string savePath = Application.persistentDataPath + "/saveData.kys";
         if (File.Exists(savePath))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -367,7 +397,6 @@ public class Main : MonoBehaviour
             freezeChance = saveData.freezeChance;
             fireChance = saveData.fireChance;
             hourglass = saveData.hourglass;
-            questDatabase.currentQuest = saveData.currentQuest;
             currentStage = saveData.currentStage;
             
             // Load player inventory
@@ -378,7 +407,18 @@ public class Main : MonoBehaviour
                     equipmentSlots[i] = saveData.equipmentSlots[i].ToItem();
                 }
             }
-
+            // Update and Load quests
+            if (currentSceneName == "MainScene")
+            {
+                if (saveData.currentQuest > 0)
+                {
+                    currentQuest = saveData.currentQuest;
+                }
+                if (saveData.currentAmount > 0)
+                {
+                    currentAmount = saveData.currentAmount;
+                }
+            }
             // Update player item sprites in players inventory
             if (uiManager != null)
             {
@@ -400,20 +440,46 @@ public class Main : MonoBehaviour
 
 
         }
+        
     }
     public void CompleteQuest()
     {
         if (questsSO.IsReached())
         {
             hourglass += questsSO.hourglass;
-            questDatabase.currentQuest++;
+            currentQuest++;
             uiManager.UpdateAllMainUI();
         }
     }
+    private void UpdateQuests()
+    {
+        if (currentSceneName == "MainScene")
+        {
 
+            //Quests
+            SetQuest(currentQuest);
+            if (!questsSO.IsReached())
+            {
+                switch (questsSO.goalType)
+                {
+                    case GoalType.GenerateRareItem:
+
+                    case GoalType.ReachLevel:
+                        currentAmount = playerLevel;
+                        uiManager.UpdateQuestUI();
+                        break;
+                    case GoalType.ReachStage:
+                        currentAmount = currentStage;
+                        uiManager.UpdateQuestUI();
+                        break;
+                }
+            }
+        }
+    }
+    
     public void DeleteSaveData()
     {
-        string savePath = Application.persistentDataPath + "/saveData.dat";
+        string savePath = Application.persistentDataPath + "/saveData.kys";
         if (File.Exists(savePath))
         {
             File.Delete(savePath);

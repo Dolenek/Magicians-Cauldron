@@ -28,6 +28,7 @@ public class SaveData
     public int currentIsland;
 
     public int currentQuest;
+    public int currentAmount;
 
     public ItemData[] equipmentSlots;
 }

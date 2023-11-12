@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(-90)]
 public class QuestDatabase : MonoBehaviour
 {
     public static QuestDatabase instance;
 
     public List<QuestsSO> quests;
     public QuestsSO questsSO;
-
-    public int currentQuest = 1;
 
     private void Awake()
     {
@@ -34,16 +33,16 @@ public class QuestDatabase : MonoBehaviour
         QuestsSO quest2 = ScriptableObject.CreateInstance<QuestsSO>();
         quest2.number = 2;
         quest2.goalType = GoalType.GenerateItem;
-        quest2.title = "Generate 10 items";
+        quest2.title = "Generate 10 more items";
         quest2.requiredAmount = 10;
         quest2.hourglass = 20;
         quests.Add(quest2);
 
         QuestsSO quest3 = ScriptableObject.CreateInstance<QuestsSO>();
         quest3.number = 3;
-        quest3.goalType = GoalType.GenerateItem;
-        quest3.title = "Generate 20 items";
-        quest3.requiredAmount = 20;
+        quest3.goalType = GoalType.ReachLevel;
+        quest3.title = "Reach Level 3";
+        quest3.requiredAmount = 3;
         quest3.hourglass = 30;
         quests.Add(quest3);
 
