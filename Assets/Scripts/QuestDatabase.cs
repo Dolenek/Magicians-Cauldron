@@ -20,7 +20,6 @@ public class QuestDatabase : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log("QuestDatabase Started");
 
         QuestsSO quest1 = ScriptableObject.CreateInstance<QuestsSO>();
         quest1.number = 1;
@@ -62,7 +61,6 @@ public class QuestDatabase : MonoBehaviour
         {
             if (quest.number == questNumber)
             {
-                Debug.Log("Quest Loaded via GetQuest: " + quest.number);
                 return quest;
             }
         }

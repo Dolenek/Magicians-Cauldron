@@ -18,15 +18,20 @@ public class DungeonsManager : MonoBehaviour
 
     private Main main;
     private BattleManager battleManager;
+    private QuestDatabase questDatabase;
+    private QuestsSO questsSO;
 
     private void Awake()
     {
         battleManager = GetComponent<BattleManager>();
         main = GetComponent<Main>();
+        questDatabase = GetComponent<QuestDatabase>();
         if (main == null)
-        {
             main = gameObject.AddComponent<Main>();
-        }
+        if (battleManager == null)
+            battleManager = gameObject.AddComponent<BattleManager>();
+        if (questDatabase == null)
+            questDatabase = gameObject.AddComponent<QuestDatabase>();
     }
 
     public void ShowAttackPanel()

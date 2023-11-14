@@ -10,6 +10,8 @@ public class BattleManager : MonoBehaviour
     private CharacterStats playerStats;
     private EnemyStatsSO enemyStats;
     private Main main;
+    private QuestsSO questsSO;
+    private QuestDatabase questDatabase;
 
     private bool playerTurn = true;
     private bool battleOngoing = false;
@@ -31,8 +33,9 @@ public class BattleManager : MonoBehaviour
         // Load stats
         playerStats = new CharacterStats();
         main = GetComponent<Main>();
+        questDatabase = GetComponent<QuestDatabase>();
 
-
+        
         if (main == null)
         {
             main = gameObject.AddComponent<Main>();
@@ -68,6 +71,10 @@ public class BattleManager : MonoBehaviour
             {
                 playerTurn = false;
             }
+
+            // Check for quests
+            questsSO = questDatabase.GetQuest(main.currentStage);
+
             BattleStarted();
         }
     }
@@ -212,9 +219,7 @@ public class BattleManager : MonoBehaviour
     private void BattleWon()
     {
         Debug.Log("Battle Won");
-
         main.hourglass = main.hourglass + enemyStats.hourglass;
-        main.SavePlayerData();
         battleOngoing = false;
         if (main.currentStage == 30)
         {
@@ -224,7 +229,6 @@ public class BattleManager : MonoBehaviour
         {
             main.currentStage++;
         }
-        main.SavePlayerData();
 
     }
     public EnemyStatsSO SetEnemyStats(int island, int stage)

@@ -27,7 +27,6 @@ public class EnemyDatabase : MonoBehaviour
         {
             if (enemy.island == island && enemy.stage == stage)
             {
-                Debug.Log("Enemy Loaded via GetEnemy: " + enemy.name);
                 return enemy;
 
             }

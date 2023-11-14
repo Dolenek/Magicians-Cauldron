@@ -2014,7 +2014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -125}
+  m_AnchoredPosition: {x: 0, y: -125.00003}
   m_SizeDelta: {x: 0, y: -650}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150452010
@@ -2607,6 +2607,7 @@ GameObject:
   - component: {fileID: 1396855414}
   - component: {fileID: 1396855415}
   - component: {fileID: 1396855416}
+  - component: {fileID: 1396855417}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2725,12 +2726,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonAttack: {fileID: 206486234}
   buttonIsland1: {fileID: 0}
-  enemyStatsList:
-  - {fileID: 11400000, guid: bd48816c86e5e1142a0ace4541771f2c, type: 2}
-  - {fileID: 11400000, guid: bc84644668495fd49bb8fbfa3c501478, type: 2}
-  - {fileID: 11400000, guid: de3937d6b2df44a42984c5edcab5d7df, type: 2}
-  - {fileID: 11400000, guid: ec30b0bf7b7fa4a40ab633feb4b4684f, type: 2}
-  - {fileID: 11400000, guid: 0000b50558b402c4b9c1a259e9f51730, type: 2}
   panelAttack: {fileID: 1150452008}
   textStage: {fileID: 1118920593}
   islandLevel: 1
@@ -2746,7 +2741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd1239ecee6fdd47a170ecf4c25b327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 1
   panelWin: {fileID: 0}
   panelLose: {fileID: 0}
 --- !u!114 &1396855416
@@ -2762,6 +2756,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
+--- !u!114 &1396855417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396855408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d15ab455592b04db3d1108d817aed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests: []
+  questsSO: {fileID: 0}
 --- !u!1 &1578480804
 GameObject:
   m_ObjectHideFlags: 0

@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 252754722}
   - component: {fileID: 252754726}
   - component: {fileID: 252754724}
+  - component: {fileID: 252754727}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -601,7 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec6797636c0b654dad9b4abf4e10dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLevel: 1
   health: 100
   resistance: 10
   damage: 20
@@ -610,10 +610,14 @@ MonoBehaviour:
   counterChance: 0
   freezeChance: 0
   fireChance: 0
+  playerLevel: 1
+  playerCurrentExp: 0
   gold: 0
   gems: 0
   hourglass: 0
   currentStage: 0
+  currentQuest: 1
+  currentSceneName: 
   equipmentSlots:
   - itemLevel: 0
     healthBonus: 0
@@ -746,6 +750,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
+--- !u!114 &252754727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252754717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d15ab455592b04db3d1108d817aed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests: []
+  questsSO: {fileID: 0}
 --- !u!1 &388372193
 GameObject:
   m_ObjectHideFlags: 0

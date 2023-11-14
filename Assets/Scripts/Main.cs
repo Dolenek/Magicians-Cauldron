@@ -38,7 +38,7 @@ public class Main : MonoBehaviour
 
     //Quests
     public int currentQuest = 1;
-    public int currentAmount;
+
 
     //Animation
     private bool delayIsActive = false;
@@ -61,43 +61,31 @@ public class Main : MonoBehaviour
     private void Awake()
     {
         currentSceneName = SceneManager.GetActiveScene().name;
-        // Try to find the ItemGenerator component on the Player GameObject
         itemGenerator = GetComponent<ItemGenerator>();
         uiManager = GetComponent<UIManager>();
         expBarManager = GetComponent<EXPBarManager>();
         questDatabase = GetComponent<QuestDatabase>();
-        // If it's still null, create and attach the component
-        if (itemGenerator == null)
-            itemGenerator = gameObject.AddComponent<ItemGenerator>();
         if (currentSceneName == "MainScene")
         {
+            if (itemGenerator == null)
+                itemGenerator = gameObject.AddComponent<ItemGenerator>();
             if (uiManager == null)
                 uiManager = gameObject.AddComponent<UIManager>();
         }
-        
-
     }
 
 
     private void Start()
     {
-        
-        
         //DeleteSaveData();
-        Debug.Log(currentStage + " current Stage");
         if (currentSceneName == "MainScene")
         {
             SetQuest(currentQuest);
-        }
-        LoadPlayerData();
-        if (currentSceneName == "MainScene")
-        {
-
+            LoadPlayerData();
             SetQuest(currentQuest);
             if (currentStage == 0)
             {
                 currentStage = 1;
-                SavePlayerData();
             }
             
             UpdateStats();
@@ -130,7 +118,7 @@ public class Main : MonoBehaviour
 
             //Quest
             if (questsSO.goalType == GoalType.GenerateItem)
-                currentAmount++;
+                questsSO.currentAmount++;
 
             if (existingItemSlotIndex >= 0)
             {
@@ -148,8 +136,7 @@ public class Main : MonoBehaviour
         }
     }
 
-    // Get the slot index of an item with the specified ItemType
-    private int GetItemSlotIndexByType(ItemType itemType)
+    private int GetItemSlotIndexByType(ItemType itemType)// Get the slot index of an item with the specified ItemType
     {
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
@@ -198,7 +185,6 @@ public class Main : MonoBehaviour
         
     }
 
-    // Handler for the "Replace" button
     private void EquipFirstItem(Item newItem, int existingItemSlotIndex)
     {
 
@@ -217,6 +203,7 @@ public class Main : MonoBehaviour
 
         SavePlayerData();
     }
+
     private void ReplaceItemWithNew(Item newItem, int existingItemSlotIndex)
     {
         // Sell the existing item before equipping the new one
@@ -238,9 +225,8 @@ public class Main : MonoBehaviour
         uiManager.textExistingItemExtraBuffStat1.enabled = false;
 
         SavePlayerData();
-    }
+    } // Handler for the "Replace" button
 
-    // Handler for the "Sell" button
     private void SellNewItemAtExisting(Item newItem)
     {
         // Gain Gold based on the rarity and lvl of the players cauldron
@@ -260,7 +246,7 @@ public class Main : MonoBehaviour
         newItem.itemRarity = 0; //Insures that the itemRarity isnt adding up
 
         SavePlayerData();
-    }
+    }// Handler for the "Sell" button
 
     private void SellItem(Item item)
     {
@@ -274,8 +260,7 @@ public class Main : MonoBehaviour
         item.itemRarity = 0; //Insures that the itemRarity isnt adding up
     }
 
-    // Update player stats based on equipped items
-    public void UpdateStats()
+    public void UpdateStats() // Update player stats based on equipped items
     {
 
         int baseHealth = 100;
@@ -322,7 +307,7 @@ public class Main : MonoBehaviour
 
         // Save player stats
         saveData.playerLevel = playerLevel;
-        if (expBarManager != null)
+        if (expBarManager != null && expBarManager.currentXP > 0)
         {
             saveData.playerCurrentExp = expBarManager.currentXP;
         }
@@ -335,16 +320,16 @@ public class Main : MonoBehaviour
         saveData.freezeChance = freezeChance;
         saveData.fireChance = fireChance;
         saveData.hourglass = hourglass;
-        if (currentSceneName == "MainScene")
+        if (currentSceneName == "MainScene" && questsSO != null && questDatabase != null)
         {
+            
             if (currentQuest > 0)
             {
                 saveData.currentQuest = currentQuest;
             }
-            if (currentAmount > 0)
-            {
-                saveData.currentAmount = currentAmount;
-            }
+            if (questsSO.currentAmount > 0)
+                saveData.currentAmount = questsSO.currentAmount;
+            Debug.Log(saveData.currentAmount + " Main SavePlayerData");
             UpdateQuests();
         }
         
@@ -368,8 +353,8 @@ public class Main : MonoBehaviour
         file.Close();
     }
 
-    // Load player inventory and stats
-    public void LoadPlayerData()
+    
+    public void LoadPlayerData()// Load player inventory and stats
     {
         Debug.Log("Loading player data");
 
@@ -384,7 +369,7 @@ public class Main : MonoBehaviour
 
             // Load player stats
             playerLevel = saveData.playerLevel;
-            if (expBarManager != null)
+            if (expBarManager != null && saveData.playerCurrentExp > 0)
             {
                 expBarManager.currentXP = saveData.playerCurrentExp;
             }
@@ -408,16 +393,15 @@ public class Main : MonoBehaviour
                 }
             }
             // Update and Load quests
-            if (currentSceneName == "MainScene")
+            if (currentSceneName == "MainScene" && questsSO != null && questDatabase != null)
             {
                 if (saveData.currentQuest > 0)
                 {
                     currentQuest = saveData.currentQuest;
                 }
                 if (saveData.currentAmount > 0)
-                {
-                    currentAmount = saveData.currentAmount;
-                }
+                    questsSO.currentAmount = saveData.currentAmount;
+                Debug.Log(saveData.currentAmount + " Main LoadPlayerData");
             }
             // Update player item sprites in players inventory
             if (uiManager != null)
@@ -457,7 +441,7 @@ public class Main : MonoBehaviour
         {
 
             //Quests
-            SetQuest(currentQuest);
+            questDatabase.GetQuest(currentQuest);
             if (!questsSO.IsReached())
             {
                 switch (questsSO.goalType)
@@ -465,16 +449,17 @@ public class Main : MonoBehaviour
                     case GoalType.GenerateRareItem:
 
                     case GoalType.ReachLevel:
-                        currentAmount = playerLevel;
+                        questsSO.currentAmount = playerLevel;
                         uiManager.UpdateQuestUI();
                         break;
                     case GoalType.ReachStage:
-                        currentAmount = currentStage;
+                        questsSO.currentAmount = currentStage;
                         uiManager.UpdateQuestUI();
                         break;
                 }
             }
         }
+        
     }
     
     public void DeleteSaveData()
