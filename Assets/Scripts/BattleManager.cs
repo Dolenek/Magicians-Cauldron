@@ -21,7 +21,6 @@ public class BattleManager : MonoBehaviour
     private int playerOnFire = 0;
     private int enemyOnFire = 0;
 
-
     [SerializeField] public GameObject panelWin;
     [SerializeField] public GameObject panelLose;
 
@@ -219,7 +218,7 @@ public class BattleManager : MonoBehaviour
     private void BattleWon()
     {
         Debug.Log("Battle Won");
-        main.hourglass = main.hourglass + enemyStats.hourglass;
+        main.hourglass += enemyStats.hourglass;
         battleOngoing = false;
         if (main.currentStage == 30)
         {
@@ -229,7 +228,6 @@ public class BattleManager : MonoBehaviour
         {
             main.currentStage++;
         }
-
     }
     public EnemyStatsSO SetEnemyStats(int island, int stage)
     {

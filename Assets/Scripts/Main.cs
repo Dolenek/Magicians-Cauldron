@@ -87,11 +87,12 @@ public class Main : MonoBehaviour
             {
                 currentStage = 1;
             }
-            
+            UpdateQuests();
             UpdateStats();
             uiManager.UpdateAllMainUI();
             uiManager.panelEquipOrSell.SetActive(false);
         }
+
     }
 
     public async void GenerateAndEquipRandomItem()
@@ -298,7 +299,7 @@ public class Main : MonoBehaviour
         comboChance = baseComboChance;
         counterChance = baseCounterChacne;
     }
-
+    
     public void SavePlayerData()
     {
         Debug.Log("Saving player data");
@@ -320,6 +321,7 @@ public class Main : MonoBehaviour
         saveData.freezeChance = freezeChance;
         saveData.fireChance = fireChance;
         saveData.hourglass = hourglass;
+        
         if (currentSceneName == "MainScene" && questsSO != null && questDatabase != null)
         {
             
@@ -352,7 +354,6 @@ public class Main : MonoBehaviour
         bf.Serialize(file, saveData);
         file.Close();
     }
-
     
     public void LoadPlayerData()// Load player inventory and stats
     {
@@ -433,6 +434,8 @@ public class Main : MonoBehaviour
             hourglass += questsSO.hourglass;
             currentQuest++;
             uiManager.UpdateAllMainUI();
+            SavePlayerData();
+            SetQuest(currentQuest);
         }
     }
     private void UpdateQuests()
@@ -457,6 +460,7 @@ public class Main : MonoBehaviour
                         uiManager.UpdateQuestUI();
                         break;
                 }
+                
             }
         }
         
