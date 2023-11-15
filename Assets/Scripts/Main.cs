@@ -26,7 +26,7 @@ public class Main : MonoBehaviour
 
     // Player level
     public int playerLevel;
-    public int playerCurrentExp;
+    public int playerCurrentEXP;
 
     // Resources
     public int gold;
@@ -38,7 +38,7 @@ public class Main : MonoBehaviour
 
     //Quests
     public int currentQuest = 1;
-
+    public int currentQuestAmount = 0;
 
     //Animation
     private bool delayIsActive = false;
@@ -119,7 +119,7 @@ public class Main : MonoBehaviour
 
             //Quest
             if (questsSO.goalType == GoalType.GenerateItem)
-                questsSO.currentAmount++;
+                currentQuestAmount++;
 
             if (existingItemSlotIndex >= 0)
             {
@@ -308,10 +308,10 @@ public class Main : MonoBehaviour
 
         // Save player stats
         saveData.playerLevel = playerLevel;
-        if (expBarManager != null && expBarManager.currentXP > 0)
-        {
-            saveData.playerCurrentExp = expBarManager.currentXP;
-        }
+
+        saveData.playerCurrentExp = playerCurrentEXP;
+
+
         saveData.health = health;
         saveData.resistance = resistance;
         saveData.damage = damage;
@@ -322,18 +322,12 @@ public class Main : MonoBehaviour
         saveData.fireChance = fireChance;
         saveData.hourglass = hourglass;
         
-        if (currentSceneName == "MainScene" && questsSO != null && questDatabase != null)
-        {
-            
-            if (currentQuest > 0)
-            {
-                saveData.currentQuest = currentQuest;
-            }
-            if (questsSO.currentAmount > 0)
-                saveData.currentAmount = questsSO.currentAmount;
-            Debug.Log(saveData.currentAmount + " Main SavePlayerData");
-            UpdateQuests();
-        }
+        saveData.currentQuest = currentQuest;
+
+        saveData.currentQuestAmount = currentQuestAmount;
+       
+        UpdateQuests();
+        
         
         saveData.currentStage = currentStage;
         // Save player inventory
@@ -370,10 +364,9 @@ public class Main : MonoBehaviour
 
             // Load player stats
             playerLevel = saveData.playerLevel;
-            if (expBarManager != null && saveData.playerCurrentExp > 0)
-            {
-                expBarManager.currentXP = saveData.playerCurrentExp;
-            }
+
+            playerCurrentEXP = saveData.playerCurrentExp;
+
             health = saveData.health;
             resistance = saveData.resistance;
             damage = saveData.damage;
@@ -394,16 +387,11 @@ public class Main : MonoBehaviour
                 }
             }
             // Update and Load quests
-            if (currentSceneName == "MainScene" && questsSO != null && questDatabase != null)
-            {
-                if (saveData.currentQuest > 0)
-                {
-                    currentQuest = saveData.currentQuest;
-                }
-                if (saveData.currentAmount > 0)
-                    questsSO.currentAmount = saveData.currentAmount;
-                Debug.Log(saveData.currentAmount + " Main LoadPlayerData");
-            }
+            currentQuest = saveData.currentQuest;
+
+            currentQuestAmount = saveData.currentQuestAmount;
+            Debug.Log(saveData.currentQuestAmount + " Main LoadPlayerData");
+
             // Update player item sprites in players inventory
             if (uiManager != null)
             {
@@ -429,7 +417,7 @@ public class Main : MonoBehaviour
     }
     public void CompleteQuest()
     {
-        if (questsSO.IsReached())
+        if (IsReached())
         {
             hourglass += questsSO.hourglass;
             currentQuest++;
@@ -445,18 +433,18 @@ public class Main : MonoBehaviour
 
             //Quests
             questDatabase.GetQuest(currentQuest);
-            if (!questsSO.IsReached())
+            if (!IsReached())
             {
                 switch (questsSO.goalType)
                 {
                     case GoalType.GenerateRareItem:
 
                     case GoalType.ReachLevel:
-                        questsSO.currentAmount = playerLevel;
+                        currentQuestAmount = playerLevel;
                         uiManager.UpdateQuestUI();
                         break;
                     case GoalType.ReachStage:
-                        questsSO.currentAmount = currentStage;
+                        currentQuestAmount = currentStage;
                         uiManager.UpdateQuestUI();
                         break;
                 }
@@ -478,6 +466,10 @@ public class Main : MonoBehaviour
     {
         QuestsSO quest = QuestDatabase.instance.GetQuest(number);
         questsSO = quest;
+    }
+    private bool IsReached()
+    {
+        return (currentQuestAmount >= questsSO.requiredAmount);
     }
 }
 

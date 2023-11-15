@@ -560,13 +560,13 @@ public class UIManager : MonoBehaviour
         // Quest UI
         Debug.Log("Updated Quest UI " + questsSO.title);
         textQuestTitle.text = questsSO.title;
-        if (questsSO.currentAmount >= questsSO.requiredAmount)
+        if (main.currentQuestAmount >= questsSO.requiredAmount)
         {
-            textQuestObjective.text = "<color=green>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
+            textQuestObjective.text = "<color=green>" + main.currentQuestAmount + "<color=white> / " + questsSO.requiredAmount;
         }
         else
         {
-            textQuestObjective.text = "<color=red>" + questsSO.currentAmount + "<color=white> / " + questsSO.requiredAmount;
+            textQuestObjective.text = "<color=red>" + main.currentQuestAmount + "<color=white> / " + questsSO.requiredAmount;
         }
 
         textQuestHourglassReward.text = questsSO.hourglass.ToString();

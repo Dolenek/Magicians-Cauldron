@@ -14,10 +14,6 @@ public class QuestsSO : ScriptableObject
     public int hourglass;
     public GoalType goalType;
 
-    public bool IsReached()
-    {
-        return (currentAmount >= requiredAmount);
-    }
     
     //public Sprite sprite;
 

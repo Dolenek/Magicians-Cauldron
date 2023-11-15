@@ -50,7 +50,6 @@ public class BattleManager : MonoBehaviour
         if (currentSceneName == "Battle")
         {
             main.LoadPlayerData();
-            Debug.Log(main.currentStage + "BattleManager main.currentStage");
             enemyStats = SetEnemyStats(1, main.currentStage);
 
             // Player stats
@@ -218,6 +217,7 @@ public class BattleManager : MonoBehaviour
     private void BattleWon()
     {
         Debug.Log("Battle Won");
+        main.LoadPlayerData();
         main.hourglass += enemyStats.hourglass;
         battleOngoing = false;
         if (main.currentStage == 30)
@@ -228,6 +228,7 @@ public class BattleManager : MonoBehaviour
         {
             main.currentStage++;
         }
+        main.SavePlayerData();
     }
     public EnemyStatsSO SetEnemyStats(int island, int stage)
     {
