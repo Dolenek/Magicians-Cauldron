@@ -77,7 +77,7 @@ public class Main : MonoBehaviour
 
     private void Start()
     {
-        //DeleteSaveData();
+        DeleteSaveData();
         if (currentSceneName == "MainScene")
         {
             SetQuest(currentQuest);

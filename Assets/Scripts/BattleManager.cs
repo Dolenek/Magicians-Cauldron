@@ -217,7 +217,6 @@ public class BattleManager : MonoBehaviour
     private void BattleWon()
     {
         Debug.Log("Battle Won");
-        main.LoadPlayerData();
         main.hourglass += enemyStats.hourglass;
         battleOngoing = false;
         if (main.currentStage == 30)
