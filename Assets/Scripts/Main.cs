@@ -77,7 +77,7 @@ public class Main : MonoBehaviour
 
     private void Start()
     {
-        DeleteSaveData();
+        //DeleteSaveData();
         if (currentSceneName == "MainScene")
         {
             SetQuest(currentQuest);
@@ -323,7 +323,6 @@ public class Main : MonoBehaviour
         saveData.hourglass = hourglass;
         
         saveData.currentQuest = currentQuest;
-
         saveData.currentQuestAmount = currentQuestAmount;
        
         UpdateQuests();
@@ -421,6 +420,7 @@ public class Main : MonoBehaviour
         {
             hourglass += questsSO.hourglass;
             currentQuest++;
+            currentQuestAmount = 0;
             uiManager.UpdateAllMainUI();
             SavePlayerData();
             SetQuest(currentQuest);

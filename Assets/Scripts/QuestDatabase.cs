@@ -55,7 +55,7 @@ public class QuestDatabase : MonoBehaviour
 
         QuestsSO quest5 = ScriptableObject.CreateInstance<QuestsSO>();
         quest5.number = 5;
-        quest5.goalType = GoalType.GenerateNewItem;
+        quest5.goalType = GoalType.GenerateItem;
         quest5.title = "Generate 20 new items";
         quest5.requiredAmount = 20;
         quest5.hourglass = 15;

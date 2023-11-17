@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadingScreen : MonoBehaviour
 {
+    [SerializeField] private TMP_Text loadingText;
+
     void Start()
     {
         StartCoroutine(LoadMainScene());
@@ -22,7 +25,7 @@ public class LoadingScreen : MonoBehaviour
             // Update your loading screen UI to display loading progress
             float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f); // The progress value is between 0 and 0.9
             Debug.Log("Loading progress: " + (progress * 100) + "%");
-
+            loadingText.text = "Loading progress: " + (progress * 100) + "%";
             // If the loading has completed, activate the main scene
             if (asyncLoad.progress >= 0.9f)
             {
