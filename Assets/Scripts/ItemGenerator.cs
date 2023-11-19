@@ -46,9 +46,9 @@ public class ItemGenerator : MonoBehaviour
 
         // Randomly generate item stats based on player level and rarity
         // Adjust these formulas as needed
-        newItem.damageBonus = Random.Range(newItem.itemLevel * 5, newItem.itemLevel * 10);
-        newItem.healthBonus = Random.Range(newItem.itemLevel * 10, newItem.itemLevel * 20);
-        newItem.resistanceBonus = Random.Range(newItem.itemLevel * 2, newItem.itemLevel * 5);
+        newItem.damageBonus = Random.Range(newItem.itemLevel * 10, newItem.itemLevel * 15);
+        newItem.healthBonus = Random.Range(newItem.itemLevel * 60, newItem.itemLevel * 80);
+        newItem.resistanceBonus = Random.Range(newItem.itemLevel * 5, newItem.itemLevel * 8);
         newItem.speedBonus = Random.Range(newItem.itemLevel * 2, newItem.itemLevel * 5);
 
         // For rare and epic items, generate additional attributes
