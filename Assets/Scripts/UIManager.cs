@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 
 [DefaultExecutionOrder(-1)]
@@ -37,6 +38,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] public TMP_Text textQuestObjective;
     [SerializeField] public TMP_Text textQuestHourglassReward;
     [SerializeField] public Image imageQuest;
+
+    [Header("Settings")]
+    [SerializeField] private GameObject Settings;
 
     [Header("Generated New Item Stats UI")]
     [SerializeField] private TMP_Text textNewItemHealth;
@@ -572,6 +576,15 @@ public class UIManager : MonoBehaviour
 
         textQuestHourglassReward.text = questsSO.hourglass.ToString();
         //imageQuest.sprite = main.questSprite;
+    }
+
+    private bool value = false;
+    public void SettingsClick()
+    {
+        Debug.Log("SettingsClick");
+        
+        Settings.SetActive(!value);
+        value = !value;
     }
 
 }
