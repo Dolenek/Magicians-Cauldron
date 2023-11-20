@@ -188,14 +188,10 @@ public class BattleManager : MonoBehaviour
             if (playerStats.health <= 0) // Lose
             {
                 BattleLost();
-                panelLose.SetActive(true);
-
             }
             else if (enemyStats.health <= 0) // Win
             {
                 BattleWon();
-                panelWin.SetActive(true);
-
             }
 
             // Switch turns
@@ -213,10 +209,12 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("Battle Lost");
         battleOngoing = false;
+        panelLose.SetActive(true);
     }
     private void BattleWon()
     {
         Debug.Log("Battle Won");
+        panelWin.SetActive(true);
         main.hourglass += enemyStats.hourglass;
         battleOngoing = false;
         if (main.currentStage == 30)

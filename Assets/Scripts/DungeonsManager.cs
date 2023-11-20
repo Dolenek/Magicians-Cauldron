@@ -51,14 +51,27 @@ public class DungeonsManager : MonoBehaviour
     }
     public void ShowAttackPanel()
     {
+        main.LoadPlayerData();
         panelAttack.SetActive(true);
         buttonAttack.onClick.AddListener(() => Attack());
         Debug.Log(main.currentStage + " ShowAttackPanel DungeonsManager");
         textStage.text = "Stage: " + main.currentStage.ToString();
 
         enemyStats = SetEnemyStats(islandLevel, main.currentStage);
-        //textEnemyLvl.text = "Lvl: " + enemyStats.level.ToString();
+        
         imageEnemy.sprite = enemyStats.sprite;
+        imageIslandBackground.sprite = islandBackgrounds[islandLevel - 1];
+        if (enemyStats.level > 0)
+        {
+            textEnemyLvl.text = "Lvl: " + enemyStats.level.ToString();
+        }
+        else
+        {
+            textEnemyLvl.text = "Lvl: " + enemyStats.stage.ToString();
+        }
+        //imageReward1.sprite = enemyStats.reward1;
+        //imageReward2.sprite = enemyStats.reward2;
+
     }
 
     private void Attack()

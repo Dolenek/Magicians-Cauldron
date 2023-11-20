@@ -8,6 +8,7 @@ public class EnemyStatsSO : ScriptableObject
     public int island = 1;
     public int stage = 1;
 
+    public int level;
     public int health = 6;
     public int damage = 6;
     public int speed = 6;
