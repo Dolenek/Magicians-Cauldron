@@ -1186,7 +1186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1566}
+  m_AnchoredPosition: {x: 0, y: 1960}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911447195
@@ -2238,8 +2238,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonAttack: {fileID: 206486234}
   buttonIsland1: {fileID: 0}
+  buttonEnemyStats: {fileID: 2065670029}
   panelAttack: {fileID: 1150452008}
   textStage: {fileID: 1118920593}
+  textEnemyLvl: {fileID: 1809551387}
+  imageIslandBackground: {fileID: 1157628508}
+  imageEnemy: {fileID: 1722064317}
+  imageReward1: {fileID: 757805935}
+  imageReward2: {fileID: 1674716275}
+  islandBackgrounds: []
   islandLevel: 1
 --- !u!114 &1396855415
 MonoBehaviour:
@@ -2267,6 +2274,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df809edd37da2094ea69888a2fa2b113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySprites1stIsland:
+  - {fileID: 21300000, guid: c1edecaf08ed59342864b1f3bacc932f, type: 3}
+  - {fileID: 21300000, guid: 01109563f2ce40842a148abc5bfca25d, type: 3}
+  - {fileID: 21300000, guid: dc718a6627a0ee542b688a5015082483, type: 3}
+  - {fileID: 21300000, guid: 5390afb8eda71c34abcc0344e43a30df, type: 3}
+  - {fileID: 21300000, guid: 36d40454ebc89614b9cb78f623ae72d2, type: 3}
+  enemySprites2ndIsland: []
+  enemySprites3ndIsland: []
+  enemySprites4ndIsland: []
+  enemySprites5ndIsland: []
   enemies: []
 --- !u!114 &1396855417
 MonoBehaviour:

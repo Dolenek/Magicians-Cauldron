@@ -326,8 +326,8 @@ GameObject:
   - component: {fileID: 252754718}
   - component: {fileID: 252754725}
   - component: {fileID: 252754723}
-  - component: {fileID: 252754722}
   - component: {fileID: 252754726}
+  - component: {fileID: 252754722}
   - component: {fileID: 252754724}
   - component: {fileID: 252754727}
   m_Layer: 5
@@ -454,8 +454,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonAttack: {fileID: 0}
   buttonIsland1: {fileID: 0}
+  buttonEnemyStats: {fileID: 0}
   panelAttack: {fileID: 0}
   textStage: {fileID: 0}
+  textEnemyLvl: {fileID: 0}
+  imageIslandBackground: {fileID: 0}
+  imageEnemy: {fileID: 0}
+  imageReward1: {fileID: 0}
+  imageReward2: {fileID: 0}
   islandLevel: 1
 --- !u!114 &252754724
 MonoBehaviour:

@@ -19,6 +19,6 @@ public class EnemyStatsSO : ScriptableObject
 
     public int hourglass;
 
-    //public Sprite sprite;
+    public Sprite sprite;
 
 }

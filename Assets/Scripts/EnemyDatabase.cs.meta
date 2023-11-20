@@ -3,7 +3,8 @@ guid: df809edd37da2094ea69888a2fa2b113
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemySprites1stIsland: {fileID: 21300000, guid: 13eae8e326d192d4791e7eb45f3ef4b3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
