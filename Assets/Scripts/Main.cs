@@ -118,7 +118,7 @@ public class Main : MonoBehaviour
             int existingItemSlotIndex = GetItemSlotIndexByType(newItemType);
 
             //Quest
-            if (questsSO.goalType == GoalType.GenerateItem)
+            if (questsSO.goalType == GoalType.GenerateItem && !IsReached())
                 currentQuestAmount++;
 
             if (existingItemSlotIndex >= 0)
@@ -461,6 +461,7 @@ public class Main : MonoBehaviour
         {
             File.Delete(savePath);
         }
+        SceneManager.LoadScene("MainScene");
     }
     private void SetQuest(int number)
     {

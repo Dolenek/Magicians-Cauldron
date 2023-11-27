@@ -52,8 +52,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S1.island = 1;
         enemy1S1.stage = 1;
         enemy1S1.name = "Enemy 1";
-        enemy1S1.health = 100;
-        enemy1S1.damage = 12;
+        enemy1S1.health = 400;
+        enemy1S1.damage = 60;
         enemy1S1.hourglass = 10;
         enemy1S1.sprite = enemySprites1stIsland[0];
         enemies.Add(enemy1S1);
@@ -62,8 +62,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S2.island = 1;
         enemy1S2.stage = 2;
         enemy1S2.name = "Enemy 2";
-        enemy1S2.health = 150;
-        enemy1S2.damage = 15;
+        enemy1S2.health = 600;
+        enemy1S2.damage = 80;
         enemy1S2.hourglass = 10;
         enemy1S2.sprite = enemySprites1stIsland[1];
         enemies.Add(enemy1S2);
@@ -72,8 +72,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S3.island = 1;
         enemy1S3.stage = 3;
         enemy1S3.name = "Enemy 3";
-        enemy1S3.health = 200;
-        enemy1S3.damage = 20;
+        enemy1S3.health = 800;
+        enemy1S3.damage = 100;
         enemy1S3.hourglass = 10;
         enemy1S3.sprite = enemySprites1stIsland[2];
         enemies.Add(enemy1S3);
@@ -82,8 +82,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S4.island = 1;
         enemy1S4.stage = 4;
         enemy1S4.name = "Enemy 4";
-        enemy1S4.health = 250;
-        enemy1S4.damage = 25;
+        enemy1S4.health = 1000;
+        enemy1S4.damage = 120;
         enemy1S4.hourglass = 10;
         enemy1S4.sprite = enemySprites1stIsland[3];
         enemies.Add(enemy1S4);
@@ -92,9 +92,10 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S5.island = 1;
         enemy1S5.stage = 5;
         enemy1S5.name = "Enemy 5";
-        enemy1S5.health = 300;
-        enemy1S5.damage = 30;
+        enemy1S5.health = 1200;
+        enemy1S5.damage = 140;
         enemy1S5.hourglass = 10;
+        enemy1S5.counterChance = 20;
         enemy1S5.sprite = enemySprites1stIsland[4];
         enemies.Add(enemy1S5);
 
@@ -102,8 +103,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S6.island = 1;
         enemy1S6.stage = 6;
         enemy1S6.name = "Enemy 6";
-        enemy1S6.health = 350;
-        enemy1S6.damage = 35;
+        enemy1S6.health = 1400;
+        enemy1S6.damage = 160;
         enemy1S6.hourglass = 10;
         enemy1S6.sprite = enemySprites1stIsland[1];
         enemies.Add(enemy1S6);
@@ -112,8 +113,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S7.island = 1;
         enemy1S7.stage = 7;
         enemy1S7.name = "Enemy 7";
-        enemy1S7.health = 400;
-        enemy1S7.damage = 40;
+        enemy1S7.health = 1600;
+        enemy1S7.damage = 180;
         enemy1S7.hourglass = 10;
         enemy1S7.sprite = enemySprites1stIsland[2];
         enemies.Add(enemy1S7);
@@ -122,8 +123,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S8.island = 1;
         enemy1S8.stage = 8;
         enemy1S8.name = "Enemy 8";
-        enemy1S8.health = 450;
-        enemy1S8.damage = 45;
+        enemy1S8.health = 1800;
+        enemy1S8.damage = 200;
         enemy1S8.hourglass = 10;
         enemy1S8.sprite = enemySprites1stIsland[3];
         enemies.Add(enemy1S8);
@@ -132,8 +133,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S9.island = 1;
         enemy1S9.stage = 9;
         enemy1S9.name = "Enemy 9";
-        enemy1S9.health = 500;
-        enemy1S9.damage = 50;
+        enemy1S9.health = 2000;
+        enemy1S9.damage = 220;
         enemy1S9.hourglass = 10;
         enemy1S9.sprite = enemySprites1stIsland[4];
         enemies.Add(enemy1S9);
@@ -142,9 +143,10 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S10.island = 1;
         enemy1S10.stage = 10;
         enemy1S10.name = "Enemy 10";
-        enemy1S10.health = 550;
-        enemy1S10.damage = 55;
+        enemy1S10.health = 2200;
+        enemy1S10.damage = 240;
         enemy1S10.hourglass = 10;
+        enemy1S10.comboChance = 20;
         enemy1S10.sprite = enemySprites1stIsland[0];
         enemies.Add(enemy1S10);
 
@@ -152,8 +154,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S11.island = 1;
         enemy1S11.stage = 11;
         enemy1S11.name = "Enemy 11";
-        enemy1S11.health = 600;
-        enemy1S11.damage = 60;
+        enemy1S11.health = 2400;
+        enemy1S11.damage = 260;
         enemy1S11.hourglass = 10;
         enemy1S11.sprite = enemySprites1stIsland[2];
         enemies.Add(enemy1S11);
@@ -162,8 +164,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S12.island = 1;
         enemy1S12.stage = 12;
         enemy1S12.name = "Enemy 12";
-        enemy1S12.health = 650;
-        enemy1S12.damage = 65;
+        enemy1S12.health = 2600;
+        enemy1S12.damage = 280;
         enemy1S12.hourglass = 10;
         enemy1S12.sprite = enemySprites1stIsland[3];
         enemies.Add(enemy1S12);
@@ -172,8 +174,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S13.island = 1;
         enemy1S13.stage = 13;
         enemy1S13.name = "Enemy 13";
-        enemy1S13.health = 700;
-        enemy1S13.damage = 70;
+        enemy1S13.health = 2800;
+        enemy1S13.damage = 300;
         enemy1S13.hourglass = 10;
         enemy1S13.sprite = enemySprites1stIsland[4];
         enemies.Add(enemy1S13);
@@ -182,8 +184,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S14.island = 1;
         enemy1S14.stage = 14;
         enemy1S14.name = "Enemy 14";
-        enemy1S14.health = 750;
-        enemy1S14.damage = 75;
+        enemy1S14.health = 3000;
+        enemy1S14.damage = 320;
         enemy1S14.hourglass = 10;
         enemy1S14.sprite = enemySprites1stIsland[0];
         enemies.Add(enemy1S14);
@@ -192,9 +194,10 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S15.island = 1;
         enemy1S15.stage = 15;
         enemy1S15.name = "Enemy 15";
-        enemy1S15.health = 800;
-        enemy1S15.damage = 80;
+        enemy1S15.health = 3200;
+        enemy1S15.damage = 340;
         enemy1S15.hourglass = 10;
+        enemy1S15.freezeChance = 20;
         enemy1S15.sprite = enemySprites1stIsland[1];
         enemies.Add(enemy1S15);
 
@@ -202,8 +205,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S16.island = 1;
         enemy1S16.stage = 16;
         enemy1S16.name = "Enemy 16";
-        enemy1S16.health = 850;
-        enemy1S16.damage = 85;
+        enemy1S16.health = 3400;
+        enemy1S16.damage = 360;
         enemy1S16.hourglass = 10;
         enemy1S16.sprite = enemySprites1stIsland[3];
         enemies.Add(enemy1S16);
@@ -212,8 +215,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S17.island = 1;
         enemy1S17.stage = 17;
         enemy1S17.name = "Enemy 17";
-        enemy1S17.health = 900;
-        enemy1S17.damage = 90;
+        enemy1S17.health = 3600;
+        enemy1S17.damage = 380;
         enemy1S17.hourglass = 10;
         enemy1S17.sprite = enemySprites1stIsland[4];
         enemies.Add(enemy1S17);
@@ -222,8 +225,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S18.island = 1;
         enemy1S18.stage = 18;
         enemy1S18.name = "Enemy 18";
-        enemy1S18.health = 950;
-        enemy1S18.damage = 95;
+        enemy1S18.health = 3800;
+        enemy1S18.damage = 400;
         enemy1S18.hourglass = 10;
         enemy1S18.sprite = enemySprites1stIsland[0];
         enemies.Add(enemy1S18);
@@ -232,8 +235,8 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S19.island = 1;
         enemy1S19.stage = 19;
         enemy1S19.name = "Enemy 19";
-        enemy1S19.health = 1000;
-        enemy1S19.damage = 100;
+        enemy1S19.health = 4000;
+        enemy1S19.damage = 420;
         enemy1S19.hourglass = 10;
         enemy1S19.sprite = enemySprites1stIsland[1];
         enemies.Add(enemy1S19);
@@ -242,12 +245,26 @@ public class EnemyDatabase : MonoBehaviour
         enemy1S20.island = 1;
         enemy1S20.stage = 20;
         enemy1S20.name = "Enemy 20";
-        enemy1S20.health = 100000;
-        enemy1S20.damage = 110;
-        enemy1S20.comboChance = 0.5f;
+        enemy1S20.health = 4200;
+        enemy1S20.damage = 440;
+        enemy1S20.comboChance = 20;
+        enemy1S20.freezeChance = 20;
+        enemy1S20.fireChance = 20;
+        enemy1S20.counterChance = 20;
         enemy1S20.hourglass = 10;
         enemy1S20.sprite = enemySprites1stIsland[2];
         enemies.Add(enemy1S20);
+
+        EnemyStatsSO enemy1S21 = ScriptableObject.CreateInstance<EnemyStatsSO>();
+        enemy1S21.island = 1;
+        enemy1S21.stage = 21;
+        enemy1S21.name = "Enemy 20";
+        enemy1S21.health = 100000;
+        enemy1S21.damage = 110;
+        enemy1S21.comboChance = 0.5f;
+        enemy1S21.hourglass = 10;
+        enemy1S21.sprite = enemySprites1stIsland[3];
+        enemies.Add(enemy1S21);
 
     }
 }

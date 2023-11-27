@@ -40,7 +40,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Image imageQuest;
 
     [Header("Settings")]
-    [SerializeField] private GameObject Settings;
+    [SerializeField] private GameObject panelSettings;
+    [SerializeField] private GameObject panelSettingsTapToClose;
 
     [Header("Generated New Item Stats UI")]
     [SerializeField] private TMP_Text textNewItemHealth;
@@ -578,13 +579,16 @@ public class UIManager : MonoBehaviour
         //imageQuest.sprite = main.questSprite;
     }
 
-    private bool value = false;
-    public void SettingsClick()
+
+    public void OpenSettings()
     {
-        Debug.Log("SettingsClick");
-        
-        Settings.SetActive(!value);
-        value = !value;
+        panelSettings.SetActive(true);
+        panelSettingsTapToClose.SetActive(true);
     }
 
+    public void CloseSettings()
+    {
+        panelSettings.SetActive(false);
+        panelSettingsTapToClose.SetActive(false);
+    }
 }

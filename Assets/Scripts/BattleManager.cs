@@ -32,7 +32,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] public GameObject panelWin;
     [SerializeField] public GameObject panelLose;
 
-
+    [SerializeField] private Image imageEnemySprite;
     private void Awake()
     {
 
@@ -76,6 +76,7 @@ public class BattleManager : MonoBehaviour
                 playerTurn = false;
             }
 
+            imageEnemySprite.sprite = enemyStats.sprite;
             // Check for quests
             questsSO = questDatabase.GetQuest(main.currentStage);
 
@@ -98,6 +99,7 @@ public class BattleManager : MonoBehaviour
             Debug.Log(turn + " turn");
             if (playerTurn) // Player turn
             {
+                turn++;
                 if (playerOnFire > 0) // Player is on fire
                 {
                     int fireDamage = enemyStats.damage / 10;
@@ -158,6 +160,7 @@ public class BattleManager : MonoBehaviour
             }
             else //Enemy turn
             {
+
                 if (enemyOnFire > 0) // Enemy is on fire
                 {
                     int fireDamage = playerStats.damage / 10;
@@ -225,7 +228,7 @@ public class BattleManager : MonoBehaviour
 
             // Switch turns
             playerTurn = !playerTurn;
-            turn++;
+            
         }
         if (turn > 20)
         {
@@ -275,15 +278,6 @@ public class BattleManager : MonoBehaviour
     {
         GameObject entry = Instantiate(battleLogEntryPrefab, battleLogContent);
         entry.GetComponent<TextMeshProUGUI>().text = message;
-
-        //ScrollToBottom();
-    }
-
-    private void ScrollToBottom()
-    {
-        // Assuming logContent.parent has a ScrollRect component
-        ScrollRect scrollRect = battleLogContent.parent.GetComponent<ScrollRect>();
-        scrollRect.normalizedPosition = new Vector2(0, 0);
     }
 
     public EnemyStatsSO SetEnemyStats(int island, int stage)
