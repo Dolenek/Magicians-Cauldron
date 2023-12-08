@@ -43,6 +43,22 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject panelSettings;
     [SerializeField] private GameObject panelSettingsTapToClose;
 
+    [Header("Equipped Items")]
+    [SerializeField] private GameObject panelEquippedItem;
+    [SerializeField] private Image imageEquippedItemRarity;
+    [SerializeField] private Image imageEquippedItemSprite;
+    [SerializeField] private TMP_Text textEquippedItemLvl;
+    [SerializeField] private TMP_Text textEquippedItemRarity;
+    [SerializeField] private TMP_Text textEquippedItemType;
+    [SerializeField] private TMP_Text textEquippedItemHealth;
+    [SerializeField] private TMP_Text textEquippedItemDamage;
+    [SerializeField] private TMP_Text textEquippedItemResistance;
+    [SerializeField] private TMP_Text textEquippedItemSpeed;
+    [SerializeField] public TMP_Text textEquippedItemExtraBuffStat1;
+    [SerializeField] public TMP_Text textEquippedItemExtraBuffStat2;
+    [SerializeField] public TMP_Text textEquippedItemExtraBuffName1;
+    [SerializeField] public TMP_Text textEquippedItemExtraBuffName2;
+
     [Header("Generated New Item Stats UI")]
     [SerializeField] private TMP_Text textNewItemHealth;
     [SerializeField] private TMP_Text textNewItemDamage;
@@ -579,6 +595,10 @@ public class UIManager : MonoBehaviour
         //imageQuest.sprite = main.questSprite;
     }
 
+    public void ShowItemStats()
+    {
+        panelEquippedItem.SetActive(true);
+    }
 
     public void OpenSettings()
     {
