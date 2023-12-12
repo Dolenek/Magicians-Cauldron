@@ -595,9 +595,91 @@ public class UIManager : MonoBehaviour
         //imageQuest.sprite = main.questSprite;
     }
 
-    public void ShowItemStats()
+    public void ShowEquippedItem(Item newItem)
     {
         panelEquippedItem.SetActive(true);
+        // Item Sprites
+        // Set rarity sprite based on item rarity
+        switch (newItem.itemRarity)
+        {
+            case ItemRarity.Common:
+                imageEquippedItemRarity.sprite = spriteCommon;
+                break;
+            case ItemRarity.Uncommon:
+                imageEquippedItemRarity.sprite = spriteUncommon;
+                break;
+            case ItemRarity.Rare:
+                imageEquippedItemRarity.sprite = spriteRare;
+                break;
+            case ItemRarity.Epic:
+                imageEquippedItemRarity.sprite = spriteEpic;
+                break;
+            case ItemRarity.Legendary:
+                imageEquippedItemRarity.sprite = spriteLegendary;
+                break;
+        }
+        switch (newItem.itemType)
+        {
+            case ItemType.Wand:
+                imageEquippedItemSprite.sprite = spritesWand[newItem.itemIntSprite]; ;
+                break;
+            case ItemType.Headwear:
+                imageEquippedItemSprite.sprite = spritesHeadwear[newItem.itemIntSprite];
+                break;
+            case ItemType.Outfit:
+                imageEquippedItemSprite.sprite = spritesOutfit[newItem.itemIntSprite];
+                break;
+            case ItemType.Orb:
+                imageEquippedItemSprite.sprite = spritesOrb[newItem.itemIntSprite];
+                break;
+            case ItemType.Handwear:
+                imageEquippedItemSprite.sprite = spritesHandwear[newItem.itemIntSprite];
+                break;
+            case ItemType.Ring:
+                imageEquippedItemSprite.sprite = spritesRing[newItem.itemIntSprite];
+                break;
+            case ItemType.Necklace:
+                imageEquippedItemSprite.sprite = spritesNecklace[newItem.itemIntSprite];
+                break;
+            case ItemType.Boots:
+                imageEquippedItemSprite.sprite = spritesBoots[newItem.itemIntSprite];
+                break;
+        }
+        // Item UI
+        textEquippedItemLvl.text = "Lv. " + newItem.itemLevel.ToString();
+        textEquippedItemRarity.text = "[" + newItem.itemRarity.ToString().ToUpper() + "]";
+        textEquippedItemType.text = newItem.itemType.ToString();
+        // Stats
+        textEquippedItemHealth.text = newItem.healthBonus.ToString();
+        textEquippedItemDamage.text = newItem.damageBonus.ToString();
+        textEquippedItemSpeed.text = newItem.speedBonus.ToString();
+        textEquippedItemResistance.text = newItem.resistanceBonus.ToString();
+        // For rare and epic items, generate additional attributes
+        if (newItem.itemRarity == ItemRarity.Rare || newItem.itemRarity == ItemRarity.Epic)
+        {
+            textEquippedItemExtraBuffName1.enabled = true;
+            textEquippedItemExtraBuffStat1.enabled = true;
+            if (newItem.freezeChanceBonus.ToString() != null)
+            {
+                textEquippedItemExtraBuffName1.text = "FRZ";
+                textEquippedItemExtraBuffStat1.text = newItem.freezeChanceBonus.ToString();
+            }
+            if (newItem.fireChanceBonus.ToString() != null)
+            {
+                textEquippedItemExtraBuffName1.text = "FIRE";
+                textEquippedItemExtraBuffStat1.text = newItem.fireChanceBonus.ToString();
+            }
+            if (newItem.comboChanceBonus.ToString() != null)
+            {
+                textEquippedItemExtraBuffName1.text = "CMB";
+                textEquippedItemExtraBuffStat1.text = newItem.comboChanceBonus.ToString();
+            }
+            if (newItem.counterChanceBonus.ToString() != null)
+            {
+                textEquippedItemExtraBuffName1.text = "CTR";
+                textEquippedItemExtraBuffStat1.text = newItem.counterChanceBonus.ToString();
+            }
+        }
     }
 
     public void OpenSettings()
