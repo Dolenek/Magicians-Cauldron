@@ -16,8 +16,11 @@ public class DungeonsManager : MonoBehaviour
     [SerializeField] private TMP_Text textEnemyLvl;
     [SerializeField] private Image imageIslandBackground;
     [SerializeField] private Image imageEnemy;
-    [SerializeField] private Image imageReward1;
-    [SerializeField] private Image imageReward2;
+    [SerializeField] private GameObject reward1;
+    [SerializeField] private GameObject reward2;
+    [SerializeField] private TMP_Text textReward1;
+    [SerializeField] private TMP_Text textReward2;
+
 
     [SerializeField] private Sprite[] islandBackgrounds;
 
@@ -69,8 +72,24 @@ public class DungeonsManager : MonoBehaviour
         {
             textEnemyLvl.text = "Lvl: " + enemyStats.stage.ToString();
         }
-        //imageReward1.sprite = enemyStats.reward1;
-        //imageReward2.sprite = enemyStats.reward2;
+        if (enemyStats.hourglass > 0)
+        {
+            reward1.SetActive(true);
+            textReward1.text = enemyStats.hourglass.ToString();
+        }
+        else
+        {
+            reward1.SetActive(false);
+        }
+        if (enemyStats.anvilSkip > 0)
+        {
+            reward2.SetActive(true);
+            textReward2.text = enemyStats.anvilSkip.ToString();
+        }
+        else
+        {
+            reward2.SetActive(false);
+        }
 
     }
 

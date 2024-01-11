@@ -43,6 +43,11 @@ public class Main : MonoBehaviour
     //Animation
     private bool delayIsActive = false;
 
+    //Item generation
+    private bool generating = false;
+    private bool equippingWindow = false;
+
+    //Scene
     public string currentSceneName;
     
     // Inventory
@@ -95,13 +100,22 @@ public class Main : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        // Check if player wants to auto generate items
+        while (generating == true && equippingWindow == false)
+        {
+            GenerateAndEquipRandomItem();
+        }
+    }
+
     public async void GenerateAndEquipRandomItem()
     {
         // Generate a random item based on player level
         if (hourglass > 0 && delayIsActive == false)
         {
             hourglass--;
-
+            equippingWindow = true;
             // Animation
             Vector3 buttonNewPosition = buttonPosition.position;
             buttonNewPosition.z = 0; buttonNewPosition.y += 0;
@@ -202,6 +216,8 @@ public class Main : MonoBehaviour
         uiManager.textNewFirstItemExtraBuffStat1.enabled = false;
         uiManager.textNewFirstItemExtraBuffName1.enabled = false;
 
+        equippingWindow = false;
+
         SavePlayerData();
     }
 
@@ -225,6 +241,8 @@ public class Main : MonoBehaviour
         uiManager.textExistingItemExtraBuffName1.enabled = false;
         uiManager.textExistingItemExtraBuffStat1.enabled = false;
 
+       
+
         SavePlayerData();
     } // Handler for the "Replace" button
 
@@ -246,6 +264,8 @@ public class Main : MonoBehaviour
 
         newItem.itemRarity = 0; //Insures that the itemRarity isnt adding up
 
+        equippingWindow = false;
+
         SavePlayerData();
     }// Handler for the "Sell" button
 
@@ -258,6 +278,7 @@ public class Main : MonoBehaviour
         // Update player stats
         UpdateStats();
         uiManager.UpdateAllMainUI();
+        equippingWindow = false;
         item.itemRarity = 0; //Insures that the itemRarity isnt adding up
     }
 
@@ -472,5 +493,11 @@ public class Main : MonoBehaviour
     {
         return (currentQuestAmount >= questsSO.requiredAmount);
     }
+
+    public void AutoGenerateItems()
+    {
+        generating = !generating;
+    }
+
 }
 

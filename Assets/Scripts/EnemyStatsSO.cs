@@ -19,6 +19,7 @@ public class EnemyStatsSO : ScriptableObject
     public float fireChance = 0f;
 
     public int hourglass;
+    public int anvilSkip;
 
     public Sprite sprite;
 
