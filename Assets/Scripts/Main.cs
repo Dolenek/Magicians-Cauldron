@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -49,13 +50,16 @@ public class Main : MonoBehaviour
 
     //Scene
     public string currentSceneName;
-    
+
     // Inventory
     public Item[] equipmentSlots = new Item[8];
 
     //FX
     [SerializeField] private GameObject clickFX;
     [SerializeField] private RectTransform buttonPosition;
+    [SerializeField] private Image imageButtonAutoGenerate;
+
+    [SerializeField] private Sprite[] spritesButtonAutoGenerate;
 
     private ItemGenerator itemGenerator;
     private UIManager uiManager;
@@ -103,10 +107,16 @@ public class Main : MonoBehaviour
     private void Update()
     {
         // Check if player wants to auto generate items
-        while (generating == true && equippingWindow == false)
+        if (generating == true && equippingWindow == false)
         {
+            imageButtonAutoGenerate.sprite = spritesButtonAutoGenerate[0];
             GenerateAndEquipRandomItem();
         }
+        else if (generating == false)
+        {
+            imageButtonAutoGenerate.sprite = spritesButtonAutoGenerate[1];
+        }
+
     }
 
     public async void GenerateAndEquipRandomItem()
@@ -497,6 +507,8 @@ public class Main : MonoBehaviour
     public void AutoGenerateItems()
     {
         generating = !generating;
+
+
     }
 
 }

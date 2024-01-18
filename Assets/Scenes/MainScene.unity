@@ -7377,8 +7377,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e1cc1cba50755df45b566fb05a641aa8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7529,7 +7529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1215978966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11224,6 +11224,10 @@ MonoBehaviour:
     itemIntSprite: 0
   clickFX: {fileID: 5411376050152322402, guid: a6f37ea391b1c0141a4eaac0dd814734, type: 3}
   buttonPosition: {fileID: 280638508}
+  imageButtonAutoGenerate: {fileID: 1184295650}
+  spritesButtonAutoGenerate:
+  - {fileID: 21300000, guid: dbfb7890a798e164aabcef8aac4d13b1, type: 3}
+  - {fileID: 21300000, guid: e1cc1cba50755df45b566fb05a641aa8, type: 3}
 --- !u!114 &1627701553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12460,8 +12464,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 819f52dafeaae2e48956aa7830a6f231, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14979,11 +14983,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2881757888148769492, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2881757888148769492, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881757888148769492, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2881757888148769492, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -14994,11 +15002,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2881757888148769492, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881757888148769492, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowExistingItemText
       objectReference: {fileID: 0}
     - target: {fileID: 2881757888148769492, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881757888148769492, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UIManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2881757888148769492, guid: 9e866bb6705c73243a94adb2cd05ce29, type: 3}
