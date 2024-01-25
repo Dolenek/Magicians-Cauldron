@@ -42,7 +42,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private GameObject panelSettings;
-    [SerializeField] private GameObject panelSettingsTapToClose;
+
+    [Header("TapToClose")]
+    [SerializeField] private GameObject panelTapToClose;
 
     [Header("Equipped Items")]
     [SerializeField] private GameObject panelEquippedItem;
@@ -204,16 +206,23 @@ public class UIManager : MonoBehaviour
         // Making sure that the generated ExtraBuffs dont show up when they arent supposed to.
         textExistingItemExtraBuffName1.enabled = false;
         textExistingItemExtraBuffStat1.enabled = false;
-        textNewItemExtraBuffName1.enabled = false;
-        textNewItemExtraBuffStat1.enabled = false;
         textExistingItemExtraBuffName2.enabled = false;
         textExistingItemExtraBuffStat2.enabled = false;
+
         textNewItemExtraBuffName2.enabled = false;
         textNewItemExtraBuffStat2.enabled = false;
+        textNewItemExtraBuffName1.enabled = false;
+        textNewItemExtraBuffStat1.enabled = false;
+
         textNewFirstItemExtraBuffName1.enabled = false;
         textNewFirstItemExtraBuffStat1.enabled = false;
         textNewFirstItemExtraBuffName2.enabled = false;
         textNewFirstItemExtraBuffStat2.enabled = false;
+
+        textEquippedItemExtraBuffName1.enabled = false;
+        textEquippedItemExtraBuffStat1.enabled = false;
+        textEquippedItemExtraBuffName2.enabled = false;
+        textEquippedItemExtraBuffStat2.enabled = false;
 
     }
 
@@ -328,8 +337,7 @@ public class UIManager : MonoBehaviour
             }
         }
         // Set sprite based on item type
-        if (main.equipmentSlots[existingItemSlotIndex].itemSprite != null)
-        {
+        
             switch (main.equipmentSlots[existingItemSlotIndex].itemType)
             {
                 case ItemType.Wand:
@@ -357,7 +365,7 @@ public class UIManager : MonoBehaviour
                     imageExistingItemSprite.sprite = spritesBoots[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
                     break;
             }
-        }
+        
         
         // Item UI
         textExistingItemLvl.text = "Lv. " + main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
@@ -596,89 +604,103 @@ public class UIManager : MonoBehaviour
         //imageQuest.sprite = main.questSprite;
     }
 
-    public void ShowEquippedItem(Item newItem)
+    public void ShowEquippedItem(int existingItemSlotIndex)
     {
-        panelEquippedItem.SetActive(true);
-        // Item Sprites
-        // Set rarity sprite based on item rarity
-        switch (newItem.itemRarity)
+        if (main.equipmentSlots[existingItemSlotIndex].itemRarity != 0)
         {
-            case ItemRarity.Common:
-                imageEquippedItemRarity.sprite = spriteCommon;
-                break;
-            case ItemRarity.Uncommon:
-                imageEquippedItemRarity.sprite = spriteUncommon;
-                break;
-            case ItemRarity.Rare:
-                imageEquippedItemRarity.sprite = spriteRare;
-                break;
-            case ItemRarity.Epic:
-                imageEquippedItemRarity.sprite = spriteEpic;
-                break;
-            case ItemRarity.Legendary:
-                imageEquippedItemRarity.sprite = spriteLegendary;
-                break;
+            panelEquippedItem.SetActive(true);
+            panelTapToClose.SetActive(true);
+            textEquippedItemExtraBuffName1.enabled = false;
+            textEquippedItemExtraBuffStat1.enabled = false;
+            textEquippedItemExtraBuffName2.enabled = false;
+            textEquippedItemExtraBuffStat2.enabled = false;
         }
-        switch (newItem.itemType)
+        
+
+        if (main.equipmentSlots[existingItemSlotIndex].itemRarity != 0)
         {
-            case ItemType.Wand:
-                imageEquippedItemSprite.sprite = spritesWand[newItem.itemIntSprite]; ;
-                break;
-            case ItemType.Headwear:
-                imageEquippedItemSprite.sprite = spritesHeadwear[newItem.itemIntSprite];
-                break;
-            case ItemType.Outfit:
-                imageEquippedItemSprite.sprite = spritesOutfit[newItem.itemIntSprite];
-                break;
-            case ItemType.Orb:
-                imageEquippedItemSprite.sprite = spritesOrb[newItem.itemIntSprite];
-                break;
-            case ItemType.Handwear:
-                imageEquippedItemSprite.sprite = spritesHandwear[newItem.itemIntSprite];
-                break;
-            case ItemType.Ring:
-                imageEquippedItemSprite.sprite = spritesRing[newItem.itemIntSprite];
-                break;
-            case ItemType.Necklace:
-                imageEquippedItemSprite.sprite = spritesNecklace[newItem.itemIntSprite];
-                break;
-            case ItemType.Boots:
-                imageEquippedItemSprite.sprite = spritesBoots[newItem.itemIntSprite];
-                break;
+            switch (main.equipmentSlots[existingItemSlotIndex].itemRarity)
+            {
+                case ItemRarity.Common:
+                    imageEquippedItemRarity.sprite = spriteCommon;
+                    break;
+                case ItemRarity.Uncommon:
+                    imageEquippedItemRarity.sprite = spriteUncommon;
+                    break;
+                case ItemRarity.Rare:
+                    imageEquippedItemRarity.sprite = spriteRare;
+                    break;
+                case ItemRarity.Epic:
+                    imageEquippedItemRarity.sprite = spriteEpic;
+                    break;
+                case ItemRarity.Legendary:
+                    imageEquippedItemRarity.sprite = spriteLegendary;
+                    break;
+            }
         }
+        // Set sprite based on item type
+            switch (main.equipmentSlots[existingItemSlotIndex].itemType)
+            {
+                case ItemType.Wand:
+                    imageEquippedItemSprite.sprite = spritesWand[main.equipmentSlots[existingItemSlotIndex].itemIntSprite]; ;
+                    break;
+                case ItemType.Headwear:
+                    imageEquippedItemSprite.sprite = spritesHeadwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Outfit:
+                    imageEquippedItemSprite.sprite = spritesOutfit[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Orb:
+                    imageEquippedItemSprite.sprite = spritesOrb[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Handwear:
+                    imageEquippedItemSprite.sprite = spritesHandwear[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Ring:
+                    imageEquippedItemSprite.sprite = spritesRing[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Necklace:
+                    imageEquippedItemSprite.sprite = spritesNecklace[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+                case ItemType.Boots:
+                    imageEquippedItemSprite.sprite = spritesBoots[main.equipmentSlots[existingItemSlotIndex].itemIntSprite];
+                    break;
+            }
+
         // Item UI
-        textEquippedItemLvl.text = "Lv. " + newItem.itemLevel.ToString();
-        textEquippedItemRarity.text = "[" + newItem.itemRarity.ToString().ToUpper() + "]";
-        textEquippedItemType.text = newItem.itemType.ToString();
+        textEquippedItemLvl.text = "Lv. " + main.equipmentSlots[existingItemSlotIndex].itemLevel.ToString();
+        textEquippedItemRarity.text = "[" + main.equipmentSlots[existingItemSlotIndex].itemRarity.ToString().ToUpper() + "]";
+        textEquippedItemType.text = main.equipmentSlots[existingItemSlotIndex].itemType.ToString();
         // Stats
-        textEquippedItemHealth.text = newItem.healthBonus.ToString();
-        textEquippedItemDamage.text = newItem.damageBonus.ToString();
-        textEquippedItemSpeed.text = newItem.speedBonus.ToString();
-        textEquippedItemResistance.text = newItem.resistanceBonus.ToString();
+        textEquippedItemHealth.text = main.equipmentSlots[existingItemSlotIndex].healthBonus.ToString();
+        textEquippedItemDamage.text = main.equipmentSlots[existingItemSlotIndex].damageBonus.ToString();
+        textEquippedItemSpeed.text = main.equipmentSlots[existingItemSlotIndex].speedBonus.ToString();
+        textEquippedItemResistance.text = main.equipmentSlots[existingItemSlotIndex].resistanceBonus.ToString();
+        // Additional stat
         // For rare and epic items, generate additional attributes
-        if (newItem.itemRarity == ItemRarity.Rare || newItem.itemRarity == ItemRarity.Epic)
+        if (main.equipmentSlots[existingItemSlotIndex].itemRarity == ItemRarity.Rare || main.equipmentSlots[existingItemSlotIndex].itemRarity == ItemRarity.Epic)
         {
             textEquippedItemExtraBuffName1.enabled = true;
             textEquippedItemExtraBuffStat1.enabled = true;
-            if (newItem.freezeChanceBonus.ToString() != null)
+            if (main.equipmentSlots[existingItemSlotIndex].freezeChanceBonus.ToString() != null)
             {
                 textEquippedItemExtraBuffName1.text = "FRZ";
-                textEquippedItemExtraBuffStat1.text = newItem.freezeChanceBonus.ToString();
+                textEquippedItemExtraBuffStat1.text = main.equipmentSlots[existingItemSlotIndex].freezeChanceBonus.ToString();
             }
-            if (newItem.fireChanceBonus.ToString() != null)
+            if (main.equipmentSlots[existingItemSlotIndex].fireChanceBonus.ToString() != null)
             {
                 textEquippedItemExtraBuffName1.text = "FIRE";
-                textEquippedItemExtraBuffStat1.text = newItem.fireChanceBonus.ToString();
+                textEquippedItemExtraBuffStat1.text = main.equipmentSlots[existingItemSlotIndex].fireChanceBonus.ToString();
             }
-            if (newItem.comboChanceBonus.ToString() != null)
+            if (main.equipmentSlots[existingItemSlotIndex].comboChanceBonus.ToString() != null)
             {
                 textEquippedItemExtraBuffName1.text = "CMB";
-                textEquippedItemExtraBuffStat1.text = newItem.comboChanceBonus.ToString();
+                textEquippedItemExtraBuffStat1.text = main.equipmentSlots[existingItemSlotIndex].comboChanceBonus.ToString();
             }
-            if (newItem.counterChanceBonus.ToString() != null)
+            if (main.equipmentSlots[existingItemSlotIndex].counterChanceBonus.ToString() != null)
             {
                 textEquippedItemExtraBuffName1.text = "CTR";
-                textEquippedItemExtraBuffStat1.text = newItem.counterChanceBonus.ToString();
+                textEquippedItemExtraBuffStat1.text = main.equipmentSlots[existingItemSlotIndex].counterChanceBonus.ToString();
             }
         }
     }
@@ -686,12 +708,27 @@ public class UIManager : MonoBehaviour
     public void OpenSettings()
     {
         panelSettings.SetActive(true);
-        panelSettingsTapToClose.SetActive(true);
+        panelTapToClose.SetActive(true);
     }
 
     public void CloseSettings()
     {
-        panelSettings.SetActive(false);
-        panelSettingsTapToClose.SetActive(false);
+        if (panelSettings.activeSelf == true)
+        {
+            Debug.Log("works");
+            panelSettings.SetActive(false);
+            panelTapToClose.SetActive(false);
+        }    
+        
+    }
+    public void ClosePanelEquippedItems()
+    {
+        panelEquippedItem.SetActive(false);
+        panelTapToClose.SetActive(false);
+    }
+    public void ClosePopUpsMain()
+    {
+        CloseSettings();
+        ClosePanelEquippedItems();
     }
 }
