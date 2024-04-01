@@ -107,12 +107,12 @@ public class Main : MonoBehaviour
     private void Update()
     {
         // Check if player wants to auto generate items
-        if (generating == true && equippingWindow == false)
+        if (generating == true && equippingWindow == false && currentSceneName == "MainScene")
         {
             imageButtonAutoGenerate.sprite = spritesButtonAutoGenerate[0];
             GenerateAndEquipRandomItem();
         }
-        else if (generating == false)
+        else if (generating == false && currentSceneName == "MainScene")
         {
             imageButtonAutoGenerate.sprite = spritesButtonAutoGenerate[1];
         }
