@@ -1,4 +1,6 @@
-# Magician's Cauldron ![Hlavní obrazovka](Screenshots/MainScreen.png)
+# Magician's Cauldron <p align="center">
+  <img src="Screenshots/MainMenu.png" alt="Hlavní obrazovka" width="300"/>
+</p>
 
 *Magician's Cauldron*
 
