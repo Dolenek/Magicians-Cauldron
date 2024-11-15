@@ -1,8 +1,12 @@
-# Magician's Cauldron <p align="center">
-  <img src="Screenshots/MainMenu.png" alt="Hlavní obrazovka" width="300"/>
+<div align="center">
+
+# Magician's Cauldron
+
+</div>
+<p align="center">
+  <img src="Screenshots/Icon.png" alt="Hlavní obrazovka" width="300"/>
 </p>
 
-*Magician's Cauldron*
 
 ## Popis
 
@@ -24,5 +28,6 @@ Tato mobilní hra byla vyvinuta jako součást mé **maturitní práce**. Hra je
 - **Unity**: Herní engine použitý pro vývoj.
 - **C#**
 - **Git**
-
+- **AI generace obrázků**: Všechny assety byly vygenerovány AI generátorama obrázků
+- **GIMP**: Software pro úpravu obrázků. Byl použit pro další úpravu vygenerovaných assetů
 
