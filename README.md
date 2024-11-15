@@ -1,4 +1,4 @@
-# Magician's Cauldron
+# Magician's Cauldron ![Hlavní obrazovka](Screenshots/MainScreen.png)
 
 *Magician's Cauldron*
 
